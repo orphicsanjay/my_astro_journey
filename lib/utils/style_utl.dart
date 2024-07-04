@@ -97,6 +97,12 @@ class StyleUtil {
     fontSize: 20.0,
     color: ColorUtil.colorOrange,
   );
+  static const TextStyle style20OrangeBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 20.0,
+    color: ColorUtil.colorOrange,
+    fontWeight: FontWeight.bold,
+  );
 
   static const TextStyle style18Orange = TextStyle(
     fontFamily: 'Helvetica',
@@ -212,6 +218,12 @@ class StyleUtil {
     color: ColorUtil.colorBlack,
     fontWeight: FontWeight.bold,
   );
+  static const TextStyle style20BlackBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 20.0,
+    color: ColorUtil.colorBlack,
+    fontWeight: FontWeight.bold,
+  );
 
   static const TextStyle style16WhiteBold = TextStyle(
     fontFamily: 'Helvetica',
@@ -226,12 +238,35 @@ class StyleUtil {
     color: ColorUtil.colorGrey,
     fontWeight: FontWeight.bold,
   );
+  static const TextStyle style20GreyBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 20.0,
+    color: ColorUtil.colorGrey,
+    fontWeight: FontWeight.bold,
+  );
 
   static const TextStyle style16DarkBlueBold = TextStyle(
     fontFamily: 'Helvetica',
     fontSize: 16.0,
     color: ColorUtil.colorDarkBlue, // Dark blue color
     fontWeight: FontWeight.bold,
+  );
+  static const TextStyle style16DarkBlue = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 16.0,
+    color: ColorUtil.colorDarkBlue, // Dark blue color
+  );
+  static const TextStyle style20DarkBlueBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 20.0,
+    color: ColorUtil.colorDarkBlue, // Dark blue color
+    fontWeight: FontWeight.bold,
+  );
+
+  static const TextStyle style20DarkBlue = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 20.0,
+    color: ColorUtil.colorDarkBlue, // Dark blue color
   );
 
   static const TextStyle style16OrangeBold = TextStyle(
@@ -241,13 +276,17 @@ class StyleUtil {
     fontWeight: FontWeight.bold,
   );
 
-  // Define button styles
-  // static const ButtonStyle elevatedButtonPrimary = ElevatedButton.styleFrom(
-  //   primary: primaryColor, // Primary color for the ElevatedButton
-  //   onPrimary: Colors.white, // Text color for the ElevatedButton
-  // );
+  static const TextStyle style16DeepPurpleBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 16.0,
+    color: ColorUtil.colorDarkBlue,
+    fontWeight: FontWeight.bold,
+  );
 
-  // static const ButtonStyle textButtonPrimary = TextButton.styleFrom(
-  //   primary: primaryColor, // Text color for the TextButton
-  // );
+  static const TextStyle style20DeepPurpleItalic = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 20.0,
+    color: ColorUtil.colorDarkBlue,
+    fontStyle: FontStyle.italic, // Italic text style
+  );
 }

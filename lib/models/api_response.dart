@@ -1,11 +1,11 @@
 class ApiResponse {
   int statusCode;
-  Map<String, dynamic>? body;
+  dynamic data;
   String message;
 
   ApiResponse({
     required this.statusCode,
-    this.body,
+    this.data,
     required this.message,
   });
 }

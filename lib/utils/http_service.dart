@@ -2,10 +2,10 @@
 
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:astrology/main.dart';
 import 'package:astrology/models/api_response.dart';
 import 'package:astrology/pages/home_page.dart';
-import 'package:astrology/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -14,7 +14,7 @@ class HttpService {
   factory HttpService() => _instance;
   HttpService._internal();
 
-  final String baseUrl = base_url;
+  // final String baseUrl = base_url;
 
   void redirectToLogin() {
     navigatorKey.currentState?.pushAndRemoveUntil(
@@ -27,7 +27,10 @@ class HttpService {
     ApiResponse? apiResponse;
 
     try {
-      final response = await http.get(Uri.parse('$baseUrl$endpoint'));
+      final response = await http.get(Uri.parse(endpoint));
+      print("get response : ${response.statusCode} ");
+      print("get response : ${response.body} ");
+
       if (response.statusCode == 401) {
         redirectToLogin();
         return null;
@@ -35,22 +38,23 @@ class HttpService {
       final decodedJson = jsonDecode(response.body);
       apiResponse = ApiResponse(
         statusCode: response.statusCode,
-        message: decodedJson['message'],
-        body: decodedJson,
+        message: decodedJson['message'] ?? "",
+        data: decodedJson,
       );
+      print("after response : ${apiResponse.data}");
       return apiResponse;
     } on SocketException {
       apiResponse = ApiResponse(
         statusCode: 0,
         message: 'Network error. Please try again later.',
-        body: null,
+        data: null,
       );
       return apiResponse;
     } catch (e) {
       apiResponse = ApiResponse(
         statusCode: 0,
         message: 'An unexpected error occurred.',
-        body: null,
+        data: null,
       );
       return apiResponse;
     }
@@ -62,10 +66,12 @@ class HttpService {
 
     try {
       final response = await http.post(
-        Uri.parse('$baseUrl$endpoint'),
+        Uri.parse(endpoint),
         headers: {'Content-Type': 'application/json'},
         body: json.encode(data),
       );
+      print("status code : ${response.statusCode}");
+      print("response body : ${response.body}");
       if (response.statusCode == 401) {
         redirectToLogin();
         return null;
@@ -73,15 +79,16 @@ class HttpService {
       final decodedJson = jsonDecode(response.body);
       apiResponse = ApiResponse(
         statusCode: response.statusCode,
-        message: decodedJson['message'],
-        body: decodedJson,
+        message: decodedJson['message'] ?? "",
+        data: decodedJson,
       );
+      print("api response : ${apiResponse.data}");
       return apiResponse;
     } catch (e) {
       apiResponse = ApiResponse(
         statusCode: 0,
         message: 'An unexpected error occurred.',
-        body: null,
+        data: null,
       );
       return apiResponse;
     }
@@ -93,7 +100,7 @@ class HttpService {
 
     try {
       final response = await http.put(
-        Uri.parse('$baseUrl$endpoint'),
+        Uri.parse(endpoint),
         headers: {'Content-Type': 'application/json'},
         body: json.encode(data),
       );
@@ -105,14 +112,14 @@ class HttpService {
       apiResponse = ApiResponse(
         statusCode: response.statusCode,
         message: decodedJson['message'],
-        body: decodedJson,
+        data: decodedJson,
       );
       return apiResponse;
     } catch (e) {
       apiResponse = ApiResponse(
         statusCode: 0,
         message: 'An unexpected error occurred.',
-        body: null,
+        data: null,
       );
       return apiResponse;
     }
@@ -122,7 +129,7 @@ class HttpService {
     ApiResponse? apiResponse;
 
     try {
-      final response = await http.delete(Uri.parse('$baseUrl$endpoint'));
+      final response = await http.delete(Uri.parse(endpoint));
       if (response.statusCode == 401) {
         redirectToLogin();
         return null;
@@ -131,14 +138,14 @@ class HttpService {
       apiResponse = ApiResponse(
         statusCode: response.statusCode,
         message: decodedJson['message'],
-        body: decodedJson,
+        data: decodedJson,
       );
       return apiResponse;
     } catch (e) {
       apiResponse = ApiResponse(
         statusCode: 0,
         message: 'An unexpected error occurred.',
-        body: null,
+        data: null,
       );
       return apiResponse;
     }

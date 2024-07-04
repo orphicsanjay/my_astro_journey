@@ -1,4 +1,4 @@
-import 'package:astrology/models/user.dart';
+import 'package:astrology/models/user/user.dart';
 import 'package:astrology/utils/strings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
