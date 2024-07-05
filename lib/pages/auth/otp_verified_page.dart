@@ -1,8 +1,8 @@
+import 'package:astrology/pages/user/complete_profile_page.dart';
 import 'package:astrology/utils/color_util.dart';
-import 'package:astrology/utils/custom_spacer.dart';
+import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class OTPVerifiedPage extends StatefulWidget {
   final bool isPhoneNumber;
@@ -13,18 +13,20 @@ class OTPVerifiedPage extends StatefulWidget {
 }
 
 class _OTPVerifiedPageState extends State<OTPVerifiedPage> {
-  // navigateToCompleteProfile() {
-  //   Navigator.of(context).pushAndRemoveUntil(
-  //     MaterialPageRoute(
-  //         builder: (context) => OTPVerifiedPage(
-  //               isPhoneNumber: widget.isPhoneNumberSelected,
-  //             )),
-  //     (Route<dynamic> route) => false,
-  //   );
-  // }
+  navigateToCompleteProfile() {
+    Future.delayed(const Duration(seconds: 2)).then((value) {
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (context) => const CompleteProfilePage(),
+        ),
+        (Route<dynamic> route) => false,
+      );
+    });
+  }
 
   @override
   void initState() {
+    navigateToCompleteProfile();
     super.initState();
   }
 
@@ -65,12 +67,12 @@ class _OTPVerifiedPageState extends State<OTPVerifiedPage> {
                 ),
               ),
             ),
-            const CustomSpacer(height: 24.0),
+            const CustomVerticalSpacer(height: 24.0),
             Text(
               widget.isPhoneNumber ? "Phone number verified" : "Email verified",
               style: StyleUtil.style20BlackBold,
             ),
-            const CustomSpacer(height: 16.0),
+            const CustomVerticalSpacer(height: 16.0),
             const Text(
               "You will be redirected to the main page\n in few minutes",
               textAlign: TextAlign.center,

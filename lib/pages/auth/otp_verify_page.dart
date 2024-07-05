@@ -1,11 +1,15 @@
+import 'package:astrology/models/otp/otp_response.dart';
 import 'package:astrology/models/otp/request_otp.dart';
+import 'package:astrology/models/user/access_token.dart';
 import 'package:astrology/pages/auth/custom_button.dart';
 import 'package:astrology/pages/auth/otp_verified_page.dart';
 import 'package:astrology/pages/auth/timer_widget.dart';
 import 'package:astrology/providers/auth_provider.dart';
+import 'package:astrology/providers/preferences_provider.dart';
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_appbar.dart';
-import 'package:astrology/utils/custom_spacer.dart';
+import 'package:astrology/utils/custom_vertical_spacer.dart';
+import 'package:astrology/utils/snackbar_util.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:astrology/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +31,6 @@ class OTPVerifyPage extends StatefulWidget {
 
 class _OTPVerifyPageState extends State<OTPVerifyPage> {
   String otpCode = "";
-  // TextEditingController otpController = TextEditingController();
   Map<String, dynamic> data = {};
 
   updateOTPCode(String value) {
@@ -36,17 +39,33 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
   }
 
   handleVerifyOTP() {
+    if (otpCode.isEmpty) {
+      SnackbarUtils.showSnackbar(context, "Provide otp for verification");
+      return;
+    }
+    if (otpCode.length != 6) {
+      SnackbarUtils.showSnackbar(context, "Provide full otp");
+      return;
+    }
     Map<String, dynamic>? map = {};
     if (widget.isPhoneNumberSelected) {
       map['phonenumber'] = "${widget.requestOTP.phonenumber}";
       map['otp_code'] = otpCode;
     } else {
-      map['phonenumber'] = "${widget.requestOTP.email}";
+      map['email'] = "${widget.requestOTP.email}";
       map['otp_code'] = otpCode;
     }
     Provider.of<AuthProvider>(context, listen: false)
         .verifyOTP(map)
-        .then((value) {
+        .then((OTPResponse? otpResponse) {
+      if (otpResponse!.accessToken == null) {
+        SnackbarUtils.showSnackbar(context, otpResponse.message!);
+        return;
+      }
+      AccessToken accessToken =
+          AccessToken(otpResponse.accessToken, otpResponse.refreshToken);
+      Provider.of<PreferencesProvider>(context, listen: false)
+          .saveAccessToken(accessToken);
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
             builder: (context) => OTPVerifiedPage(
@@ -71,7 +90,7 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
       } else {
         data['email'] = "${widget.requestOTP.email}";
       }
-      Provider.of<AuthProvider>(context, listen: false).requestOTP(data!);
+      Provider.of<AuthProvider>(context, listen: false).requestOTP(data);
     });
     super.initState();
   }
@@ -94,17 +113,17 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                 physics: const ScrollPhysics(),
                 child: Column(
                   children: [
-                    const CustomSpacer(height: 80),
+                    const CustomVerticalSpacer(height: 80),
                     Text(
                       widget.isPhoneNumberSelected
                           ? "Enter 4 digit verification code\n sent to your mobile number"
                           : "Enter 4 digit verification code\n sent to your email",
                       style: StyleUtil.style16DarkBlueBold,
                     ),
-                    const CustomSpacer(height: 80),
+                    const CustomVerticalSpacer(height: 80),
                     PinFieldAutoFill(
                       // controller: otpController,
-                      codeLength: 4,
+                      codeLength: 6,
                       decoration: UnderlineDecoration(
                         textStyle:
                             const TextStyle(fontSize: 20, color: Colors.black),
@@ -119,7 +138,7 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                         updateOTPCode(code!);
                       },
                     ),
-                    const CustomSpacer(),
+                    const CustomVerticalSpacer(),
                     TimerWidget(
                       onTap: () {
                         Navigator.pushReplacement(
@@ -133,11 +152,13 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                         );
                       },
                     ),
-                    const CustomSpacer(),
-                    const CustomSpacer(),
+                    const CustomVerticalSpacer(),
+                    const CustomVerticalSpacer(),
                     CustomButton(
                       title: "Confirm",
-                      onTap: () {},
+                      onTap: () {
+                        handleVerifyOTP();
+                      },
                     ),
                   ],
                 ),

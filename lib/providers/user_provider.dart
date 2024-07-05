@@ -14,6 +14,6 @@ class UserProvider with ChangeNotifier {
 
   initUser() async {
     // ignore: unused_local_variable
-    _user = await _preferencesProvider.getUser();
+    // _user = await _preferencesProvider.getAccessToken();
   }
 }

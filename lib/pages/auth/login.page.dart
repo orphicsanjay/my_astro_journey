@@ -9,7 +9,7 @@ import 'package:astrology/pages/auth/otp_verify_page.dart';
 import 'package:astrology/pages/auth/quote_widget.dart';
 import 'package:astrology/providers/country_provider.dart';
 import 'package:astrology/utils/color_util.dart';
-import 'package:astrology/utils/custom_spacer.dart';
+import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/snackbar_util.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               BannerImage(height: size.height * 0.4),
               const QuoteWidget(),
-              CustomSpacer(height: size.height * 0.1),
+              CustomVerticalSpacer(height: size.height * 0.1),
               Container(
                 margin: const EdgeInsets.all(16.0),
                 child: Column(
@@ -155,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       ),
                     ),
-                    const CustomSpacer(),
+                    const CustomVerticalSpacer(),
                     isPhoneNumberSelected
                         ? Container(
                             padding: const EdgeInsets.symmetric(
@@ -219,7 +219,7 @@ class _LoginPageState extends State<LoginPage> {
                                   hintText: "Enter your email"),
                             ),
                           ),
-                    const CustomSpacer(),
+                    const CustomVerticalSpacer(),
                     CustomButton(
                       title: "Log In",
                       onTap: () {

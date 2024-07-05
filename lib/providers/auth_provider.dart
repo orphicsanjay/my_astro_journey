@@ -1,9 +1,14 @@
 import 'dart:async';
 
 import 'package:astrology/models/api_response.dart';
+import 'package:astrology/models/otp/otp_response.dart';
+import 'package:astrology/models/user/access_token.dart';
+import 'package:astrology/providers/preferences_provider.dart';
 import 'package:astrology/utils/endpoints.dart';
 import 'package:astrology/utils/http_service.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AuthProvider with ChangeNotifier {
   final HttpService _httpService = HttpService();
@@ -29,15 +34,17 @@ class AuthProvider with ChangeNotifier {
     // }
   }
 
-  Future<bool> verifyOTP(Map<String, dynamic> data) async {
-    Completer<bool> completer = Completer<bool>();
+  Future<OTPResponse> verifyOTP(Map<String, dynamic> data) async {
+    Completer<OTPResponse> completer = Completer<OTPResponse>();
+    OTPResponse? otpResponse;
     updateVerifyingOtp(true);
     final ApiResponse? apiResponse =
         await _httpService.postData(verifyOTPUrl, data);
-    if (apiResponse!.statusCode == 200) {
-      completer.complete(true);
+    if (apiResponse!.statusCode == 200 || apiResponse.statusCode == 201) {
+      otpResponse = OTPResponse.fromJson(apiResponse.data);
+      completer.complete(otpResponse);
     } else {
-      completer.complete(false);
+      otpResponse = OTPResponse(apiResponse.data['message'], null, null);
     }
     print("verify response : ${apiResponse.data}");
     return completer.future;

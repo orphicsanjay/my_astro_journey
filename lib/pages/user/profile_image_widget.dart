@@ -71,14 +71,13 @@ class _ProfileImageWidgetState extends State<ProfileImageWidget> {
                         widget.image!,
                         height: double.infinity,
                         width: double.infinity,
-                        fit: BoxFit
-                            .cover, // Ensure the image covers the entire circle
+                        fit: BoxFit.cover,
                       ),
                     )
                   : const Icon(
                       Icons.account_circle,
                       color: ColorUtil.colorGrey,
-                      size: 110.0,
+                      size: 100.0,
                     ),
             ),
             Positioned(

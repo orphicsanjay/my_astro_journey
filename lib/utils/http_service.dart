@@ -3,10 +3,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:astrology/main.dart';
 import 'package:astrology/models/api_response.dart';
-import 'package:astrology/pages/home_page.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class HttpService {
@@ -17,10 +14,10 @@ class HttpService {
   // final String baseUrl = base_url;
 
   void redirectToLogin() {
-    navigatorKey.currentState?.pushAndRemoveUntil(
-      MaterialPageRoute(builder: (context) => const HomePage()),
-      (Route<dynamic> route) => false,
-    );
+    // navigatorKey.currentState?.pushAndRemoveUntil(
+    //   MaterialPageRoute(builder: (context) => const HomePage()),
+    //   (Route<dynamic> route) => false,
+    // );
   }
 
   Future<ApiResponse?> getData(String endpoint) async {

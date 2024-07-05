@@ -1,12 +1,13 @@
 import 'dart:io';
 
 import 'package:astrology/pages/auth/custom_button.dart';
+import 'package:astrology/pages/home/homepage.dart';
 import 'package:astrology/pages/user/custom_textformfield.dart';
-import 'package:astrology/pages/user/dob_widget.dart';
 import 'package:astrology/pages/user/gender_widget.dart';
 import 'package:astrology/pages/user/profile_image_widget.dart';
 import 'package:astrology/utils/custom_appbar.dart';
-import 'package:astrology/utils/custom_spacer.dart';
+import 'package:astrology/utils/custom_vertical_spacer.dart';
+import 'package:astrology/utils/profile_form_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +27,8 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
   String selectedBirthPlace = "";
   String selectedBirthCountry = "";
   String selectedPhoneNumber = "";
+  String selectedEmail = "";
+  String selectedAddress = "";
 
   handleImageChange(File value) {
     image = value;
@@ -43,33 +46,28 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
     });
   }
 
-  void handleDobChange(String value) {
-    selectedDob = value;
-    setState(() {});
-  }
-
-  void handleTimeOfBirthChange(String value) {
-    selectedTimeOfBirth = value;
-    setState(() {});
-  }
-
-  void handleBirthPlaceChange(String value) {
-    selectedBirthPlace = value;
-    setState(() {});
-  }
-
-  void handleBirthCountryChange(String value) {
-    selectedBirthCountry = value;
-    setState(() {});
-  }
-
   void handlePhoneNumberChange(String value) {
     selectedPhoneNumber = value;
     setState(() {});
   }
 
+  void handleEmailChange(String value) {
+    selectedEmail = value;
+    setState(() {});
+  }
+
+  void handleAddressChange(String value) {
+    selectedAddress = value;
+    setState(() {});
+  }
+
   void handleSave() {
-    print("saved pressed");
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => const HomePage(),
+      ),
+      (Route<dynamic> route) => false,
+    );
   }
 
   @override
@@ -99,7 +97,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                 image: image,
                 onImagePicked: handleImageChange,
               ),
-              const CustomSpacer(),
+              const ProfileFormSpacer(),
               CustomTextFormField(
                 labelText: "Name",
                 hintText: "Enter name",
@@ -107,13 +105,13 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                 keyboardType: TextInputType.text,
                 onChanged: handleNameChange,
               ),
-              const CustomSpacer(),
+              const ProfileFormSpacer(),
               SizedBox(
                 width: size.width,
                 child: const Text(
                   "Gender",
                   textAlign: TextAlign.start,
-                  style: StyleUtil.style16OrangeBold,
+                  style: StyleUtil.style16DeepPurpleBold,
                 ),
               ),
               Row(
@@ -146,48 +144,36 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                   ),
                 ],
               ),
-              const CustomSpacer(),
-              DobWidget(
-                onChanged: handleDobChange,
-              ),
-              const CustomSpacer(),
+              const ProfileFormSpacer(),
               CustomTextFormField(
-                labelText: "Time of Birth",
-                hintText: "Enter time of birth",
-                validatorMessage: "Provide time of birth",
-                keyboardType: TextInputType.number,
-                onChanged: handleNameChange,
+                labelText: "Email",
+                hintText: "Enter email",
+                validatorMessage: "Provide your email",
+                keyboardType: TextInputType.emailAddress,
+                onChanged: handlePhoneNumberChange,
               ),
-              const CustomSpacer(),
-              CustomTextFormField(
-                labelText: "Birth Place",
-                hintText: "Enter birth place",
-                validatorMessage: "Provide birth place",
-                keyboardType: TextInputType.text,
-                onChanged: handleBirthPlaceChange,
-              ),
-              const CustomSpacer(),
-              CustomTextFormField(
-                labelText: "Birth Country",
-                hintText: "Enter birth country",
-                validatorMessage: "Provide birth country",
-                keyboardType: TextInputType.text,
-                onChanged: handleBirthCountryChange,
-              ),
-              const CustomSpacer(),
+              const ProfileFormSpacer(),
               CustomTextFormField(
                 labelText: "Phone Number",
                 hintText: "Enter phone number",
                 validatorMessage: "Provide phone number",
                 keyboardType: TextInputType.number,
-                onChanged: handlePhoneNumberChange,
+                onChanged: handleEmailChange,
               ),
-              const CustomSpacer(height: 40),
+              const ProfileFormSpacer(),
+              CustomTextFormField(
+                labelText: "Address",
+                hintText: "Enter address",
+                validatorMessage: "Provide address",
+                keyboardType: TextInputType.text,
+                onChanged: handleAddressChange,
+              ),
+              const CustomVerticalSpacer(height: 72),
               CustomButton(
                 onTap: handleSave,
                 title: "Save",
               ),
-              const CustomSpacer(),
+              const ProfileFormSpacer(),
             ],
           ),
         ),
@@ -195,3 +181,46 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
     );
   }
 }
+
+
+  // void handleDobChange(String value) {
+  //   selectedDob = value;
+  //   setState(() {});
+  // }
+
+  // void handleTimeOfBirthChange(String value) {
+  //   selectedTimeOfBirth = value;
+  //   setState(() {});
+  // }
+
+  // void handleBirthPlaceChange(String value) {
+  //   selectedBirthPlace = value;
+  //   setState(() {});
+  // }
+
+  // void handleBirthCountryChange(String value) {
+  //   selectedBirthCountry = value;
+  //   setState(() {});
+  // }
+
+
+// DobWidget(onChanged: handleDobChange),
+              // const ProfileFormSpacer(),
+              // TimeWidget(onChanged: handleTimeOfBirthChange),
+              // const ProfileFormSpacer(),
+              // CustomTextFormField(
+              //   labelText: "Birth Country",
+              //   hintText: "Enter birth country",
+              //   validatorMessage: "Provide birth country",
+              //   keyboardType: TextInputType.text,
+              //   onChanged: handleBirthCountryChange,
+              // ),
+              // const ProfileFormSpacer(),
+              // CustomTextFormField(
+              //   labelText: "Birth Place",
+              //   hintText: "Enter birth place",
+              //   validatorMessage: "Provide birth place",
+              //   keyboardType: TextInputType.text,
+              //   onChanged: handleBirthPlaceChange,
+              // ),
+              // const ProfileFormSpacer(),
