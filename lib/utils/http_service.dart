@@ -3,7 +3,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:astrology/models/api_response.dart';
+import 'package:astrology/models/response/api_response.dart';
 import 'package:http/http.dart' as http;
 
 class HttpService {

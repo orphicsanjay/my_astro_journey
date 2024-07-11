@@ -1,6 +1,8 @@
 import 'package:astrology/pages/auth/login.page.dart';
-import 'package:astrology/pages/home/homepage.dart';
+import 'package:astrology/providers/app_service_provider.dart';
 import 'package:astrology/providers/auth_provider.dart';
+import 'package:astrology/providers/banner_provider.dart';
+import 'package:astrology/providers/blogs_provider.dart';
 import 'package:astrology/providers/country_provider.dart';
 import 'package:astrology/providers/network_provider.dart';
 import 'package:astrology/providers/preferences_provider.dart';
@@ -15,7 +17,10 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => AppServicesProvider()),
         ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => BannerProvider()),
+        ChangeNotifierProvider(create: (_) => BlogsProvider()),
         ChangeNotifierProvider(create: (_) => CountryProvider()),
         ChangeNotifierProvider(create: (_) => NetworkProvider()),
         ChangeNotifierProvider(create: (_) => PreferencesProvider()),

@@ -1,4 +1,4 @@
-import 'package:astrology/models/api_response.dart';
+import 'package:astrology/models/response/api_response.dart';
 import 'package:astrology/models/user/country.dart';
 import 'package:astrology/utils/endpoints.dart';
 import 'package:astrology/utils/http_service.dart';
