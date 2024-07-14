@@ -1,9 +1,11 @@
 import 'dart:io';
 
+import 'package:astrology/models/user/country.dart';
 import 'package:astrology/pages/auth/custom_button.dart';
 import 'package:astrology/pages/home/homepage.dart';
 import 'package:astrology/pages/user/custom_textformfield.dart';
 import 'package:astrology/pages/user/gender_widget.dart';
+import 'package:astrology/pages/user/phone_widget.dart';
 import 'package:astrology/pages/user/profile_image_widget.dart';
 import 'package:astrology/utils/custom_appbar.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
@@ -22,10 +24,11 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
   File? image;
   String? selectedGender;
   String selectedName = "";
-  String selectedDob = "";
-  String selectedTimeOfBirth = "";
-  String selectedBirthPlace = "";
-  String selectedBirthCountry = "";
+  // String selectedDob = "";
+  // String selectedTimeOfBirth = "";
+  // String selectedBirthPlace = "";
+  // String selectedBirthCountry = "";
+  Country? selectedCountry;
   String selectedPhoneNumber = "";
   String selectedEmail = "";
   String selectedAddress = "";
@@ -44,6 +47,11 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
     setState(() {
       selectedGender = value;
     });
+  }
+
+  void handleCountryChange(Country value) {
+    selectedCountry = value;
+    setState(() {});
   }
 
   void handlePhoneNumberChange(String value) {
@@ -153,13 +161,9 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                 onChanged: handlePhoneNumberChange,
               ),
               const ProfileFormSpacer(),
-              CustomTextFormField(
-                labelText: "Phone Number",
-                hintText: "Enter phone number",
-                validatorMessage: "Provide phone number",
-                keyboardType: TextInputType.number,
-                onChanged: handleEmailChange,
-              ),
+              PhoneWidget(
+                  onChanged: handlePhoneNumberChange,
+                  onCountryChanged: handleCountryChange),
               const ProfileFormSpacer(),
               CustomTextFormField(
                 labelText: "Address",

@@ -1,4 +1,5 @@
 import 'package:astrology/pages/auth/login.page.dart';
+import 'package:astrology/pages/user/complete_profile_page.dart';
 import 'package:astrology/providers/app_service_provider.dart';
 import 'package:astrology/providers/auth_provider.dart';
 import 'package:astrology/providers/banner_provider.dart';
@@ -54,8 +55,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           fontFamily: 'Helvetica',
         ),
-        // home: const CompleteProfilePage(),
-        home: const LoginPage(),
+        home: const CompleteProfilePage(),
+        // home: const LoginPage(),
         // home: const HomePage(),
         // home: const OTPVerifiedPage(
         //   isPhoneNumber: true,

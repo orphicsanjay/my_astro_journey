@@ -26,7 +26,7 @@ class _CountryWidgetState extends State<CountryWidget> {
     return countryProvider.countryList == null
         ? Container(
             margin: const EdgeInsets.only(right: 24),
-            height: 24,
+            height: 16,
             width: 24,
             child: const CircularProgressIndicator(
               valueColor:
@@ -37,6 +37,7 @@ class _CountryWidgetState extends State<CountryWidget> {
             value: countryProvider.selectedCountry,
             isExpanded: false,
             // isDense: true,
+            padding: EdgeInsets.zero,
             items: countryProvider.countryList!.map((Country value) {
               return DropdownMenuItem<Country>(
                 value: value,

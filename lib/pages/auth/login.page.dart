@@ -85,11 +85,11 @@ class _LoginPageState extends State<LoginPage> {
               const QuoteWidget(),
               CustomVerticalSpacer(height: size.height * 0.1),
               Container(
-                margin: const EdgeInsets.all(16.0),
+                margin: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
                   children: [
                     Container(
-                      width: size.width,
+                      margin: EdgeInsets.zero,
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: ColorUtil.colorLightBlue,
@@ -98,6 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Row(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           Expanded(
                             child: GestureDetector(
@@ -108,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                                 duration: const Duration(milliseconds: 300),
                                 curve: Curves.easeOut,
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 16.0, vertical: 24.0),
+                                    horizontal: 16.0, vertical: 18.0),
                                 decoration: BoxDecoration(
                                   color: isPhoneNumberSelected
                                       ? ColorUtil.colorLightBlue
@@ -135,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                                 duration: const Duration(milliseconds: 300),
                                 curve: Curves.easeIn,
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 24),
+                                    horizontal: 16.0, vertical: 18.0),
                                 decoration: BoxDecoration(
                                   color: isPhoneNumberSelected
                                       ? ColorUtil.colorWhite
@@ -172,6 +173,7 @@ class _LoginPageState extends State<LoginPage> {
                                 const CountryWidget(),
                                 Expanded(
                                   child: Container(
+                                    padding: EdgeInsets.zero,
                                     decoration: const BoxDecoration(
                                       border: Border(
                                         left: BorderSide(
@@ -185,7 +187,7 @@ class _LoginPageState extends State<LoginPage> {
                                       keyboardType: TextInputType.number,
                                       decoration: const InputDecoration(
                                         contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 24, vertical: 24),
+                                            horizontal: 16.0, vertical: 16.0),
                                         border: InputBorder.none,
                                         hintText: "Enter your phone number",
                                         hintStyle: StyleUtil.style16Grey,
@@ -196,29 +198,34 @@ class _LoginPageState extends State<LoginPage> {
                               ],
                             ),
                           )
-                        : Container(
-                            child: TextFormField(
-                              controller: emailController,
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      horizontal: 24, vertical: 24),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        12.0), // Ensure the radius matches the default border
-                                    borderSide: const BorderSide(
-                                        color: ColorUtil.colorLightBlue,
-                                        width: 1.0),
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    borderSide: const BorderSide(
-                                        color: ColorUtil.colorLightBlue,
-                                        width: 1.0),
-                                  ),
-                                  hintText: "Enter your email"),
+                        : TextFormField(
+                            controller: emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                              contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 16.0, vertical: 18.0),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                                borderSide: const BorderSide(
+                                    color: ColorUtil.colorLightBlue,
+                                    width: 2.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                                borderSide: const BorderSide(
+                                    color: ColorUtil.colorLightBlue,
+                                    width: 2.0),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                                borderSide: const BorderSide(
+                                    color: ColorUtil.colorLightBlue,
+                                    width: 2.0),
+                              ),
+                              hintText: "Enter your email",
                             ),
                           ),
+                    const CustomVerticalSpacer(),
                     const CustomVerticalSpacer(),
                     CustomButton(
                       title: "Log In",
