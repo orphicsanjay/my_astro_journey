@@ -40,9 +40,9 @@ class _PhoneWidgetState extends State<PhoneWidget> {
         children: [
           countryProvider.countryList == null
               ? Container(
-                  margin: const EdgeInsets.only(right: 24),
+                  margin: const EdgeInsets.only(right: 40),
                   height: 16,
-                  width: 24,
+                  width: 16,
                   child: const CircularProgressIndicator(
                     valueColor:
                         AlwaysStoppedAnimation<Color>(ColorUtil.colorDarkBlue),

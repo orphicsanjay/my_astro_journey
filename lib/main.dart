@@ -1,3 +1,4 @@
+import 'package:astrology/pages/astrologer/astrologer_detail_page.dart';
 import 'package:astrology/pages/astrologer/astrologer_list_page.dart';
 import 'package:astrology/pages/home/homepage.dart';
 import 'package:astrology/pages/user/complete_profile_page.dart';
@@ -11,6 +12,7 @@ import 'package:astrology/providers/gender_provider.dart';
 import 'package:astrology/providers/network_provider.dart';
 import 'package:astrology/providers/preferences_provider.dart';
 import 'package:astrology/providers/user_provider.dart';
+import 'package:astrology/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -60,7 +62,9 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           fontFamily: 'Helvetica',
         ),
-        home: const AstrologerListPage(),
+        home: const SplashPage(),
+        // home: const AstrologerDetailPage(),
+        // home: const AstrologerListPage(),
         // home: const CompleteProfilePage(),
         // home: const LoginPage(),
         // home: const HomePage(),

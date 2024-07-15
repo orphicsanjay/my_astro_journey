@@ -49,6 +49,12 @@ class StyleUtil {
     fontSize: 14.0,
     color: Colors.black,
   );
+  static const TextStyle style14BlackBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 14.0,
+    color: Colors.black,
+    fontWeight: FontWeight.bold,
+  );
 
   static const TextStyle style12Black = TextStyle(
     fontFamily: 'Helvetica',
@@ -309,6 +315,16 @@ class StyleUtil {
   static const TextStyle style16Green = TextStyle(
     fontFamily: 'Helvetica',
     fontSize: 16.0,
+    color: ColorUtil.colorGreen,
+  );
+  static const TextStyle style14Green = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 14.0,
+    color: ColorUtil.colorGreen,
+  );
+  static const TextStyle style14GreenBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 14.0,
     color: ColorUtil.colorGreen,
     fontWeight: FontWeight.bold,
   );
