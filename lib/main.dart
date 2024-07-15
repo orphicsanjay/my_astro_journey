@@ -60,10 +60,10 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           fontFamily: 'Helvetica',
         ),
-        // home: const AstrologerListPage(),
+        home: const AstrologerListPage(),
         // home: const CompleteProfilePage(),
         // home: const LoginPage(),
-        home: const HomePage(),
+        // home: const HomePage(),
         // home: const OTPVerifiedPage(
         //   isPhoneNumber: true,
         // ),

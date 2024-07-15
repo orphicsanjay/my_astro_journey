@@ -305,4 +305,11 @@ class StyleUtil {
     fontSize: 16.0,
     color: ColorUtil.colorLightOrange,
   );
+
+  static const TextStyle style16Green = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 16.0,
+    color: ColorUtil.colorGreen,
+    fontWeight: FontWeight.bold,
+  );
 }
