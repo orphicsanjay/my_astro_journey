@@ -4,8 +4,8 @@ import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
 
-class HomeRemedyWidget extends StatelessWidget {
-  const HomeRemedyWidget({super.key});
+class HomeServicesWidget extends StatelessWidget {
+  const HomeServicesWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,11 @@ class HomeRemedyWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              child: Text("Remedy", style: StyleUtil.style20DarkBlueBold),
+              child: Text("Services", style: StyleUtil.style16DarkBlueBold),
             ),
             Text(
               "View All",
-              style: StyleUtil.style16DarkBlue,
+              style: StyleUtil.style14DarkBlue,
             ),
           ],
         ),
@@ -30,11 +30,11 @@ class HomeRemedyWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              RemedyCard(),
+              ServiceCard(),
               CustomHorizontalSpacer(),
-              RemedyCard(),
+              ServiceCard(),
               CustomHorizontalSpacer(),
-              RemedyCard(),
+              ServiceCard(),
               CustomHorizontalSpacer(),
             ],
           ),
@@ -44,8 +44,8 @@ class HomeRemedyWidget extends StatelessWidget {
   }
 }
 
-class RemedyCard extends StatelessWidget {
-  const RemedyCard({super.key});
+class ServiceCard extends StatelessWidget {
+  const ServiceCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,28 +56,32 @@ class RemedyCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         child: Column(
           children: [
-            Image.asset(
-              "assets/images/login_astro_logo.png",
-              height: 120,
-              width: 120,
-              fit: BoxFit.cover,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.asset(
+                "assets/images/pooja.jpg",
+                height: 120,
+                width: 120,
+                fit: BoxFit.cover,
+              ),
             ),
+            const SizedBox(height: 8),
             const Text(
               "Ghar Santi Poja",
-              style: StyleUtil.style16BlackBold,
+              style: StyleUtil.style16DarkBlue,
             ),
             const CustomVerticalSpacer(height: 8),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
               decoration: BoxDecoration(
                 color: ColorUtil.colorOrange,
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(24),
               ),
               child: const Text(
                 "Connect",
-                style: StyleUtil.style16White,
+                style: StyleUtil.style14White,
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -123,7 +123,7 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                     const CustomVerticalSpacer(height: 80),
                     PinFieldAutoFill(
                       // controller: otpController,
-                      codeLength: 6,
+                      codeLength: 4,
                       decoration: UnderlineDecoration(
                         textStyle:
                             const TextStyle(fontSize: 20, color: Colors.black),

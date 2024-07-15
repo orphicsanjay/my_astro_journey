@@ -1,5 +1,5 @@
 import 'package:astrology/models/response/api_response.dart';
-import 'package:astrology/models/user/country.dart';
+import 'package:astrology/address/country.dart';
 import 'package:astrology/utils/endpoints.dart';
 import 'package:astrology/utils/http_service.dart';
 import 'package:flutter/foundation.dart';
@@ -22,9 +22,9 @@ class CountryProvider with ChangeNotifier {
   fetchCountryList() async {
     final ApiResponse? apiResponse = await _httpService.getData(countriesUrl);
     if (apiResponse!.statusCode == 200) {
-      final countryTempList = apiResponse.data!['data'] as List;
+      final tempList = apiResponse.data!['data'] as List;
       _countryList = [];
-      for (var item in countryTempList) {
+      for (var item in tempList) {
         _countryList!.add(Country.fromJson(item));
         print("items : ${item['country_name']}");
         if (item['country_name'] == "NEPAL") {

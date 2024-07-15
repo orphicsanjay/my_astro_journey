@@ -8,6 +8,7 @@ class BannerImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height,
+      width: double.infinity,
       child: Image.asset("assets/images/login_astro_logo.png"),
     );
   }

@@ -1,7 +1,9 @@
 import 'package:astrology/pages/home/home_astrologer_widget.dart';
+import 'package:astrology/pages/home/home_astroshop_widget.dart';
 import 'package:astrology/pages/home/home_banner_widget.dart';
+import 'package:astrology/pages/home/home_news_articles_widget.dart';
 import 'package:astrology/pages/home/home_popular_services.dart';
-import 'package:astrology/pages/home/home_remedy_widget.dart';
+import 'package:astrology/pages/home/home_services_widget.dart';
 import 'package:astrology/pages/home/home_search_widget.dart';
 import 'package:astrology/pages/home/home_title_widget.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
@@ -39,7 +41,11 @@ class _HomePageState extends State<HomePage> {
               CustomVerticalSpacer(),
               HomeAstrologerWidget(),
               CustomVerticalSpacer(),
-              HomeRemedyWidget(),
+              HomeServicesWidget(),
+              CustomVerticalSpacer(),
+              HomeAstroShopWidget(),
+              CustomVerticalSpacer(),
+              HomeNewsArticlesWidget(),
               CustomVerticalSpacer(),
             ],
           ),

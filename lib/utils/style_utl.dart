@@ -256,6 +256,16 @@ class StyleUtil {
     fontSize: 16.0,
     color: ColorUtil.colorDarkBlue, // Dark blue color
   );
+  static const TextStyle style12DarkBlue = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 12.0,
+    color: ColorUtil.colorDarkBlue, // Dark blue color
+  );
+  static const TextStyle style14DarkBlue = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 14.0,
+    color: ColorUtil.colorDarkBlue, // Dark blue color
+  );
   static const TextStyle style20DarkBlueBold = TextStyle(
     fontFamily: 'Helvetica',
     fontSize: 20.0,
@@ -288,5 +298,11 @@ class StyleUtil {
     fontSize: 20.0,
     color: ColorUtil.colorDarkBlue,
     fontStyle: FontStyle.italic, // Italic text style
+  );
+
+  static const TextStyle style16LightOrange = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 16.0,
+    color: ColorUtil.colorLightOrange,
   );
 }

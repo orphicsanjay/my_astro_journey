@@ -17,11 +17,11 @@ class HomeAstrologerWidget extends StatelessWidget {
           children: [
             Expanded(
               child: Text("Recommended Astrologers",
-                  style: StyleUtil.style20DarkBlueBold),
+                  style: StyleUtil.style16DarkBlueBold),
             ),
             Text(
               "View All",
-              style: StyleUtil.style16DarkBlue,
+              style: StyleUtil.style14DarkBlue,
             ),
           ],
         ),
@@ -73,10 +73,10 @@ class AstrologerCard extends StatelessWidget {
                       ),
                       child: ClipOval(
                         child: Image.asset(
-                          "assets/images/login_astro_logo.png",
+                          "assets/images/astrologer1.png",
                           height: double.infinity,
                           width: double.infinity,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         ),
                       ),
                     ),
@@ -112,20 +112,20 @@ class AstrologerCard extends StatelessWidget {
             ),
             const Text(
               "Rs.30/min",
-              style: StyleUtil.style16Grey,
+              style: StyleUtil.style12Grey,
             ),
             const CustomVerticalSpacer(height: 8),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
               decoration: BoxDecoration(
                 color: ColorUtil.colorOrange,
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(24),
               ),
               child: const Text(
                 "Connect",
-                style: StyleUtil.style16White,
+                style: StyleUtil.style14White,
               ),
-            )
+            ),
           ],
         ),
       ),

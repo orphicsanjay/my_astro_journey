@@ -16,11 +16,11 @@ class HomePopularServicesWidget extends StatelessWidget {
           children: [
             Expanded(
               child: Text("Popular Services",
-                  style: StyleUtil.style20DarkBlueBold),
+                  style: StyleUtil.style16DarkBlueBold),
             ),
             Text(
               "View All",
-              style: StyleUtil.style16DarkBlue,
+              style: StyleUtil.style14DarkBlue,
             ),
           ],
         ),
@@ -36,7 +36,7 @@ class HomePopularServicesWidget extends StatelessWidget {
                   CustomVerticalSpacer(height: 8),
                   Text(
                     "Daily\nHoroscope",
-                    style: StyleUtil.style16DarkBlue,
+                    style: StyleUtil.style14DarkBlue,
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -50,7 +50,7 @@ class HomePopularServicesWidget extends StatelessWidget {
                   CustomVerticalSpacer(height: 8),
                   Text(
                     "Make\nKundali",
-                    style: StyleUtil.style16DarkBlue,
+                    style: StyleUtil.style14DarkBlue,
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -64,7 +64,7 @@ class HomePopularServicesWidget extends StatelessWidget {
                   CustomVerticalSpacer(height: 8),
                   Text(
                     "Kundali\nMatching",
-                    style: StyleUtil.style16DarkBlue,
+                    style: StyleUtil.style14DarkBlue,
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -78,7 +78,7 @@ class HomePopularServicesWidget extends StatelessWidget {
                   CustomVerticalSpacer(height: 8),
                   Text(
                     "Panchanga\nCalendar",
-                    style: StyleUtil.style16DarkBlue,
+                    style: StyleUtil.style14DarkBlue,
                     textAlign: TextAlign.center,
                   ),
                 ],
