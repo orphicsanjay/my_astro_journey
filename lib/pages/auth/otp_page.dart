@@ -10,7 +10,7 @@ class OtpPage extends StatefulWidget {
 }
 
 class _OtpPageState extends State<OtpPage> {
-  String _code = "";
+  final String _code = "";
 
   _registerSmsListener() async {
     await SmsAutoFill().listenForCode();

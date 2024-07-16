@@ -8,6 +8,43 @@ import 'package:flutter/material.dart';
 class AstrologerListCard extends StatelessWidget {
   const AstrologerListCard({super.key});
 
+  // void showPaymentOptions(BuildContext context, String action) {
+  //   showModalBottomSheet(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return Container(
+  //         width: double.infinity,
+  //         padding: const EdgeInsets.all(16.0),
+  //         child: Column(
+  //           crossAxisAlignment: CrossAxisAlignment.start,
+  //           mainAxisSize: MainAxisSize.max,
+  //           children: [
+  //             Text(
+  //               '$action with Astrologer',
+  //               style: StyleUtil.style16DarkBlueBold,
+  //               textAlign: TextAlign.center,
+  //             ),
+  //             // CustomVerticalSpacer(height: 16),
+  //             // Text(
+  //             //   'Astrologer name',
+  //             //   style: StyleUtil.style16BlackBold,
+  //             // ),
+  //             // CustomVerticalSpacer(height: 16),
+  //             // Text(
+  //             //   'Rs. 500',
+  //             //   style: StyleUtil.style14Black,
+  //             // ),
+  //             // Text(
+  //             //   'Rs. Select payment method',
+  //             //   style: StyleUtil.style14Black,
+  //             // ),
+  //           ],
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
     return DashedBottomBorderContainer(
@@ -32,7 +69,7 @@ class AstrologerListCard extends StatelessWidget {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(12),
                           child: Image.asset(
-                            "assets/images/astro.jpg",
+                            "assets/images/astrologer2.jpeg",
                             height: 150,
                             // width: 120,
                             fit: BoxFit.cover,
@@ -171,7 +208,9 @@ class AstrologerListCard extends StatelessWidget {
               children: [
                 InkWell(
                   borderRadius: BorderRadius.circular(24),
-                  onTap: () {},
+                  onTap: () {
+                    // showPaymentOptions(context, "Chat");
+                  },
                   child: Card(
                     elevation: 2.0,
                     shape: RoundedRectangleBorder(
@@ -196,7 +235,9 @@ class AstrologerListCard extends StatelessWidget {
                 ),
                 InkWell(
                   borderRadius: BorderRadius.circular(24),
-                  onTap: () {},
+                  onTap: () {
+                    // showPaymentOptions(context, "Call");
+                  },
                   child: Card(
                     elevation: 2.0,
                     shape: RoundedRectangleBorder(
@@ -221,7 +262,9 @@ class AstrologerListCard extends StatelessWidget {
                 ),
                 InkWell(
                   borderRadius: BorderRadius.circular(24),
-                  onTap: () {},
+                  onTap: () {
+                    // showPaymentOptions(context, "Video call");
+                  },
                   child: Card(
                     elevation: 2.0,
                     shape: RoundedRectangleBorder(

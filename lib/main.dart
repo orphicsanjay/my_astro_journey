@@ -1,7 +1,3 @@
-import 'package:astrology/pages/astrologer/astrologer_detail_page.dart';
-import 'package:astrology/pages/astrologer/astrologer_list_page.dart';
-import 'package:astrology/pages/home/homepage.dart';
-import 'package:astrology/pages/user/complete_profile_page.dart';
 import 'package:astrology/providers/app_service_provider.dart';
 import 'package:astrology/providers/astrologer_provider.dart';
 import 'package:astrology/providers/auth_provider.dart';

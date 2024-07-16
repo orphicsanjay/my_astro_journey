@@ -1,4 +1,3 @@
-import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_horizontal_spacer.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';

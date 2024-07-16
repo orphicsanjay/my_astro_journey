@@ -22,9 +22,9 @@ class GenderProvider with ChangeNotifier {
       }
 
       notifyListeners();
-      _genderList.forEach((gender) {
+      for (var gender in _genderList) {
         print('Key: ${gender.key}, Value: ${gender.value}');
-      });
+      }
     }
   }
 }
