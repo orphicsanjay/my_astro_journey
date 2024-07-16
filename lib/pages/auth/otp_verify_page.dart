@@ -118,7 +118,7 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                       widget.isPhoneNumberSelected
                           ? "Enter 4 digit verification code\n sent to your mobile number"
                           : "Enter 4 digit verification code\n sent to your email",
-                      style: StyleUtil.style16DarkBlueBold,
+                      style: StyleUtil.style14DarkBlueBold,
                     ),
                     const CustomVerticalSpacer(height: 80),
                     PinFieldAutoFill(
@@ -126,7 +126,7 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                       codeLength: 4,
                       decoration: UnderlineDecoration(
                         textStyle:
-                            const TextStyle(fontSize: 20, color: Colors.black),
+                            const TextStyle(fontSize: 14, color: Colors.black),
                         colorBuilder: PinListenColorBuilder(
                             ColorUtil.colorOrange, Colors.grey),
                       ),

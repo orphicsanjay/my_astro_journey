@@ -68,7 +68,7 @@ class ServiceCard extends StatelessWidget {
             const SizedBox(height: 8),
             const Text(
               "Ghar Santi Poja",
-              style: StyleUtil.style16DarkBlue,
+              style: StyleUtil.style14DarkBlue,
             ),
             const CustomVerticalSpacer(height: 8),
             Container(

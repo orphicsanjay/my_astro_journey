@@ -56,8 +56,8 @@ class _TimerWidgetState extends State<TimerWidget> {
           child: Text(
             "Resend",
             style: _start != 0
-                ? StyleUtil.style20GreyBold
-                : StyleUtil.style20OrangeBold,
+                ? StyleUtil.style14GreyBold
+                : StyleUtil.style14OrangeBold,
           ),
         ),
         _start == 0
@@ -67,7 +67,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                   const SizedBox(width: 8),
                   Text(
                     '(${_start ~/ 60}:${_start % 60 < 10 ? '0' : ''}${_start % 60})',
-                    style: StyleUtil.style20BlackBold,
+                    style: StyleUtil.style14BlackBold,
                   )
                 ],
               ),

@@ -68,7 +68,7 @@ class AstroShopCard extends StatelessWidget {
             const SizedBox(height: 8),
             const Text(
               "Astro Ring",
-              style: StyleUtil.style16DarkBlue,
+              style: StyleUtil.style14DarkBlue,
             ),
             const CustomVerticalSpacer(height: 8),
             Container(

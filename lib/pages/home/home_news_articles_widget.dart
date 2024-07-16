@@ -73,7 +73,7 @@ class NewsArticleWidget extends StatelessWidget {
               const SizedBox(height: 8),
               const Text(
                 "How to book a Pooja thaali in Astro Journey",
-                style: StyleUtil.style16DarkBlue,
+                style: StyleUtil.style14DarkBlue,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -82,7 +82,7 @@ class NewsArticleWidget extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: Text(
                   "5th Jan, 2023",
-                  style: StyleUtil.style12Orange,
+                  style: StyleUtil.style14Orange,
                 ),
               ),
             ],

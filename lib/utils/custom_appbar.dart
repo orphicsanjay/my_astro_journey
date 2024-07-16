@@ -18,27 +18,27 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leadingWidth: 72,
+      // leadingWidth: 72,
       toolbarHeight: kToolbarHeight,
       title: Text(
         '$title',
-        style: StyleUtil.style20DarkBlueBold,
+        style: StyleUtil.style16DarkBlueBold,
       ),
       leading: showBackButton
           ? Container(
               margin: const EdgeInsets.only(left: 16.0),
-              decoration: BoxDecoration(
-                color: ColorUtil.colorLightBlue,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: IconButton(
-                icon: const Icon(
-                  Icons.keyboard_arrow_left,
-                  color: ColorUtil.colorWhite,
+              child: CircleAvatar(
+                radius: 16,
+                backgroundColor: ColorUtil.colorLightBlue,
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.keyboard_arrow_left,
+                    color: ColorUtil.colorWhite,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
                 ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
               ),
             )
           : const SizedBox(),
@@ -50,3 +50,21 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
+
+
+// Container(
+//               margin: const EdgeInsets.only(left: 16.0),
+//               decoration: BoxDecoration(
+//                 color: ColorUtil.colorLightBlue,
+//                 borderRadius: BorderRadius.circular(30),
+//               ),
+//               child: IconButton(
+//                 icon: const Icon(
+//                   Icons.keyboard_arrow_left,
+//                   color: ColorUtil.colorWhite,
+//                 ),
+//                 onPressed: () {
+//                   Navigator.of(context).pop();
+//                 },
+//               ),
+//             )

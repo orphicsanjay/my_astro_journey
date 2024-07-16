@@ -109,6 +109,12 @@ class StyleUtil {
     color: ColorUtil.colorOrange,
     fontWeight: FontWeight.bold,
   );
+  static const TextStyle style14OrangeBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 14.0,
+    color: ColorUtil.colorOrange,
+    fontWeight: FontWeight.bold,
+  );
 
   static const TextStyle style18Orange = TextStyle(
     fontFamily: 'Helvetica',
@@ -250,10 +256,22 @@ class StyleUtil {
     color: ColorUtil.colorGrey,
     fontWeight: FontWeight.bold,
   );
+  static const TextStyle style14GreyBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 14.0,
+    color: ColorUtil.colorGrey,
+    fontWeight: FontWeight.bold,
+  );
 
   static const TextStyle style16DarkBlueBold = TextStyle(
     fontFamily: 'Helvetica',
     fontSize: 16.0,
+    color: ColorUtil.colorDarkBlue, // Dark blue color
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle style14DarkBlueBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 14.0,
     color: ColorUtil.colorDarkBlue, // Dark blue color
     fontWeight: FontWeight.bold,
   );

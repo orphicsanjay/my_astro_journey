@@ -3,47 +3,11 @@ import 'package:astrology/utils/custom_horizontal_spacer.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:astrology/widgets/dashed_underline_painter.dart';
+import 'package:astrology/widgets/payment_options.dart';
 import 'package:flutter/material.dart';
 
 class AstrologerListCard extends StatelessWidget {
   const AstrologerListCard({super.key});
-
-  // void showPaymentOptions(BuildContext context, String action) {
-  //   showModalBottomSheet(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return Container(
-  //         width: double.infinity,
-  //         padding: const EdgeInsets.all(16.0),
-  //         child: Column(
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           mainAxisSize: MainAxisSize.max,
-  //           children: [
-  //             Text(
-  //               '$action with Astrologer',
-  //               style: StyleUtil.style16DarkBlueBold,
-  //               textAlign: TextAlign.center,
-  //             ),
-  //             // CustomVerticalSpacer(height: 16),
-  //             // Text(
-  //             //   'Astrologer name',
-  //             //   style: StyleUtil.style16BlackBold,
-  //             // ),
-  //             // CustomVerticalSpacer(height: 16),
-  //             // Text(
-  //             //   'Rs. 500',
-  //             //   style: StyleUtil.style14Black,
-  //             // ),
-  //             // Text(
-  //             //   'Rs. Select payment method',
-  //             //   style: StyleUtil.style14Black,
-  //             // ),
-  //           ],
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +79,7 @@ class AstrologerListCard extends StatelessWidget {
                           Expanded(
                               child: Text(
                             "Aditya Sharma",
-                            style: StyleUtil.style16BlackBold,
+                            style: StyleUtil.style14BlackBold,
                           )),
                           CustomHorizontalSpacer(width: 4),
                           Icon(
@@ -182,7 +146,7 @@ class AstrologerListCard extends StatelessWidget {
                               children: <TextSpan>[
                                 TextSpan(
                                   text: '30/min',
-                                  style: StyleUtil.style16DarkBlueBold,
+                                  style: StyleUtil.style14DarkBlueBold,
                                 ),
                               ],
                             ),
@@ -192,7 +156,7 @@ class AstrologerListCard extends StatelessWidget {
                           Expanded(
                             child: Text(
                               "Online",
-                              style: StyleUtil.style16Green,
+                              style: StyleUtil.style14Green,
                             ),
                           ),
                         ],
@@ -209,7 +173,7 @@ class AstrologerListCard extends StatelessWidget {
                 InkWell(
                   borderRadius: BorderRadius.circular(24),
                   onTap: () {
-                    // showPaymentOptions(context, "Chat");
+                    showPaymentOptions(context, "Chat");
                   },
                   child: Card(
                     elevation: 2.0,
@@ -236,7 +200,7 @@ class AstrologerListCard extends StatelessWidget {
                 InkWell(
                   borderRadius: BorderRadius.circular(24),
                   onTap: () {
-                    // showPaymentOptions(context, "Call");
+                    showPaymentOptions(context, "Call");
                   },
                   child: Card(
                     elevation: 2.0,
@@ -263,7 +227,7 @@ class AstrologerListCard extends StatelessWidget {
                 InkWell(
                   borderRadius: BorderRadius.circular(24),
                   onTap: () {
-                    // showPaymentOptions(context, "Video call");
+                    showPaymentOptions(context, "Video call");
                   },
                   child: Card(
                     elevation: 2.0,
