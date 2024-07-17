@@ -30,28 +30,28 @@ class AstrologerReviews extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    const Text("5", style: StyleUtil.style14Black),
+                    const Text("5", style: StyleUtil.style20BlackBold),
                     Row(
                       children: [
                         Icon(
                           Icons.star,
-                          color: ColorUtil.colorOrange,
+                          color: ColorUtil.colorRatingYellow,
                         ),
                         Icon(
                           Icons.star,
-                          color: ColorUtil.colorOrange,
+                          color: ColorUtil.colorRatingYellow,
                         ),
                         Icon(
                           Icons.star,
-                          color: ColorUtil.colorOrange,
+                          color: ColorUtil.colorRatingYellow,
                         ),
                         Icon(
                           Icons.star,
-                          color: ColorUtil.colorOrange,
+                          color: ColorUtil.colorRatingYellow,
                         ),
                         Icon(
                           Icons.star,
-                          color: ColorUtil.colorOrange,
+                          color: ColorUtil.colorRatingYellow,
                         ),
                       ],
                     ),
@@ -189,23 +189,23 @@ class AstrologerComment extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.star,
-                    color: ColorUtil.colorOrange,
+                    color: ColorUtil.colorRatingYellow,
                   ),
                   Icon(
                     Icons.star,
-                    color: ColorUtil.colorOrange,
+                    color: ColorUtil.colorRatingYellow,
                   ),
                   Icon(
                     Icons.star,
-                    color: ColorUtil.colorOrange,
+                    color: ColorUtil.colorRatingYellow,
                   ),
                   Icon(
                     Icons.star,
-                    color: ColorUtil.colorOrange,
+                    color: ColorUtil.colorRatingYellow,
                   ),
                   Icon(
                     Icons.star,
-                    color: ColorUtil.colorOrange,
+                    color: ColorUtil.colorRatingYellow,
                   ),
                 ],
               ),

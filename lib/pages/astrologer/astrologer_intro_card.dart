@@ -51,7 +51,8 @@ class AastrologerIntroCard extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(Icons.star, color: ColorUtil.colorOrange),
+                                Icon(Icons.star,
+                                    color: ColorUtil.colorRatingYellow),
                                 Text(
                                   "5",
                                   style: StyleUtil.style14DeepPurple,
@@ -166,77 +167,84 @@ class AastrologerIntroCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                InkWell(
-                  borderRadius: BorderRadius.circular(24),
-                  onTap: () {},
-                  child: Card(
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.chat,
-                            color: ColorUtil.colorLightOrange,
-                          ),
-                          CustomHorizontalSpacer(width: 4),
-                          Text("Chat", style: StyleUtil.style14Orange),
-                        ],
+                Expanded(
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(24),
+                    onTap: () {},
+                    child: Card(
+                      elevation: 2.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.chat,
+                              color: ColorUtil.colorLightOrange,
+                              size: 20.0,
+                            ),
+                            CustomHorizontalSpacer(width: 4),
+                            Text("Chat", style: StyleUtil.style12Orange),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-                InkWell(
-                  borderRadius: BorderRadius.circular(24),
-                  onTap: () {},
-                  child: Card(
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.call,
-                            color: ColorUtil.colorDarkBlue,
-                          ),
-                          CustomHorizontalSpacer(width: 4),
-                          Text("Call", style: StyleUtil.style14DarkBlue),
-                        ],
+                Expanded(
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(24),
+                    onTap: () {},
+                    child: Card(
+                      elevation: 2.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.call,
+                              color: ColorUtil.colorDarkBlue,
+                            ),
+                            CustomHorizontalSpacer(width: 4),
+                            Text("Call", style: StyleUtil.style12DarkBlue),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-                InkWell(
-                  borderRadius: BorderRadius.circular(24),
-                  onTap: () {},
-                  child: Card(
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.videocam,
-                            color: ColorUtil.colorOrange,
-                          ),
-                          CustomHorizontalSpacer(width: 4),
-                          Text("Video Call", style: StyleUtil.style14Orange),
-                        ],
+                Expanded(
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(24),
+                    onTap: () {},
+                    child: Card(
+                      elevation: 2.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.videocam,
+                              color: ColorUtil.colorOrange,
+                            ),
+                            CustomHorizontalSpacer(width: 4),
+                            Text("Video Call", style: StyleUtil.style12Orange),
+                          ],
+                        ),
                       ),
                     ),
                   ),

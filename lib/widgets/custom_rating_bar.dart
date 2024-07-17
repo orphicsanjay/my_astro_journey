@@ -27,7 +27,7 @@ class CustomRatingBar extends StatelessWidget {
             width: width * progress,
             height: height,
             decoration: BoxDecoration(
-              color: ColorUtil.colorOrange,
+              color: ColorUtil.colorRatingYellow,
               borderRadius: BorderRadius.circular(16),
             ),
           ),

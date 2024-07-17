@@ -55,7 +55,8 @@ class AstrologerListCard extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(Icons.star, color: ColorUtil.colorOrange),
+                                Icon(Icons.star,
+                                    color: ColorUtil.colorRatingYellow),
                                 Text(
                                   "5",
                                   style: StyleUtil.style14DeepPurple,
