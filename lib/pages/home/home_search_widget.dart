@@ -13,7 +13,7 @@ class HomeSearchWidget extends StatelessWidget {
       decoration: InputDecoration(
         hintText: "Search astrologers, astroshop products, services",
         contentPadding:
-            const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
         focusColor: ColorUtil.colorOrange,
         hintStyle: StyleUtil.style16Grey,
         prefixIcon: const Icon(Icons.search, color: ColorUtil.colorOrange),

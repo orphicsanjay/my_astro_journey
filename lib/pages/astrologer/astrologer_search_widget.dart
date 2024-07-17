@@ -31,7 +31,7 @@ class AstrologerSearchWidget extends StatelessWidget {
             ),
           ),
           contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           labelStyle: StyleUtil.style16DarkBlue,
           focusColor: ColorUtil.colorOrange,
           hintStyle: StyleUtil.style16Grey,

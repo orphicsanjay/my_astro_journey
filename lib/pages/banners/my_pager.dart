@@ -68,14 +68,15 @@ class _MyPagerState extends State<MyPager> {
   Widget buildDot(int index, BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      height: 12,
-      width: 12,
+      height: 8.0,
+      width: 8.0,
       margin: const EdgeInsets.symmetric(horizontal: 4),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color:
-            currentPage == index ? ColorUtil.colorGrey : ColorUtil.colorWhite,
-        border: Border.all(color: ColorUtil.colorGrey, width: 1),
+        color: currentPage == index
+            ? ColorUtil.colorDarkBlue
+            : ColorUtil.colorWhite,
+        border: Border.all(color: ColorUtil.colorDarkBlue, width: 1),
       ),
     );
   }

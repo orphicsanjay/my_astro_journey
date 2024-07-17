@@ -16,9 +16,9 @@ class AstrologerReviews extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: const Text(
+          const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
               "Rating overview",
               textAlign: TextAlign.start,
               style: StyleUtil.style14Black,
@@ -28,9 +28,9 @@ class AstrologerReviews extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
               children: [
-                Column(
+                const Column(
                   children: [
-                    const Text("5", style: StyleUtil.style20BlackBold),
+                    Text("5", style: StyleUtil.style24BlackBold),
                     Row(
                       children: [
                         Icon(
@@ -55,7 +55,7 @@ class AstrologerReviews extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const Text("384 Ratings", style: StyleUtil.style14Grey),
+                    Text("384 Ratings", style: StyleUtil.style14Grey),
                   ],
                 ),
                 Expanded(
@@ -65,8 +65,8 @@ class AstrologerReviews extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("5", style: StyleUtil.style14Black),
-                          CustomHorizontalSpacer(),
+                          const Text("5", style: StyleUtil.style14Black),
+                          const CustomHorizontalSpacer(),
                           CustomRatingBar(
                               width: size.width * 0.4,
                               height: 8,
@@ -77,8 +77,8 @@ class AstrologerReviews extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("4", style: StyleUtil.style14Black),
-                          CustomHorizontalSpacer(),
+                          const Text("4", style: StyleUtil.style14Black),
+                          const CustomHorizontalSpacer(),
                           CustomRatingBar(
                               width: size.width * 0.4,
                               height: 8,
@@ -89,8 +89,8 @@ class AstrologerReviews extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("3", style: StyleUtil.style14Black),
-                          CustomHorizontalSpacer(),
+                          const Text("3", style: StyleUtil.style14Black),
+                          const CustomHorizontalSpacer(),
                           CustomRatingBar(
                               width: size.width * 0.4,
                               height: 8,
@@ -101,8 +101,8 @@ class AstrologerReviews extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("2", style: StyleUtil.style14Black),
-                          CustomHorizontalSpacer(),
+                          const Text("2", style: StyleUtil.style14Black),
+                          const CustomHorizontalSpacer(),
                           CustomRatingBar(
                               width: size.width * 0.4,
                               height: 8,
@@ -113,8 +113,8 @@ class AstrologerReviews extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("1", style: StyleUtil.style14Black),
-                          CustomHorizontalSpacer(),
+                          const Text("1", style: StyleUtil.style14Black),
+                          const CustomHorizontalSpacer(),
                           CustomRatingBar(
                               width: size.width * 0.4,
                               height: 8,

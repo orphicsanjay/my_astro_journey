@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:astrology/address/country.dart';
+import 'package:astrology/models/user/gender.dart';
 import 'package:astrology/pages/auth/custom_button.dart';
 import 'package:astrology/pages/home/homepage.dart';
 import 'package:astrology/pages/user/custom_textformfield.dart';
@@ -8,6 +9,7 @@ import 'package:astrology/pages/user/gender_widget.dart';
 import 'package:astrology/pages/user/phone_widget.dart';
 import 'package:astrology/pages/user/profile_image_widget.dart';
 import 'package:astrology/providers/gender_provider.dart';
+import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_appbar.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/profile_form_spacer.dart';
@@ -24,7 +26,8 @@ class CompleteProfilePage extends StatefulWidget {
 
 class _CompleteProfilePageState extends State<CompleteProfilePage> {
   File? image;
-  String? selectedGender;
+  // String? selectedGender;
+  Gender? selectedGender;
   String selectedName = "";
   // String selectedDob = "";
   // String selectedTimeOfBirth = "";
@@ -45,7 +48,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
     setState(() {});
   }
 
-  void handleGenderChange(String? value) {
+  void handleGenderChange(Gender? value) {
     setState(() {
       selectedGender = value;
     });
@@ -138,47 +141,25 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                   : Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: genderProvider.genderList.map((gender) {
-                        return Expanded(
-                          child: GenderWidget(
-                            title: gender.key!,
-                            value: gender.value!,
-                            groupValue: selectedGender,
-                            onChanged: handleGenderChange,
-                          ),
+                      children: genderProvider.genderList.map((Gender gender) {
+                        return Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Radio<Gender>(
+                              value: gender,
+                              groupValue: selectedGender,
+                              onChanged: (Gender? value) {
+                                handleGenderChange(value);
+                              },
+                            ),
+                            Text(
+                              gender.value![0].toUpperCase() +
+                                  gender.value!.substring(1).toLowerCase(),
+                            ),
+                          ],
                         );
                       }).toList(),
                     ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   crossAxisAlignment: CrossAxisAlignment.center,
-              //   children: [
-              //     Expanded(
-              //       child: GenderWidget(
-              //         title: "Male",
-              //         value: "Male",
-              //         groupValue: selectedGender,
-              //         onChanged: handleGenderChange,
-              //       ),
-              //     ),
-              //     Expanded(
-              //       child: GenderWidget(
-              //         title: "Female",
-              //         value: "Female",
-              //         groupValue: selectedGender,
-              //         onChanged: handleGenderChange,
-              //       ),
-              //     ),
-              //     Expanded(
-              //       child: GenderWidget(
-              //         title: "Others",
-              //         value: "Others",
-              //         groupValue: selectedGender,
-              //         onChanged: handleGenderChange,
-              //       ),
-              //     ),
-              //   ],
-              // ),
               const ProfileFormSpacer(),
               CustomTextFormField(
                 labelText: "Email",

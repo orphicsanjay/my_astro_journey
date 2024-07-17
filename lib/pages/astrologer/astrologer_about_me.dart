@@ -9,15 +9,20 @@ class AstrologerAboutMe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DashedAllBorderContainer(
+    return DashedAllBorderContainer(
       borderRadius: 16.0,
       color: ColorUtil.colorLightOrange,
       strokeWidth: 2.0,
-      dashWidth: 8.0,
+      dashWidth: 12.0,
       dashSpace: 4.0,
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
+      // backgroundColor: ColorUtil.colorAboutMeBackground,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 1),
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: ColorUtil.colorAboutMeBackground),
+        child: const Column(
           children: [
             Text(
               "About me",

@@ -121,22 +121,25 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                       style: StyleUtil.style14DarkBlueBold,
                     ),
                     const CustomVerticalSpacer(height: 80),
-                    PinFieldAutoFill(
-                      // controller: otpController,
-                      codeLength: 4,
-                      decoration: UnderlineDecoration(
-                        textStyle:
-                            const TextStyle(fontSize: 14, color: Colors.black),
-                        colorBuilder: PinListenColorBuilder(
-                            ColorUtil.colorOrange, Colors.grey),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                      child: PinFieldAutoFill(
+                        // controller: otpController,
+                        codeLength: 4,
+                        decoration: UnderlineDecoration(
+                          textStyle: const TextStyle(
+                              fontSize: 14, color: Colors.black),
+                          colorBuilder: PinListenColorBuilder(
+                              ColorUtil.colorOrange, Colors.grey),
+                        ),
+                        currentCode: otpCode,
+                        onCodeSubmitted: (code) {
+                          return;
+                        },
+                        onCodeChanged: (code) {
+                          updateOTPCode(code!);
+                        },
                       ),
-                      currentCode: otpCode,
-                      onCodeSubmitted: (code) {
-                        return;
-                      },
-                      onCodeChanged: (code) {
-                        updateOTPCode(code!);
-                      },
                     ),
                     const CustomVerticalSpacer(),
                     TimerWidget(

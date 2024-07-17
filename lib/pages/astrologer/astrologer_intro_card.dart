@@ -2,6 +2,7 @@ import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_horizontal_spacer.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';
+import 'package:astrology/widgets/payment_options.dart';
 import 'package:flutter/material.dart';
 
 class AastrologerIntroCard extends StatelessWidget {
@@ -14,7 +15,7 @@ class AastrologerIntroCard extends StatelessWidget {
       color: ColorUtil.colorWhite,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8),
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
         child: Column(
           children: [
             Row(
@@ -55,7 +56,7 @@ class AastrologerIntroCard extends StatelessWidget {
                                     color: ColorUtil.colorRatingYellow),
                                 Text(
                                   "5",
-                                  style: StyleUtil.style14DeepPurple,
+                                  style: StyleUtil.style14DeepPurpleBold,
                                 ),
                               ],
                             ),
@@ -67,16 +68,19 @@ class AastrologerIntroCard extends StatelessWidget {
                 ),
                 const CustomHorizontalSpacer(width: 12),
                 const Expanded(
-                  flex: 3,
+                  flex: 2,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Row(
+                        // crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
                               child: Text(
                             "Aditya Sharma",
-                            style: StyleUtil.style16BlackBold,
+                            style: StyleUtil.style14BlackBold,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           )),
                           CustomHorizontalSpacer(width: 4),
                           Icon(
@@ -85,7 +89,9 @@ class AastrologerIntroCard extends StatelessWidget {
                           )
                         ],
                       ),
+                      CustomVerticalSpacer(height: 4),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(
                             Icons.menu_book,
@@ -101,7 +107,9 @@ class AastrologerIntroCard extends StatelessWidget {
                           )),
                         ],
                       ),
+                      CustomVerticalSpacer(height: 4),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(
                             Icons.sort_by_alpha,
@@ -117,7 +125,9 @@ class AastrologerIntroCard extends StatelessWidget {
                           )),
                         ],
                       ),
+                      CustomVerticalSpacer(height: 4),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(
                             Icons.menu_book,
@@ -134,7 +144,9 @@ class AastrologerIntroCard extends StatelessWidget {
                           ),
                         ],
                       ),
+                      CustomVerticalSpacer(height: 4),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text.rich(
                             TextSpan(
@@ -143,7 +155,7 @@ class AastrologerIntroCard extends StatelessWidget {
                               children: <TextSpan>[
                                 TextSpan(
                                   text: '30/min',
-                                  style: StyleUtil.style16DarkBlueBold,
+                                  style: StyleUtil.style14DarkBlueBold,
                                 ),
                               ],
                             ),
@@ -153,7 +165,8 @@ class AastrologerIntroCard extends StatelessWidget {
                           Expanded(
                             child: Text(
                               "Online",
-                              style: StyleUtil.style16Green,
+                              style: StyleUtil.style14Green,
+                              textAlign: TextAlign.end,
                             ),
                           ),
                         ],
@@ -170,7 +183,9 @@ class AastrologerIntroCard extends StatelessWidget {
                 Expanded(
                   child: InkWell(
                     borderRadius: BorderRadius.circular(24),
-                    onTap: () {},
+                    onTap: () {
+                      showPaymentOptions(context, "Chat");
+                    },
                     child: Card(
                       elevation: 2.0,
                       shape: RoundedRectangleBorder(
@@ -184,11 +199,11 @@ class AastrologerIntroCard extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.chat,
-                              color: ColorUtil.colorLightOrange,
-                              size: 20.0,
+                              color: ColorUtil.colorOrange,
+                              size: 16,
                             ),
                             CustomHorizontalSpacer(width: 4),
-                            Text("Chat", style: StyleUtil.style12Orange),
+                            Text("Chat", style: StyleUtil.style14Orange),
                           ],
                         ),
                       ),
@@ -198,7 +213,9 @@ class AastrologerIntroCard extends StatelessWidget {
                 Expanded(
                   child: InkWell(
                     borderRadius: BorderRadius.circular(24),
-                    onTap: () {},
+                    onTap: () {
+                      showPaymentOptions(context, "Call");
+                    },
                     child: Card(
                       elevation: 2.0,
                       shape: RoundedRectangleBorder(
@@ -213,9 +230,13 @@ class AastrologerIntroCard extends StatelessWidget {
                             Icon(
                               Icons.call,
                               color: ColorUtil.colorDarkBlue,
+                              size: 16,
                             ),
                             CustomHorizontalSpacer(width: 4),
-                            Text("Call", style: StyleUtil.style12DarkBlue),
+                            Text(
+                              "Call",
+                              style: StyleUtil.style14DarkBlue,
+                            ),
                           ],
                         ),
                       ),
@@ -225,7 +246,9 @@ class AastrologerIntroCard extends StatelessWidget {
                 Expanded(
                   child: InkWell(
                     borderRadius: BorderRadius.circular(24),
-                    onTap: () {},
+                    onTap: () {
+                      showPaymentOptions(context, "Video call");
+                    },
                     child: Card(
                       elevation: 2.0,
                       shape: RoundedRectangleBorder(
@@ -239,10 +262,11 @@ class AastrologerIntroCard extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.videocam,
-                              color: ColorUtil.colorOrange,
+                              color: ColorUtil.colorRed,
+                              size: 16,
                             ),
                             CustomHorizontalSpacer(width: 4),
-                            Text("Video Call", style: StyleUtil.style12Orange),
+                            Text("Video Call", style: StyleUtil.style14Red),
                           ],
                         ),
                       ),

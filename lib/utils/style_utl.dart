@@ -67,6 +67,12 @@ class StyleUtil {
     fontSize: 14.0,
     color: ColorUtil.colorDarkBlue,
   );
+  static const TextStyle style14DeepPurpleBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 14.0,
+    color: ColorUtil.colorDarkBlue,
+    fontWeight: FontWeight.bold,
+  );
 
   static const TextStyle style12DeepPurple = TextStyle(
     fontFamily: 'Helvetica',
@@ -114,6 +120,17 @@ class StyleUtil {
     fontSize: 14.0,
     color: ColorUtil.colorOrange,
     fontWeight: FontWeight.bold,
+  );
+  static const TextStyle style14RedBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 14.0,
+    color: ColorUtil.colorRed,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle style14Red = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 14.0,
+    color: ColorUtil.colorRed,
   );
 
   static const TextStyle style18Orange = TextStyle(
@@ -233,6 +250,12 @@ class StyleUtil {
   static const TextStyle style20BlackBold = TextStyle(
     fontFamily: 'Helvetica',
     fontSize: 20.0,
+    color: ColorUtil.colorBlack,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle style24BlackBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 24.0,
     color: ColorUtil.colorBlack,
     fontWeight: FontWeight.bold,
   );

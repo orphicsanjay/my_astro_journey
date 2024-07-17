@@ -52,8 +52,9 @@ class AstrologerCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 2,
-      color: ColorUtil.colorWhite,
-      child: Container(
+      // color: ColorUtil.colorWhite,
+      // surfaceTintColor: ColorUtil.colorWhite,
+      child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         child: Column(
           children: [
@@ -96,7 +97,8 @@ class AstrologerCard extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.star, color: ColorUtil.colorRatingYellow),
+                            Icon(Icons.star,
+                                color: ColorUtil.colorRatingYellow),
                             Text("5"),
                           ],
                         ),
@@ -105,6 +107,10 @@ class AstrologerCard extends StatelessWidget {
                   ],
                 ),
               ),
+            ),
+            const Text(
+              "Aditiya",
+              style: StyleUtil.style14DarkBlueBold,
             ),
             const Text(
               "Vedic/Vastu",

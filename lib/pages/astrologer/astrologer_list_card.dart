@@ -59,7 +59,7 @@ class AstrologerListCard extends StatelessWidget {
                                     color: ColorUtil.colorRatingYellow),
                                 Text(
                                   "5",
-                                  style: StyleUtil.style14DeepPurple,
+                                  style: StyleUtil.style14DeepPurpleBold,
                                 ),
                               ],
                             ),
@@ -71,16 +71,19 @@ class AstrologerListCard extends StatelessWidget {
                 ),
                 const CustomHorizontalSpacer(width: 12),
                 const Expanded(
-                  flex: 3,
+                  flex: 2,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Row(
+                        // crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
                               child: Text(
                             "Aditya Sharma",
                             style: StyleUtil.style14BlackBold,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           )),
                           CustomHorizontalSpacer(width: 4),
                           Icon(
@@ -89,7 +92,9 @@ class AstrologerListCard extends StatelessWidget {
                           )
                         ],
                       ),
+                      CustomVerticalSpacer(height: 4),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(
                             Icons.menu_book,
@@ -105,7 +110,9 @@ class AstrologerListCard extends StatelessWidget {
                           )),
                         ],
                       ),
+                      CustomVerticalSpacer(height: 4),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(
                             Icons.sort_by_alpha,
@@ -121,7 +128,9 @@ class AstrologerListCard extends StatelessWidget {
                           )),
                         ],
                       ),
+                      CustomVerticalSpacer(height: 4),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(
                             Icons.menu_book,
@@ -138,7 +147,9 @@ class AstrologerListCard extends StatelessWidget {
                           ),
                         ],
                       ),
+                      CustomVerticalSpacer(height: 4),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text.rich(
                             TextSpan(
@@ -158,6 +169,7 @@ class AstrologerListCard extends StatelessWidget {
                             child: Text(
                               "Online",
                               style: StyleUtil.style14Green,
+                              textAlign: TextAlign.end,
                             ),
                           ),
                         ],
@@ -171,83 +183,95 @@ class AstrologerListCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                InkWell(
-                  borderRadius: BorderRadius.circular(24),
-                  onTap: () {
-                    showPaymentOptions(context, "Chat");
-                  },
-                  child: Card(
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.chat,
-                            color: ColorUtil.colorLightOrange,
-                          ),
-                          CustomHorizontalSpacer(width: 4),
-                          Text("Chat", style: StyleUtil.style14Orange),
-                        ],
+                Expanded(
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(24),
+                    onTap: () {
+                      showPaymentOptions(context, "Chat");
+                    },
+                    child: Card(
+                      elevation: 2.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.chat,
+                              color: ColorUtil.colorOrange,
+                              size: 16,
+                            ),
+                            CustomHorizontalSpacer(width: 4),
+                            Text("Chat", style: StyleUtil.style14Orange),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-                InkWell(
-                  borderRadius: BorderRadius.circular(24),
-                  onTap: () {
-                    showPaymentOptions(context, "Call");
-                  },
-                  child: Card(
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.call,
-                            color: ColorUtil.colorDarkBlue,
-                          ),
-                          CustomHorizontalSpacer(width: 4),
-                          Text("Call", style: StyleUtil.style14DarkBlue),
-                        ],
+                Expanded(
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(24),
+                    onTap: () {
+                      showPaymentOptions(context, "Call");
+                    },
+                    child: Card(
+                      elevation: 2.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.call,
+                              color: ColorUtil.colorDarkBlue,
+                              size: 16,
+                            ),
+                            CustomHorizontalSpacer(width: 4),
+                            Text(
+                              "Call",
+                              style: StyleUtil.style14DarkBlue,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-                InkWell(
-                  borderRadius: BorderRadius.circular(24),
-                  onTap: () {
-                    showPaymentOptions(context, "Video call");
-                  },
-                  child: Card(
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.videocam,
-                            color: ColorUtil.colorOrange,
-                          ),
-                          CustomHorizontalSpacer(width: 4),
-                          Text("Video Call", style: StyleUtil.style14Orange),
-                        ],
+                Expanded(
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(24),
+                    onTap: () {
+                      showPaymentOptions(context, "Video call");
+                    },
+                    child: Card(
+                      elevation: 2.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.videocam,
+                              color: ColorUtil.colorRed,
+                              size: 16,
+                            ),
+                            CustomHorizontalSpacer(width: 4),
+                            Text("Video Call", style: StyleUtil.style14Red),
+                          ],
+                        ),
                       ),
                     ),
                   ),

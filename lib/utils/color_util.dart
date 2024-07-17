@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColorUtil {
+  static const Color colorRed = Color(0XFFDC3427);
   static const Color colorOrange = Color(0XFFF58620);
   static const Color colorLightOrange = Color(0xFFF9CCC2);
   static const Color colorDarkBlue = Color(0xFF234D68);
@@ -17,6 +18,6 @@ class ColorUtil {
   static const Color colorGreen = Colors.green;
   static const Color colorRatingYellow = Color(0XFFF8BD02);
   static const Color colorYellow = Color(0XFFFFCE31);
-  static const Color colorAboutUsBackground = Color(0XFFFFF1CC);
+  static const Color colorAboutMeBackground = Color(0XFFFFF1CC);
   // static const Color colorPrimary = Color(0XFFF58620);
 }

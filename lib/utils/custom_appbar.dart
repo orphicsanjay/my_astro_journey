@@ -18,6 +18,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      surfaceTintColor: ColorUtil.colorWhite,
       // leadingWidth: 72,
       toolbarHeight: kToolbarHeight,
       title: Text(
@@ -26,14 +27,15 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       ),
       leading: showBackButton
           ? Container(
-              margin: const EdgeInsets.only(left: 16.0),
+              margin: const EdgeInsets.only(left: 24.0),
               child: CircleAvatar(
-                radius: 16,
+                // radius: 16,
                 backgroundColor: ColorUtil.colorLightBlue,
                 child: IconButton(
                   icon: const Icon(
                     Icons.keyboard_arrow_left,
                     color: ColorUtil.colorWhite,
+                    size: 16,
                   ),
                   onPressed: () {
                     Navigator.of(context).pop();

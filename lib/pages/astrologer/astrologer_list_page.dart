@@ -38,10 +38,11 @@ class _AstrologerListPageState extends State<AstrologerListPage> {
         actions: [
           Card(
             shape: const CircleBorder(),
+            margin: const EdgeInsets.only(right: 8.0),
             elevation: 5,
             child: CircleAvatar(
               backgroundColor: Colors.white,
-              radius: 30, // Adjust the radius as needed
+              radius: 16, // Adjust the radius as needed
               child: InkWell(
                 onTap: () {
                   updateShowHideSearch(true);
@@ -49,7 +50,7 @@ class _AstrologerListPageState extends State<AstrologerListPage> {
                 child: const Icon(
                   Icons.search,
                   color: ColorUtil.colorOrange,
-                  size: 30, // Adjust the size as needed
+                  size: 16, // Adjust the size as needed
                 ),
               ),
             ),

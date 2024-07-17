@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomVerticalSpacer(height: 88),
+              CustomVerticalSpacer(height: 32),
               HomeTitleWidget(),
               CustomVerticalSpacer(),
               HomeSearchWidget(),

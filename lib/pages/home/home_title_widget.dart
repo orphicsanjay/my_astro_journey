@@ -10,9 +10,9 @@ class HomeTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Row(
       children: [
-        Icon(
-          Icons.home,
-          color: ColorUtil.colorOrange,
+        CircleAvatar(
+          radius: 24,
+          backgroundImage: AssetImage('assets/images/person.jpg'),
         ),
         CustomHorizontalSpacer(),
         Text.rich(

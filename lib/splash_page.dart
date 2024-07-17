@@ -3,6 +3,7 @@ import 'package:astrology/pages/astrologer/astrologer_detail_page.dart';
 import 'package:astrology/pages/astrologer/astrologer_list_page.dart';
 import 'package:astrology/pages/auth/custom_button.dart';
 import 'package:astrology/pages/auth/login.page.dart';
+import 'package:astrology/pages/auth/otp_verified_page.dart';
 import 'package:astrology/pages/auth/otp_verify_page.dart';
 import 'package:astrology/pages/home/homepage.dart';
 import 'package:astrology/pages/user/complete_profile_page.dart';
@@ -63,6 +64,16 @@ class SplashPage extends StatelessWidget {
                 title: "OTP Verify Page"),
             const CustomVerticalSpacer(),
             // CustomButton(onTap: () {}, title: "OTP Verified Page"),const CustomVerticalSpacer(),
+            CustomButton(
+                onTap: () {
+                  handleOnTap(
+                      context,
+                      const OTPVerifiedPage(
+                        isPhoneNumber: true,
+                      ));
+                },
+                title: "OTP Verified Page"),
+            const CustomVerticalSpacer(),
             CustomButton(
                 onTap: () {
                   handleOnTap(context, const AstrologerListPage());

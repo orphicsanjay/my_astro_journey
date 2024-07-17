@@ -77,10 +77,11 @@ class DashedBorderPainter extends CustomPainter {
         final double nextLength = draw
             ? (currentLength + dashWidth).clamp(0, totalLength)
             : (currentLength + dashSpace).clamp(0, totalLength);
-        canvas.drawPath(
-          pathMetric.extractPath(currentLength, nextLength),
-          draw ? paint : Paint(),
-        );
+        final Path extractPath =
+            pathMetric.extractPath(currentLength, nextLength);
+        if (draw) {
+          canvas.drawPath(extractPath, paint);
+        }
         currentLength = nextLength;
         draw = !draw;
       }

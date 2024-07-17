@@ -108,6 +108,10 @@ class SimilarAstrologerCard extends StatelessWidget {
               ),
             ),
             const Text(
+              "Aditiya",
+              style: StyleUtil.style14DarkBlueBold,
+            ),
+            const Text(
               "Vedic/Vastu",
               style: StyleUtil.style14DarkBlue,
             ),

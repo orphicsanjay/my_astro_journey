@@ -26,7 +26,7 @@ class _OTPVerifiedPageState extends State<OTPVerifiedPage> {
 
   @override
   void initState() {
-    navigateToCompleteProfile();
+    // navigateToCompleteProfile();
     super.initState();
   }
 
@@ -70,7 +70,7 @@ class _OTPVerifiedPageState extends State<OTPVerifiedPage> {
             const CustomVerticalSpacer(height: 24.0),
             Text(
               widget.isPhoneNumber ? "Phone number verified" : "Email verified",
-              style: StyleUtil.style20BlackBold,
+              style: StyleUtil.style16BlackBold,
             ),
             const CustomVerticalSpacer(height: 16.0),
             const Text(
