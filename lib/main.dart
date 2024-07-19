@@ -4,6 +4,7 @@ import 'package:astrology/providers/auth_provider.dart';
 import 'package:astrology/providers/banner_provider.dart';
 import 'package:astrology/providers/blogs_provider.dart';
 import 'package:astrology/providers/country_provider.dart';
+import 'package:astrology/providers/district_provider.dart';
 import 'package:astrology/providers/gender_provider.dart';
 import 'package:astrology/providers/network_provider.dart';
 import 'package:astrology/providers/preferences_provider.dart';
@@ -27,6 +28,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => BannerProvider()),
         ChangeNotifierProvider(create: (_) => BlogsProvider()),
         ChangeNotifierProvider(create: (_) => CountryProvider()),
+        ChangeNotifierProvider(create: (_) => DistrictProvider()),
         ChangeNotifierProvider(create: (_) => GenderProvider()),
         ChangeNotifierProvider(create: (_) => NetworkProvider()),
         ChangeNotifierProvider(create: (_) => PreferencesProvider()),

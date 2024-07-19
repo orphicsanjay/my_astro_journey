@@ -33,9 +33,9 @@ class CustomTextFormField extends StatelessWidget {
         labelText: labelText,
         hintText: hintText,
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        labelStyle: StyleUtil.style16DarkBlue,
+        labelStyle: StyleUtil.style14DarkBlue,
         focusColor: ColorUtil.colorOrange,
-        hintStyle: StyleUtil.style16Grey,
+        hintStyle: StyleUtil.style14Grey,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: const BorderSide(

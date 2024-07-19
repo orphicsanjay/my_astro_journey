@@ -95,7 +95,7 @@ class _KundaliDateWidgetState extends State<KundaliDateWidget> {
                   selectedEnglishDate ?? "Date of Birth (In English)",
                   style: selectedEnglishDate == null
                       ? StyleUtil.style14Grey
-                      : StyleUtil.style14Black,
+                      : StyleUtil.style14DarkBlue,
                 ),
               ),
               GestureDetector(
@@ -125,7 +125,7 @@ class _KundaliDateWidgetState extends State<KundaliDateWidget> {
                   selectedNepaliDate ?? "Date of Birth (In Nepali)",
                   style: selectedNepaliDate == null
                       ? StyleUtil.style14Grey
-                      : StyleUtil.style14Black,
+                      : StyleUtil.style14DarkBlue,
                 ),
               ),
               GestureDetector(
@@ -155,7 +155,7 @@ class _KundaliDateWidgetState extends State<KundaliDateWidget> {
                   selectedTime ?? "Time of Birth",
                   style: selectedTime == null
                       ? StyleUtil.style14Grey
-                      : StyleUtil.style14Black,
+                      : StyleUtil.style14DarkBlue,
                 ),
               ),
               GestureDetector(

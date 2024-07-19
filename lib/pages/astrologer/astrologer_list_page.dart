@@ -1,11 +1,9 @@
 import 'package:astrology/pages/astrologer/astrologer_list_card.dart';
 import 'package:astrology/pages/astrologer/astrologer_search_widget.dart';
 import 'package:astrology/pages/banners/my_pager.dart';
-import 'package:astrology/providers/astrologer_provider.dart';
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class AstrologerListPage extends StatefulWidget {
   const AstrologerListPage({super.key});
