@@ -28,11 +28,11 @@ class CustomTextFormField extends StatelessWidget {
         return null;
       },
       onChanged: onChanged,
+      cursorColor: ColorUtil.colorDarkBlue,
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         labelStyle: StyleUtil.style16DarkBlue,
         focusColor: ColorUtil.colorOrange,
         hintStyle: StyleUtil.style16Grey,

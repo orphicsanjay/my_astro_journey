@@ -19,9 +19,6 @@ class _PhoneWidgetState extends State<PhoneWidget> {
   @override
   void initState() {
     Provider.of<CountryProvider>(context, listen: false).fetchCountryList();
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   Provider.of<CountryProvider>(context, listen: false).fetchCountryList();
-    // });
     super.initState();
   }
 
@@ -46,6 +43,7 @@ class _PhoneWidgetState extends State<PhoneWidget> {
                   child: const CircularProgressIndicator(
                     valueColor:
                         AlwaysStoppedAnimation<Color>(ColorUtil.colorDarkBlue),
+                    strokeWidth: 2.0,
                   ),
                 )
               : DropdownButton<Country>(
@@ -87,7 +85,7 @@ class _PhoneWidgetState extends State<PhoneWidget> {
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                   contentPadding:
-                      EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                      EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
                   border: InputBorder.none,
                   hintText: "Enter your phone number",
                   hintStyle: StyleUtil.style16Grey,

@@ -141,19 +141,22 @@ class AstrologerReviews extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 12),
           ),
           const AstrologerComment(),
-          const CustomVerticalSpacer(height: 8),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                "See all reviews",
-                style: StyleUtil.style14GreenBold,
-              ),
-              Icon(
-                Icons.east,
-                color: ColorUtil.colorGreen,
-              )
-            ],
+          const CustomVerticalSpacer(),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  "See all reviews",
+                  style: StyleUtil.style14GreenBold,
+                ),
+                Icon(
+                  Icons.east,
+                  color: ColorUtil.colorGreen,
+                )
+              ],
+            ),
           ),
           const CustomVerticalSpacer(height: 8),
         ],

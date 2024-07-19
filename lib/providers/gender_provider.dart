@@ -20,11 +20,7 @@ class GenderProvider with ChangeNotifier {
           _genderList.add(Gender(item[0], item[1]));
         }
       }
-
       notifyListeners();
-      for (var gender in _genderList) {
-        print('Key: ${gender.key}, Value: ${gender.value}');
-      }
     }
   }
 }

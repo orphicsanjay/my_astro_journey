@@ -4,7 +4,6 @@ import 'package:astrology/pages/banners/my_pager.dart';
 import 'package:astrology/providers/astrologer_provider.dart';
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_appbar.dart';
-import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +30,6 @@ class _AstrologerListPageState extends State<AstrologerListPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final astrologerProvider = Provider.of<AstrologerProvider>(context);
     return Scaffold(
       appBar: CustomAppbar(
         title: "Astrologers",
@@ -85,7 +83,6 @@ class _AstrologerListPageState extends State<AstrologerListPage> {
                   : const SizedBox(),
               // MyPager(),
               const MyPager(),
-              const CustomVerticalSpacer(),
               const AstrologerListCard(),
               const AstrologerListCard(),
               const AstrologerListCard(),

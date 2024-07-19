@@ -3,38 +3,39 @@ import 'dart:io';
 import 'package:astrology/address/country.dart';
 import 'package:astrology/models/user/gender.dart';
 import 'package:astrology/pages/auth/custom_button.dart';
-import 'package:astrology/pages/home/homepage.dart';
+import 'package:astrology/pages/kundali/kundali_date_widget.dart';
+import 'package:astrology/pages/kundali/kundali_gender_widget.dart';
 import 'package:astrology/pages/user/custom_textformfield.dart';
 import 'package:astrology/pages/user/phone_widget.dart';
 import 'package:astrology/pages/user/profile_image_widget.dart';
 import 'package:astrology/providers/gender_provider.dart';
+import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_appbar.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/profile_form_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
-class CompleteProfilePage extends StatefulWidget {
-  const CompleteProfilePage({super.key});
+class KundaliProfile extends StatefulWidget {
+  const KundaliProfile({super.key});
 
   @override
-  State<CompleteProfilePage> createState() => _CompleteProfilePageState();
+  State<KundaliProfile> createState() => _KundaliProfileState();
 }
 
-class _CompleteProfilePageState extends State<CompleteProfilePage> {
+class _KundaliProfileState extends State<KundaliProfile> {
   File? image;
-  // String? selectedGender;
   Gender? selectedGender;
   String selectedName = "";
-  // String selectedDob = "";
-  // String selectedTimeOfBirth = "";
-  // String selectedBirthPlace = "";
-  // String selectedBirthCountry = "";
   Country? selectedCountry;
   String selectedPhoneNumber = "";
   String selectedEmail = "";
   String selectedAddress = "";
+  String englishBirthDate = "";
+  String nepaliBirthDate = "";
+  String birthTime = "";
 
   handleImageChange(File value) {
     image = value;
@@ -72,14 +73,18 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
     setState(() {});
   }
 
-  void handleSave() {
-    Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ),
-      (Route<dynamic> route) => false,
-    );
+  void handleBirthDateChanged(String englishDate, String nepaliDate) {
+    englishBirthDate = englishDate;
+    nepaliBirthDate = nepaliDate;
+    setState(() {});
   }
+
+  void handleBirthTimeChanged(String value) {
+    birthTime = value;
+    setState(() {});
+  }
+
+  void handleSave() {}
 
   @override
   void initState() {
@@ -136,29 +141,16 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
               ),
               genderProvider.genderList.isEmpty
                   ? const SizedBox()
-                  : Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: genderProvider.genderList.map((Gender gender) {
-                        return Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Radio<Gender>(
-                              value: gender,
-                              groupValue: selectedGender,
-                              onChanged: (Gender? value) {
-                                handleGenderChange(value);
-                              },
-                            ),
-                            Text(
-                              gender.value![0].toUpperCase() +
-                                  gender.value!.substring(1).toLowerCase(),
-                            ),
-                          ],
-                        );
-                      }).toList(),
+                  : KundaliGenderWidget(
+                      genderList: genderProvider.genderList,
+                      selectedGender: selectedGender,
+                      onGenderChanged: handleGenderChange,
                     ),
               const ProfileFormSpacer(),
+              KundaliDateWidget(
+                onDateChanged: handleBirthDateChanged,
+                onTimeChanged: handleBirthTimeChanged,
+              ),
               CustomTextFormField(
                 labelText: "Email",
                 hintText: "Enter email",
@@ -191,46 +183,3 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
     );
   }
 }
-
-
-  // void handleDobChange(String value) {
-  //   selectedDob = value;
-  //   setState(() {});
-  // }
-
-  // void handleTimeOfBirthChange(String value) {
-  //   selectedTimeOfBirth = value;
-  //   setState(() {});
-  // }
-
-  // void handleBirthPlaceChange(String value) {
-  //   selectedBirthPlace = value;
-  //   setState(() {});
-  // }
-
-  // void handleBirthCountryChange(String value) {
-  //   selectedBirthCountry = value;
-  //   setState(() {});
-  // }
-
-
-// DobWidget(onChanged: handleDobChange),
-              // const ProfileFormSpacer(),
-              // TimeWidget(onChanged: handleTimeOfBirthChange),
-              // const ProfileFormSpacer(),
-              // CustomTextFormField(
-              //   labelText: "Birth Country",
-              //   hintText: "Enter birth country",
-              //   validatorMessage: "Provide birth country",
-              //   keyboardType: TextInputType.text,
-              //   onChanged: handleBirthCountryChange,
-              // ),
-              // const ProfileFormSpacer(),
-              // CustomTextFormField(
-              //   labelText: "Birth Place",
-              //   hintText: "Enter birth place",
-              //   validatorMessage: "Provide birth place",
-              //   keyboardType: TextInputType.text,
-              //   onChanged: handleBirthPlaceChange,
-              // ),
-              // const ProfileFormSpacer(),

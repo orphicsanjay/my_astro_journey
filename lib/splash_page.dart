@@ -6,6 +6,7 @@ import 'package:astrology/pages/auth/login.page.dart';
 import 'package:astrology/pages/auth/otp_verified_page.dart';
 import 'package:astrology/pages/auth/otp_verify_page.dart';
 import 'package:astrology/pages/home/homepage.dart';
+import 'package:astrology/pages/kundali/kundali_profile.dart';
 import 'package:astrology/pages/user/complete_profile_page.dart';
 import 'package:astrology/utils/custom_appbar.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
@@ -85,6 +86,12 @@ class SplashPage extends StatelessWidget {
                   handleOnTap(context, const AstrologerDetailPage());
                 },
                 title: "Astrologer Detail Page"),
+            const CustomVerticalSpacer(),
+            CustomButton(
+                onTap: () {
+                  handleOnTap(context, const KundaliProfile());
+                },
+                title: "Kundali Profile"),
             const CustomVerticalSpacer(),
           ],
         ),

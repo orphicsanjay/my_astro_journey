@@ -26,13 +26,11 @@ class CountryProvider with ChangeNotifier {
       _countryList = [];
       for (var item in tempList) {
         _countryList!.add(Country.fromJson(item));
-        print("items : ${item['country_name']}");
         if (item['country_name'] == "NEPAL") {
           _selectedCountry = Country.fromJson(item);
         }
       }
       notifyListeners();
-      print("selected : ${_selectedCountry!.countryCode}");
     }
   }
 }
