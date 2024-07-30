@@ -96,16 +96,135 @@ class SplashPage extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        _showRatingAndCommentSheet(context);
+      }),
+    );
+  }
+
+  void _showRatingAndCommentSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true, // This ensures the height is adjustable
+      builder: (BuildContext context) {
+        return RatingAndCommentSheet();
+      },
     );
   }
 }
 
+class RatingAndCommentSheet extends StatefulWidget {
+  @override
+  _RatingAndCommentSheetState createState() => _RatingAndCommentSheetState();
+}
 
-// home: const AstrologerDetailPage(),
-        // home: const AstrologerListPage(),
-        // home: const CompleteProfilePage(),
-        // home: const LoginPage(),
-        // home: const HomePage(),
-        // home: const OTPVerifiedPage(
-        //   isPhoneNumber: true,
-        // ),
+class _RatingAndCommentSheetState extends State<RatingAndCommentSheet> {
+  double rating = 0;
+  final commentController = TextEditingController();
+  String selectedOption = '';
+
+  String ratingText() {
+    switch (rating.toInt()) {
+      case 1:
+        return 'Awful';
+      case 2:
+        return 'Bad';
+      case 3:
+        return 'Fine';
+      case 4:
+        return 'Good';
+      case 5:
+        return 'Excellent';
+      default:
+        return 'Rate Us';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(
+            ratingText(),
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 16),
+          _buildRatingStars(),
+          SizedBox(height: 16),
+          _buildAdditionalOptions(),
+          SizedBox(height: 16),
+          TextField(
+            controller: commentController,
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Comment',
+            ),
+            maxLines: 4,
+          ),
+          SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () {
+              final comment = commentController.text;
+              final newRating = rating;
+              // Handle the rating and comment
+              print('Rating: $rating');
+              print('Comment: $comment');
+              Navigator.pop(context); // Close the bottom sheet
+            },
+            child: Text('Submit'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAdditionalOptions() {
+    return Wrap(
+      // crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        _buildOptionButton('Late'),
+        _buildOptionButton('Ask for Extra Fee'),
+        _buildOptionButton('Impolite'),
+        _buildOptionButton('Friendly'),
+      ],
+    );
+  }
+
+  Widget _buildOptionButton(String option) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      margin: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: Colors.black,
+        ),
+      ),
+      child: Text(option),
+    );
+  }
+
+  Widget _buildRatingStars() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(5, (index) {
+        return IconButton(
+          icon: Icon(
+            index < rating ? Icons.star : Icons.star_border,
+            color: Colors.amber,
+          ),
+          onPressed: () {
+            setState(() {
+              rating = index + 1.0;
+            });
+          },
+        );
+      }),
+    );
+  }
+}

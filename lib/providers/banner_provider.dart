@@ -20,7 +20,7 @@ class BannerProvider with ChangeNotifier {
   bool _isFetchingMoreBanners = false;
   bool get isFetchingMOreBanners => _isFetchingMoreBanners;
 
-  updateFetchingBlogs(bool value) {
+  updateFetchingBanners(bool value) {
     _isFetchingMoreBanners = value;
     notifyListeners();
   }
@@ -41,7 +41,7 @@ class BannerProvider with ChangeNotifier {
   }
 
   fetchMoreBannerList() async {
-    updateFetchingBlogs(true);
+    updateFetchingBanners(true);
     String url = bannerUrl;
     if (_currentPage != null) {
       url = "$url?page=$_currentPage&page_size=10";
@@ -56,6 +56,6 @@ class BannerProvider with ChangeNotifier {
       _currentPage = _currentPage! + 1;
     }
     notifyListeners();
-    updateFetchingBlogs(true);
+    updateFetchingBanners(true);
   }
 }
