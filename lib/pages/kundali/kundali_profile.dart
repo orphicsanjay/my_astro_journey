@@ -4,6 +4,9 @@ import 'package:astrology/address/country.dart';
 import 'package:astrology/address/district.dart';
 import 'package:astrology/models/user/gender.dart';
 import 'package:astrology/pages/auth/custom_button.dart';
+import 'package:astrology/pages/kundali/birth_city_widget.dart';
+import 'package:astrology/pages/kundali/birth_country_widget.dart';
+import 'package:astrology/pages/kundali/birth_place_widget.dart';
 import 'package:astrology/pages/kundali/kundali_date_widget.dart';
 import 'package:astrology/pages/kundali/kundali_gender_widget.dart';
 import 'package:astrology/pages/user/custom_textformfield.dart';
@@ -33,8 +36,8 @@ class _KundaliProfileState extends State<KundaliProfile> {
   Country? selectedCountry;
   String selectedPhoneNumber = "";
   String selectedEmail = "";
-  String selectedBirthCountry = "";
-  String selectedBirthCity = "";
+  Country? selectedBirthCountry;
+  District? selectedBirthCity;
   String englishBirthDate = "";
   String nepaliBirthDate = "";
   String birthTime = "";
@@ -70,12 +73,12 @@ class _KundaliProfileState extends State<KundaliProfile> {
     setState(() {});
   }
 
-  void handleBirthCountryChange(String value) {
+  void handleBirthCountryChange(Country value) {
     selectedBirthCountry = value;
     setState(() {});
   }
 
-  void handleBirthCityChange(String value) {
+  void handleBirthCityChange(District value) {
     selectedBirthCity = value;
     setState(() {});
   }
@@ -160,99 +163,15 @@ class _KundaliProfileState extends State<KundaliProfile> {
                 onDateChanged: handleBirthDateChanged,
                 onTimeChanged: handleBirthTimeChanged,
               ),
-              // CustomTextFormField(
-              //   labelText: "Email",
-              //   hintText: "Enter email",
-              //   validatorMessage: "Provide your email",
-              //   keyboardType: TextInputType.emailAddress,
-              //   onChanged: handlePhoneNumberChange,
-              // ),
-              // const ProfileFormSpacer(),
-              // PhoneWidget(
-              //     onChanged: handlePhoneNumberChange,
-              //     onCountryChanged: handleCountryChange),
-              // const ProfileFormSpacer(),
-              CustomTextFormField(
-                labelText: "Birth Country",
-                hintText: "Enter birth country",
-                validatorMessage: "Provide birth country",
-                keyboardType: TextInputType.text,
-                onChanged: handleBirthCountryChange,
+              BirthCountryWidget(
+                districtList: districtProvider.districtList,
+                onCountrySelected: handleBirthCountryChange,
               ),
               const ProfileFormSpacer(),
-              CustomTextFormField(
-                labelText: "Birth City",
-                hintText: "Enter birth city",
-                validatorMessage: "Provide birth city",
-                keyboardType: TextInputType.text,
-                onChanged: handleBirthCityChange,
+              BirthCityWidget(
+                districtList: districtProvider.districtList,
+                onDistrictSelected: handleBirthCityChange,
               ),
-              // Container(
-              //   padding:
-              //       const EdgeInsets.symmetric(horizontal: 16.0, vertical: 0),
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(12.0),
-              //     border: Border.all(color: ColorUtil.colorGrey, width: 1.0),
-              //   ),
-              //   child: Autocomplete<District>(
-              //     optionsBuilder: (TextEditingValue textEditingValue) {
-              //       if (textEditingValue.text.isEmpty) {
-              //         return const Iterable<District>.empty();
-              //       }
-              //       return districtProvider.districtList!
-              //           .where((District option) {
-              //         return option.name!
-              //             .toLowerCase()
-              //             .contains(textEditingValue.text.toLowerCase());
-              //       });
-              //     },
-              //     displayStringForOption: (District option) =>
-              //         option.name ?? '',
-              //     onSelected: (District selection) {},
-              //     fieldViewBuilder: (BuildContext context,
-              //         TextEditingController textEditingController,
-              //         FocusNode focusNode,
-              //         VoidCallback onFieldSubmitted) {
-              //       return TextField(
-              //         controller: textEditingController,
-              //         focusNode: focusNode,
-              //         onSubmitted: (String value) {
-              //           onFieldSubmitted();
-              //         },
-              //         decoration: const InputDecoration(
-              //           contentPadding: EdgeInsets.zero,
-              //           hintText: 'Birth City',
-              //           border: InputBorder.none, // Removes the underline
-              //         ),
-              //       );
-              //     },
-              //     optionsViewBuilder: (BuildContext context,
-              //         AutocompleteOnSelected<District> onSelected,
-              //         Iterable<District> options) {
-              //       return Material(
-              //         elevation: 4.0,
-              //         child: SingleChildScrollView(
-              //           child: Column(
-              //             mainAxisSize: MainAxisSize.min,
-              //             children: options.map((District option) {
-              //               return InkWell(
-              //                 onTap: () {
-              //                   onSelected(option);
-              //                 },
-              //                 child: Container(
-              //                   width: double.infinity,
-              //                   margin: const EdgeInsets.only(right: 32),
-              //                   padding: EdgeInsets.all(16.0),
-              //                   child: Text(option.name ?? ''),
-              //                 ),
-              //               );
-              //             }).toList(),
-              //           ),
-              //         ),
-              //       );
-              //     },
-              //   ),
-              // ),
               const CustomVerticalSpacer(height: 72),
               CustomButton(
                 onTap: handleSave,
