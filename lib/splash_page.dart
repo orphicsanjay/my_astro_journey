@@ -7,9 +7,12 @@ import 'package:astrology/pages/auth/otp_verified_page.dart';
 import 'package:astrology/pages/auth/otp_verify_page.dart';
 import 'package:astrology/pages/home/homepage.dart';
 import 'package:astrology/pages/kundali/kundali_profile.dart';
+import 'package:astrology/pages/rating_and_comment/rating_comment_sheet.dart';
 import 'package:astrology/pages/user/complete_profile_page.dart';
+import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_appbar.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
+import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatelessWidget {
@@ -93,138 +96,29 @@ class SplashPage extends StatelessWidget {
                 },
                 title: "Kundali Profile"),
             const CustomVerticalSpacer(),
+            CustomButton(
+                onTap: () {
+                  showRatingAndCommentSheet(context);
+                },
+                title: "Rating & Comment Option"),
+            const CustomVerticalSpacer(),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        _showRatingAndCommentSheet(context);
-      }),
+      // floatingActionButton: FloatingActionButton(onPressed: () {
+      //   showRatingAndCommentSheet(context);
+      // }),
     );
   }
 
-  void _showRatingAndCommentSheet(BuildContext context) {
+  void showRatingAndCommentSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      isScrollControlled: true, // This ensures the height is adjustable
+      isScrollControlled: true,
+      backgroundColor: ColorUtil.colorWhite,
       builder: (BuildContext context) {
-        return RatingAndCommentSheet();
+        return const RatingCommentSheet();
       },
-    );
-  }
-}
-
-class RatingAndCommentSheet extends StatefulWidget {
-  @override
-  _RatingAndCommentSheetState createState() => _RatingAndCommentSheetState();
-}
-
-class _RatingAndCommentSheetState extends State<RatingAndCommentSheet> {
-  double rating = 0;
-  final commentController = TextEditingController();
-  String selectedOption = '';
-
-  String ratingText() {
-    switch (rating.toInt()) {
-      case 1:
-        return 'Awful';
-      case 2:
-        return 'Bad';
-      case 3:
-        return 'Fine';
-      case 4:
-        return 'Good';
-      case 5:
-        return 'Excellent';
-      default:
-        return 'Rate Us';
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Text(
-            ratingText(),
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: 16),
-          _buildRatingStars(),
-          SizedBox(height: 16),
-          _buildAdditionalOptions(),
-          SizedBox(height: 16),
-          TextField(
-            controller: commentController,
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Comment',
-            ),
-            maxLines: 4,
-          ),
-          SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () {
-              final comment = commentController.text;
-              final newRating = rating;
-              // Handle the rating and comment
-              print('Rating: $rating');
-              print('Comment: $comment');
-              Navigator.pop(context); // Close the bottom sheet
-            },
-            child: Text('Submit'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildAdditionalOptions() {
-    return Wrap(
-      // crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        _buildOptionButton('Late'),
-        _buildOptionButton('Ask for Extra Fee'),
-        _buildOptionButton('Impolite'),
-        _buildOptionButton('Friendly'),
-      ],
-    );
-  }
-
-  Widget _buildOptionButton(String option) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      margin: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: Colors.black,
-        ),
-      ),
-      child: Text(option),
-    );
-  }
-
-  Widget _buildRatingStars() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(5, (index) {
-        return IconButton(
-          icon: Icon(
-            index < rating ? Icons.star : Icons.star_border,
-            color: Colors.amber,
-          ),
-          onPressed: () {
-            setState(() {
-              rating = index + 1.0;
-            });
-          },
-        );
-      }),
     );
   }
 }

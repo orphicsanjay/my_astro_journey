@@ -73,30 +73,34 @@ class MyApp extends StatelessWidget {
             shadowColor: ColorUtil.colorGrey,
             color: ColorUtil.colorWhite,
           ),
+          bottomSheetTheme: const BottomSheetThemeData(
+            backgroundColor:
+                Colors.white, // Set the default background color to white
+          ),
+          pageTransitionsTheme: const PageTransitionsTheme(
+            builders: <TargetPlatform, PageTransitionsBuilder>{
+              TargetPlatform.android: ZoomPageTransitionsBuilder(),
+              TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
+            },
+          ),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
           fontFamily: 'Helvetica',
           radioTheme: RadioThemeData(
-            fillColor: MaterialStateProperty.resolveWith<Color>((states) {
-              if (states.contains(MaterialState.selected)) {
-                return ColorUtil.colorOrange; // Color for the selected state
-              } else if (states.contains(MaterialState.disabled)) {
-                return ColorUtil.colorOrange; // Color for the disabled state
-              }
-              return ColorUtil
-                  .colorOrange; // Color for the unselected state (inactive color)
-            }),
+            fillColor: MaterialStateProperty.resolveWith<Color>(
+              (states) {
+                if (states.contains(MaterialState.selected)) {
+                  return ColorUtil.colorOrange; // Color for the selected state
+                } else if (states.contains(MaterialState.disabled)) {
+                  return ColorUtil.colorOrange; // Color for the disabled state
+                }
+                return ColorUtil
+                    .colorOrange; // Color for the unselected state (inactive color)
+              },
+            ),
           ),
         ),
         home: const SplashPage(),
-        // home: const AstrologerDetailPage(),
-        // home: const AstrologerListPage(),
-        // home: const CompleteProfilePage(),
-        // home: const LoginPage(),
-        // home: const HomePage(),
-        // home: const OTPVerifiedPage(
-        //   isPhoneNumber: true,
-        // ),
       ),
     );
   }
