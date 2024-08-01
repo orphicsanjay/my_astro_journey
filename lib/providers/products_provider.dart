@@ -49,8 +49,10 @@ class ProductsProvider with ChangeNotifier {
     if (categoryId != null) {
       url = "$url/category=$categoryId";
     }
+    print("product url : $url");
     final ApiResponse? apiResponse = await _httpService.getData(url);
-    if (apiResponse!.statusCode == 200) {
+    print("Status : ${apiResponse!.statusCode}");
+    if (apiResponse.statusCode == 200) {
       final tempList = apiResponse.data!['data'] as List;
       _productsList = [];
       for (var item in tempList) {
@@ -60,6 +62,7 @@ class ProductsProvider with ChangeNotifier {
       _totalPages = apiResponse.data['total_pages'];
     }
     notifyListeners();
+    print("Status : ${apiResponse.statusCode}");
   }
 
   fetchMoreProductsList(int? categoryId) async {

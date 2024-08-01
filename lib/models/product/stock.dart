@@ -2,7 +2,7 @@ class Stock {
   int? stockId;
   String? size;
   int? quantity;
-  double? price;
+  String? price;
 
   Stock(this.stockId, this.size, this.quantity, this.price);
 
@@ -22,7 +22,7 @@ class Stock {
       json['stock_id'] as int?,
       json['size'] as String?,
       json['quantity'] as int?,
-      (json['price'] as num?)?.toDouble(),
+      json['price'] as String?,
     );
   }
 }

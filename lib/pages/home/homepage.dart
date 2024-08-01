@@ -14,9 +14,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Widget> bodyWidgets = [
     HomeWidget(),
-    HomeWidget(),
-    HomeWidget(),
-    HomeWidget(),
+    Container(),
+    Container(),
+    Container(),
   ];
 
   int selectedIndex = 0;
@@ -34,10 +34,14 @@ class _HomePageState extends State<HomePage> {
         height: size.height,
         width: size.width,
         padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          physics: const ScrollPhysics(),
-          child: bodyWidgets[selectedIndex],
+        child: IndexedStack(
+          index: selectedIndex,
+          children: bodyWidgets,
         ),
+        // child: SingleChildScrollView(
+        //   physics: const ScrollPhysics(),
+        //   child: bodyWidgets[selectedIndex],
+        // ),
       ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(vertical: 16),

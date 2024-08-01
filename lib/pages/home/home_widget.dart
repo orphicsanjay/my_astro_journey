@@ -19,27 +19,29 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CustomVerticalSpacer(height: 32),
-        HomeTitleWidget(),
-        CustomVerticalSpacer(),
-        HomeSearchWidget(),
-        CustomVerticalSpacer(),
-        HomePopularServicesWidget(),
-        CustomVerticalSpacer(),
-        HomeBannerWidget(),
-        CustomVerticalSpacer(),
-        HomeAstrologerWidget(),
-        CustomVerticalSpacer(),
-        HomeServicesWidget(),
-        CustomVerticalSpacer(),
-        HomeAstroShopWidget(),
-        CustomVerticalSpacer(),
-        HomeNewsArticlesWidget(),
-        CustomVerticalSpacer(),
-      ],
+    return const SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CustomVerticalSpacer(height: 32),
+          HomeTitleWidget(),
+          CustomVerticalSpacer(),
+          HomeSearchWidget(),
+          CustomVerticalSpacer(),
+          HomePopularServicesWidget(),
+          CustomVerticalSpacer(),
+          HomeBannerWidget(),
+          CustomVerticalSpacer(),
+          HomeAstrologerWidget(),
+          CustomVerticalSpacer(),
+          HomeServicesWidget(),
+          CustomVerticalSpacer(),
+          HomeAstroShopWidget(),
+          CustomVerticalSpacer(),
+          HomeNewsArticlesWidget(),
+          CustomVerticalSpacer(),
+        ],
+      ),
     );
   }
 }

@@ -8,6 +8,7 @@ import 'package:astrology/providers/district_provider.dart';
 import 'package:astrology/providers/gender_provider.dart';
 import 'package:astrology/providers/network_provider.dart';
 import 'package:astrology/providers/preferences_provider.dart';
+import 'package:astrology/providers/products_provider.dart';
 import 'package:astrology/providers/user_provider.dart';
 import 'package:astrology/splash_page.dart';
 import 'package:astrology/utils/color_util.dart';
@@ -32,6 +33,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => GenderProvider()),
         ChangeNotifierProvider(create: (_) => NetworkProvider()),
         ChangeNotifierProvider(create: (_) => PreferencesProvider()),
+        ChangeNotifierProvider(create: (_) => ProductsProvider()),
         ChangeNotifierProvider<UserProvider>(
           create: (context) {
             final preferencesProvider =
