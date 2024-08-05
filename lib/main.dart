@@ -1,47 +1,21 @@
-import 'package:astrology/providers/app_service_provider.dart';
-import 'package:astrology/providers/astrologer_provider.dart';
-import 'package:astrology/providers/auth_provider.dart';
-import 'package:astrology/providers/banner_provider.dart';
-import 'package:astrology/providers/blogs_provider.dart';
-import 'package:astrology/providers/country_provider.dart';
-import 'package:astrology/providers/district_provider.dart';
-import 'package:astrology/providers/gender_provider.dart';
-import 'package:astrology/providers/network_provider.dart';
-import 'package:astrology/providers/preferences_provider.dart';
-import 'package:astrology/providers/products_provider.dart';
-import 'package:astrology/providers/user_provider.dart';
+import 'package:astrology/app_init.dart';
+import 'package:astrology/app_providers.dart';
+import 'package:astrology/locator.dart';
 import 'package:astrology/splash_page.dart';
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
+  AppInit.initialize();
   runApp(
     MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => AppServicesProvider()),
-        ChangeNotifierProvider(create: (_) => AstrologerProvider()),
-        ChangeNotifierProvider(create: (_) => AuthProvider()),
-        ChangeNotifierProvider(create: (_) => BannerProvider()),
-        ChangeNotifierProvider(create: (_) => BlogsProvider()),
-        ChangeNotifierProvider(create: (_) => CountryProvider()),
-        ChangeNotifierProvider(create: (_) => DistrictProvider()),
-        ChangeNotifierProvider(create: (_) => GenderProvider()),
-        ChangeNotifierProvider(create: (_) => NetworkProvider()),
-        ChangeNotifierProvider(create: (_) => PreferencesProvider()),
-        ChangeNotifierProvider(create: (_) => ProductsProvider()),
-        ChangeNotifierProvider<UserProvider>(
-          create: (context) {
-            final preferencesProvider =
-                Provider.of<PreferencesProvider>(context);
-            return UserProvider(preferencesProvider);
-          },
-        ),
-      ],
+      providers: appProviders,
       child: const MyApp(),
     ),
   );
@@ -107,3 +81,30 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+// runApp(
+  //   // MultiProvider(
+  //   //   providers: [
+  //   //     ChangeNotifierProvider(create: (_) => AppServicesProvider()),
+  //   //     ChangeNotifierProvider(create: (_) => AstrologerProvider()),
+  //   //     ChangeNotifierProvider(create: (_) => AuthProvider()),
+  //   //     ChangeNotifierProvider(create: (_) => BannerProvider()),
+  //   //     ChangeNotifierProvider(create: (_) => BlogsProvider()),
+  //   //     ChangeNotifierProvider(create: (_) => CountryProvider()),
+  //   //     ChangeNotifierProvider(create: (_) => DistrictProvider()),
+  //   //     ChangeNotifierProvider(create: (_) => GenderProvider()),
+  //   //     ChangeNotifierProvider(create: (_) => NetworkProvider()),
+  //   //     ChangeNotifierProvider(create: (_) => PreferencesProvider()),
+  //   //     ChangeNotifierProvider(create: (_) => ProductsProvider()),
+  //   //     ChangeNotifierProvider<UserProvider>(
+  //   //       create: (context) {
+  //   //         final preferencesProvider =
+  //   //             Provider.of<PreferencesProvider>(context);
+  //   //         return UserProvider(preferencesProvider);
+  //   //       },
+  //   //     ),
+  //   //   ],
+  //     child: const MyApp(),
+  //   ),
+  // );

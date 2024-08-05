@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_unnecessary_containers
 
-// import 'package:astrology/utils/custom_appbar.dart';
 import 'package:astrology/models/otp/request_otp.dart';
 import 'package:astrology/pages/auth/banner_image.dart';
 import 'package:astrology/pages/auth/country_widget.dart';

@@ -1,11 +1,13 @@
 import 'package:astrology/models/response/api_response.dart';
 import 'package:astrology/models/blogs/blogs.dart';
-import 'package:astrology/utils/endpoints.dart';
-import 'package:astrology/utils/http_service.dart';
+import 'package:astrology/network/endpoints.dart';
+import 'package:astrology/network/http_service.dart';
 import 'package:flutter/foundation.dart';
 
 class BlogsProvider with ChangeNotifier {
-  final HttpService _httpService = HttpService();
+  final HttpService _httpService;
+
+  BlogsProvider(this._httpService);
 
   List<Blogs>? _blogsList;
   List<Blogs>? get blogsList => _blogsList;

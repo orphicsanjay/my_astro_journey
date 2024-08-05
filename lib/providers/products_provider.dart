@@ -1,12 +1,14 @@
 import 'package:astrology/models/product/product_category.dart';
 import 'package:astrology/models/product/products.dart';
 import 'package:astrology/models/response/api_response.dart';
-import 'package:astrology/utils/endpoints.dart';
-import 'package:astrology/utils/http_service.dart';
+import 'package:astrology/network/endpoints.dart';
+import 'package:astrology/network/http_service.dart';
 import 'package:flutter/foundation.dart';
 
 class ProductsProvider with ChangeNotifier {
-  final HttpService _httpService = HttpService();
+  final HttpService _httpService;
+
+  ProductsProvider(this._httpService);
 
   List<ProductCategory>? _productCategoryList;
   List<ProductCategory>? get productCategoryList => _productCategoryList;

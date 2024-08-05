@@ -1,11 +1,13 @@
 import 'package:astrology/address/district.dart';
 import 'package:astrology/models/response/api_response.dart';
-import 'package:astrology/utils/endpoints.dart';
-import 'package:astrology/utils/http_service.dart';
+import 'package:astrology/network/endpoints.dart';
+import 'package:astrology/network/http_service.dart';
 import 'package:flutter/cupertino.dart';
 
 class DistrictProvider with ChangeNotifier {
-  final HttpService _httpService = HttpService();
+  final HttpService _httpService;
+
+  DistrictProvider(this._httpService);
 
   List<District>? _districtList;
   List<District>? get districtList => _districtList;

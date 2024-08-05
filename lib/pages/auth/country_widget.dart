@@ -1,4 +1,5 @@
 import 'package:astrology/address/country.dart';
+import 'package:astrology/locator.dart';
 import 'package:astrology/providers/country_provider.dart';
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/style_utl.dart';
@@ -15,7 +16,7 @@ class CountryWidget extends StatefulWidget {
 class _CountryWidgetState extends State<CountryWidget> {
   @override
   void initState() {
-    Provider.of<CountryProvider>(context, listen: false).fetchCountryList();
+    getIt<CountryProvider>().fetchCountryList();
     super.initState();
   }
 
@@ -36,7 +37,6 @@ class _CountryWidgetState extends State<CountryWidget> {
         : DropdownButton<Country>(
             value: countryProvider.selectedCountry,
             isExpanded: false,
-            // isDense: true,
             padding: EdgeInsets.zero,
             items: countryProvider.countryList!.map((Country value) {
               return DropdownMenuItem<Country>(

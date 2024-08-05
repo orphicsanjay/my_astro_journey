@@ -1,11 +1,13 @@
 import 'package:astrology/models/response/api_response.dart';
 import 'package:astrology/address/country.dart';
-import 'package:astrology/utils/endpoints.dart';
-import 'package:astrology/utils/http_service.dart';
+import 'package:astrology/network/endpoints.dart';
+import 'package:astrology/network/http_service.dart';
 import 'package:flutter/foundation.dart';
 
 class CountryProvider with ChangeNotifier {
-  final HttpService _httpService = HttpService();
+  final HttpService _httpService;
+
+  CountryProvider(this._httpService);
 
   // ignore: prefer_final_fields
   List<Country>? _countryList;

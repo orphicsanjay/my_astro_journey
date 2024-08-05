@@ -2,13 +2,15 @@ import 'dart:async';
 
 import 'package:astrology/models/response/api_response.dart';
 import 'package:astrology/models/otp/otp_response.dart';
-import 'package:astrology/utils/endpoints.dart';
-import 'package:astrology/utils/http_service.dart';
+import 'package:astrology/network/endpoints.dart';
+import 'package:astrology/network/http_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class AuthProvider with ChangeNotifier {
-  final HttpService _httpService = HttpService();
+  final HttpService _httpService;
+
+  AuthProvider(this._httpService);
 
   String? _otpCode;
   String? get otpCode => _otpCode;

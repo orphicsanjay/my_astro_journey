@@ -1,11 +1,13 @@
 import 'package:astrology/models/response/api_response.dart';
 import 'package:astrology/models/user/gender.dart';
-import 'package:astrology/utils/endpoints.dart';
-import 'package:astrology/utils/http_service.dart';
+import 'package:astrology/network/endpoints.dart';
+import 'package:astrology/network/http_service.dart';
 import 'package:flutter/foundation.dart';
 
 class GenderProvider with ChangeNotifier {
-  final HttpService _httpService = HttpService();
+  final HttpService _httpService;
+
+  GenderProvider(this._httpService);
 
   List<Gender> _genderList = [];
   List<Gender> get genderList => _genderList;

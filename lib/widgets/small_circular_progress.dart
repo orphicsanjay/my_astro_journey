@@ -5,10 +5,13 @@ class SmallCircularProgess extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 24,
-      width: 24,
-      child: CircularProgressIndicator(),
+    return const Padding(
+      padding: EdgeInsets.all(16),
+      child: SizedBox(
+        height: 16,
+        width: 16,
+        child: CircularProgressIndicator(),
+      ),
     );
   }
 }

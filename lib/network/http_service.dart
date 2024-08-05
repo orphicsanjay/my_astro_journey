@@ -5,11 +5,15 @@ import 'dart:io';
 
 import 'package:astrology/models/response/api_response.dart';
 import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 
 class HttpService {
-  static final HttpService _instance = HttpService._internal();
-  factory HttpService() => _instance;
-  HttpService._internal();
+  final http.Client _client;
+
+  HttpService(this._client);
+  // static final HttpService _instance = HttpService._internal();
+  // factory HttpService() => _instance;
+  // HttpService._internal();
 
   // final String baseUrl = base_url;
 
@@ -24,7 +28,7 @@ class HttpService {
     ApiResponse? apiResponse;
 
     try {
-      final response = await http.get(Uri.parse(endpoint));
+      final response = await _client.get(Uri.parse(endpoint));
       print("get response : ${response.statusCode} ");
       print("get response : ${response.body} ");
 
@@ -62,7 +66,7 @@ class HttpService {
     ApiResponse? apiResponse;
 
     try {
-      final response = await http.post(
+      final response = await _client.post(
         Uri.parse(endpoint),
         headers: {'Content-Type': 'application/json'},
         body: json.encode(data),
@@ -96,7 +100,7 @@ class HttpService {
     ApiResponse? apiResponse;
 
     try {
-      final response = await http.put(
+      final response = await _client.put(
         Uri.parse(endpoint),
         headers: {'Content-Type': 'application/json'},
         body: json.encode(data),
@@ -126,7 +130,7 @@ class HttpService {
     ApiResponse? apiResponse;
 
     try {
-      final response = await http.delete(Uri.parse(endpoint));
+      final response = await _client.delete(Uri.parse(endpoint));
       if (response.statusCode == 401) {
         redirectToLogin();
         return null;

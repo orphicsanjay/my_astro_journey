@@ -95,15 +95,16 @@ class AstroShopCard extends StatelessWidget {
         child: Column(
           children: [
             ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: CachedNetworkImage(
-                  imageUrl: product.productColor![0].images![0],
-                  height: 120,
-                  width: 120,
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) => const SmallCircularProgess(),
-                  errorWidget: (context, url, error) => const DefaultImage(),
-                )),
+              borderRadius: BorderRadius.circular(12),
+              child: CachedNetworkImage(
+                imageUrl: product.productColor![0].images![0],
+                height: 120,
+                width: 120,
+                fit: BoxFit.cover,
+                placeholder: (context, url) => const SmallCircularProgess(),
+                errorWidget: (context, url, error) => const DefaultImage(),
+              ),
+            ),
             const SizedBox(height: 8),
             Text(
               "${product.name}",
