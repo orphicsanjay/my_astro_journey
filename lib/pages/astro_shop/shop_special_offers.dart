@@ -2,6 +2,7 @@ import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_horizontal_spacer.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';
+import 'package:astrology/widgets/title_widget.dart';
 import 'package:flutter/material.dart';
 
 class ShopSpecialOffers extends StatelessWidget {
@@ -9,26 +10,14 @@ class ShopSpecialOffers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(16.0),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Text("Special Offers",
-                    style: StyleUtil.style16DarkBlueBold),
-              ),
-              Text(
-                "View All",
-                style: StyleUtil.style14DarkBlue,
-              ),
-            ],
-          ),
-          CustomVerticalSpacer(height: 4),
-          SingleChildScrollView(
+          TitleWidget(title: "Special Offers", onTap: () {}),
+          const CustomVerticalSpacer(height: 4),
+          const SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

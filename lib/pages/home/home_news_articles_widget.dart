@@ -2,6 +2,7 @@ import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_horizontal_spacer.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';
+import 'package:astrology/widgets/title_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeNewsArticlesWidget extends StatelessWidget {
@@ -9,24 +10,12 @@ class HomeNewsArticlesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child:
-                  Text("News / Articles", style: StyleUtil.style16DarkBlueBold),
-            ),
-            Text(
-              "View All",
-              style: StyleUtil.style14DarkBlue,
-            ),
-          ],
-        ),
-        CustomVerticalSpacer(),
-        SingleChildScrollView(
+        TitleWidget(title: "News / Articles", onTap: () {}),
+        const CustomVerticalSpacer(),
+        const SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

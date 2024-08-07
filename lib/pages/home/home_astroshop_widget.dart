@@ -8,6 +8,7 @@ import 'package:astrology/widgets/custom_empty_widget.dart';
 import 'package:astrology/widgets/custom_error_widget.dart';
 import 'package:astrology/widgets/default_image.dart';
 import 'package:astrology/widgets/small_circular_progress.dart';
+import 'package:astrology/widgets/title_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,18 +33,7 @@ class _HomeAstroShopWidgetState extends State<HomeAstroShopWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Text("Astro Shop", style: StyleUtil.style16DarkBlueBold),
-            ),
-            Text(
-              "View All",
-              style: StyleUtil.style14DarkBlue,
-            ),
-          ],
-        ),
+        TitleWidget(title: "Astro Shop", onTap: () {}),
         const CustomVerticalSpacer(),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,

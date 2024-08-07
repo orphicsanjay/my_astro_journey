@@ -3,6 +3,7 @@ import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_horizontal_spacer.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';
+import 'package:astrology/widgets/title_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeAstrologerWidget extends StatelessWidget {
@@ -10,24 +11,12 @@ class HomeAstrologerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Text("Recommended Astrologers",
-                  style: StyleUtil.style16DarkBlueBold),
-            ),
-            Text(
-              "View All",
-              style: StyleUtil.style14DarkBlue,
-            ),
-          ],
-        ),
-        CustomVerticalSpacer(),
-        SingleChildScrollView(
+        TitleWidget(title: "Recommended Astrologers", onTap: () {}),
+        const CustomVerticalSpacer(),
+        const SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
