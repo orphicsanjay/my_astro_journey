@@ -57,7 +57,7 @@ class AstrologerCard extends StatelessWidget {
       child: Card(
         elevation: 2,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           child: Column(
             children: [
               SizedBox(

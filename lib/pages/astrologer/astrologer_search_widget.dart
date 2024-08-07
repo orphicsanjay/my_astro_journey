@@ -3,10 +3,14 @@ import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
 
 class AstrologerSearchWidget extends StatelessWidget {
+  final String hintText;
   final ValueChanged<String> onChanged;
   final VoidCallback onTap;
   const AstrologerSearchWidget(
-      {super.key, required this.onChanged, required this.onTap});
+      {super.key,
+      required this.onChanged,
+      required this.onTap,
+      required this.hintText});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +26,7 @@ class AstrologerSearchWidget extends StatelessWidget {
         },
         onChanged: onChanged,
         decoration: InputDecoration(
-          hintText: "Search Astrologer",
+          hintText: hintText,
           suffixIcon: GestureDetector(
             onTap: onTap,
             child: const Icon(

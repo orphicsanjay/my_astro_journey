@@ -30,7 +30,7 @@ class _HomeWidgetState extends State<HomeWidget> {
           CustomVerticalSpacer(),
           HomePopularServicesWidget(),
           CustomVerticalSpacer(),
-          HomeBannerWidget(),
+          HomeBannerWidget(assetImage: "assets/images/astro.jpg"),
           CustomVerticalSpacer(),
           HomeAstrologerWidget(),
           CustomVerticalSpacer(),

@@ -75,6 +75,7 @@ class _AstrologerListPageState extends State<AstrologerListPage> {
               // ),
               showHideSearch
                   ? AstrologerSearchWidget(
+                      hintText: "Search Astrologer",
                       onChanged: handleSearchChanged,
                       onTap: handleAstrologerSearch,
                     )

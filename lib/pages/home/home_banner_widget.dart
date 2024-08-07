@@ -4,7 +4,8 @@ import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
 
 class HomeBannerWidget extends StatelessWidget {
-  const HomeBannerWidget({super.key});
+  final String assetImage;
+  const HomeBannerWidget({super.key, required this.assetImage});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class HomeBannerWidget extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.asset(
-                "assets/images/astro.jpg",
+                assetImage,
                 height: 120,
                 width: 100,
                 fit: BoxFit.cover,

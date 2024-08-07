@@ -266,6 +266,19 @@ class StyleUtil {
     color: ColorUtil.colorWhite,
     fontWeight: FontWeight.bold,
   );
+  static const TextStyle style14WhiteBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 14.0,
+    color: ColorUtil.colorWhite,
+    fontWeight: FontWeight.bold,
+  );
+
+  static const TextStyle style24WhiteBold = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 24.0,
+    color: ColorUtil.colorWhite,
+    fontWeight: FontWeight.bold,
+  );
 
   static const TextStyle style16GreyBold = TextStyle(
     fontFamily: 'Helvetica',

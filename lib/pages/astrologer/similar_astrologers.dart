@@ -57,7 +57,7 @@ class SimilarAstrologerCard extends StatelessWidget {
         elevation: 2,
         color: ColorUtil.colorWhite,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           child: Column(
             children: [
               SizedBox(

@@ -1,4 +1,5 @@
 import 'package:astrology/models/otp/request_otp.dart';
+import 'package:astrology/pages/astro_shop/astro_shop_page.dart';
 import 'package:astrology/pages/astrologer/astrologer_detail_page.dart';
 import 'package:astrology/pages/astrologer/astrologer_list_page.dart';
 import 'package:astrology/pages/auth/custom_button.dart';
@@ -7,6 +8,8 @@ import 'package:astrology/pages/auth/otp_verified_page.dart';
 import 'package:astrology/pages/auth/otp_verify_page.dart';
 import 'package:astrology/pages/home/homepage.dart';
 import 'package:astrology/pages/kundali/kundali_profile.dart';
+import 'package:astrology/pages/news/news_events_detail_page.dart';
+import 'package:astrology/pages/news/news_events_page.dart';
 import 'package:astrology/pages/rating_and_comment/rating_comment_sheet.dart';
 import 'package:astrology/pages/user/complete_profile_page.dart';
 import 'package:astrology/utils/color_util.dart';
@@ -102,6 +105,24 @@ class SplashPage extends StatelessWidget {
                     showRatingAndCommentSheet(context);
                   },
                   title: "Rating & Comment Option"),
+              const CustomVerticalSpacer(),
+              CustomButton(
+                  onTap: () {
+                    handleOnTap(context, const NewsEventPage());
+                  },
+                  title: "News & Events"),
+              const CustomVerticalSpacer(),
+              CustomButton(
+                  onTap: () {
+                    handleOnTap(context, const NewsEventDetailPage());
+                  },
+                  title: "News & Events Detail"),
+              const CustomVerticalSpacer(),
+              CustomButton(
+                  onTap: () {
+                    handleOnTap(context, const AstroShopPage());
+                  },
+                  title: "Astro Shop"),
               const CustomVerticalSpacer(),
             ],
           ),
