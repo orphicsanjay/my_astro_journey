@@ -36,95 +36,93 @@ class SplashPage extends StatelessWidget {
         height: size.height,
         width: size.width,
         padding: const EdgeInsets.all(16),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomButton(
-                  onTap: () {
-                    handleOnTap(context, const LoginPage());
-                  },
-                  title: "Login Page"),
-              const CustomVerticalSpacer(),
-              CustomButton(
-                  onTap: () {
-                    handleOnTap(context, const HomePage());
-                  },
-                  title: "Home Page"),
-              const CustomVerticalSpacer(),
-              CustomButton(
-                  onTap: () {
-                    handleOnTap(context, const CompleteProfilePage());
-                  },
-                  title: "Complete Profile"),
-              const CustomVerticalSpacer(),
-              CustomButton(
-                  onTap: () {
-                    RequestOTP requestOTP = RequestOTP(
-                        phonenumber: "9847012345", email: "", countryCode: 1);
-                    handleOnTap(
+        child: ListView(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CustomButton(
+                onTap: () {
+                  handleOnTap(context, const LoginPage());
+                },
+                title: "Login Page"),
+            const CustomVerticalSpacer(),
+            CustomButton(
+                onTap: () {
+                  handleOnTap(context, const HomePage());
+                },
+                title: "Home Page"),
+            const CustomVerticalSpacer(),
+            CustomButton(
+                onTap: () {
+                  handleOnTap(context, const CompleteProfilePage());
+                },
+                title: "Complete Profile"),
+            const CustomVerticalSpacer(),
+            CustomButton(
+                onTap: () {
+                  RequestOTP requestOTP = RequestOTP(
+                      phonenumber: "9847012345", email: "", countryCode: 1);
+                  handleOnTap(
+                    context,
+                    OTPVerifyPage(
+                        isPhoneNumberSelected: true, requestOTP: requestOTP),
+                  );
+                },
+                title: "OTP Verify Page"),
+            const CustomVerticalSpacer(),
+            // CustomButton(onTap: () {}, title: "OTP Verified Page"),const CustomVerticalSpacer(),
+            CustomButton(
+                onTap: () {
+                  handleOnTap(
                       context,
-                      OTPVerifyPage(
-                          isPhoneNumberSelected: true, requestOTP: requestOTP),
-                    );
-                  },
-                  title: "OTP Verify Page"),
-              const CustomVerticalSpacer(),
-              // CustomButton(onTap: () {}, title: "OTP Verified Page"),const CustomVerticalSpacer(),
-              CustomButton(
-                  onTap: () {
-                    handleOnTap(
-                        context,
-                        const OTPVerifiedPage(
-                          isPhoneNumber: true,
-                        ));
-                  },
-                  title: "OTP Verified Page"),
-              const CustomVerticalSpacer(),
-              CustomButton(
-                  onTap: () {
-                    handleOnTap(context, const AstrologerListPage());
-                  },
-                  title: "Astrologers List Page"),
-              const CustomVerticalSpacer(),
-              CustomButton(
-                  onTap: () {
-                    handleOnTap(context, const AstrologerDetailPage());
-                  },
-                  title: "Astrologer Detail Page"),
-              const CustomVerticalSpacer(),
-              CustomButton(
-                  onTap: () {
-                    handleOnTap(context, const KundaliProfile());
-                  },
-                  title: "Kundali Profile"),
-              const CustomVerticalSpacer(),
-              CustomButton(
-                  onTap: () {
-                    showRatingAndCommentSheet(context);
-                  },
-                  title: "Rating & Comment Option"),
-              const CustomVerticalSpacer(),
-              CustomButton(
-                  onTap: () {
-                    handleOnTap(context, const NewsEventPage());
-                  },
-                  title: "News & Events"),
-              const CustomVerticalSpacer(),
-              CustomButton(
-                  onTap: () {
-                    handleOnTap(context, const NewsEventDetailPage());
-                  },
-                  title: "News & Events Detail"),
-              const CustomVerticalSpacer(),
-              CustomButton(
-                  onTap: () {
-                    handleOnTap(context, const AstroShopPage());
-                  },
-                  title: "Astro Shop"),
-              const CustomVerticalSpacer(),
-            ],
-          ),
+                      const OTPVerifiedPage(
+                        isPhoneNumber: true,
+                      ));
+                },
+                title: "OTP Verified Page"),
+            const CustomVerticalSpacer(),
+            CustomButton(
+                onTap: () {
+                  handleOnTap(context, const AstrologerListPage());
+                },
+                title: "Astrologers List Page"),
+            const CustomVerticalSpacer(),
+            CustomButton(
+                onTap: () {
+                  handleOnTap(context, const AstrologerDetailPage());
+                },
+                title: "Astrologer Detail Page"),
+            const CustomVerticalSpacer(),
+            CustomButton(
+                onTap: () {
+                  handleOnTap(context, const KundaliProfile());
+                },
+                title: "Kundali Profile"),
+            const CustomVerticalSpacer(),
+            CustomButton(
+                onTap: () {
+                  showRatingAndCommentSheet(context);
+                },
+                title: "Rating & Comment Option"),
+            const CustomVerticalSpacer(),
+            CustomButton(
+                onTap: () {
+                  handleOnTap(context, const NewsEventPage());
+                },
+                title: "News & Events"),
+            const CustomVerticalSpacer(),
+            CustomButton(
+                onTap: () {
+                  handleOnTap(context, const NewsEventDetailPage());
+                },
+                title: "News & Events Detail"),
+            const CustomVerticalSpacer(),
+            CustomButton(
+                onTap: () {
+                  handleOnTap(context, const AstroShopPage());
+                },
+                title: "Astro Shop"),
+            const CustomVerticalSpacer(),
+          ],
         ),
       ),
       // floatingActionButton: FloatingActionButton(onPressed: () {

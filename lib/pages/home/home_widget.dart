@@ -1,3 +1,8 @@
+import 'package:astrology/bloc/appservice/appservice_bloc.dart';
+import 'package:astrology/bloc/appservice/appservice_event.dart';
+import 'package:astrology/bloc/shop/shop_bloc.dart';
+import 'package:astrology/bloc/shop/shop_event.dart';
+import 'package:astrology/locator.dart';
 import 'package:astrology/pages/home/home_astrologer_widget.dart';
 import 'package:astrology/pages/home/home_astroshop_widget.dart';
 import 'package:astrology/pages/home/home_banner_widget.dart';
@@ -9,20 +14,19 @@ import 'package:astrology/pages/home/home_title_widget.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:flutter/material.dart';
 
-class HomeWidget extends StatefulWidget {
+class HomeWidget extends StatelessWidget {
   const HomeWidget({super.key});
 
   @override
-  State<HomeWidget> createState() => _HomeWidgetState();
-}
-
-class _HomeWidgetState extends State<HomeWidget> {
-  @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+    return RefreshIndicator(
+      onRefresh: () async {
+        getIt<AppServiceBloc>().add(FetchAppServices());
+        getIt<ShopBloc>().add(FetchProducts());
+      },
+      child: ListView(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
           CustomVerticalSpacer(height: 32),
           HomeTitleWidget(),
           CustomVerticalSpacer(),

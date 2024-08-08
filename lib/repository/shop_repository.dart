@@ -13,7 +13,7 @@ class ShopRepository {
 
     try {
       final response = await _dio.get(productsListsUrl);
-      products = (response.data as List<dynamic>).map((dynamic json) {
+      products = (response.data['data'] as List<dynamic>).map((dynamic json) {
         final map = json as Map<String, dynamic>;
         return Products.fromJson(map);
       }).toList();

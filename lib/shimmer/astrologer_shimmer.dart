@@ -9,16 +9,24 @@ class AstrologerShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    // return const SingleChildScrollView(
+    //   child: Row(
+    //     children: [
+    //       BuildAstrologerShimmer(),
+    //       CustomHorizontalSpacer(),
+    //       BuildAstrologerShimmer(),
+    //       CustomHorizontalSpacer(),
+    //       BuildAstrologerShimmer(),
+    //       CustomHorizontalSpacer(),
+    //     ],
+    //   ),
+    // );
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
       child: Row(
-        children: [
-          BuildAstrologerShimmer(),
-          CustomHorizontalSpacer(),
-          BuildAstrologerShimmer(),
-          CustomHorizontalSpacer(),
-          BuildAstrologerShimmer(),
-          CustomHorizontalSpacer(),
-        ],
+        children: List.generate(3, (index) {
+          return const BuildAstrologerShimmer();
+        }),
       ),
     );
   }
@@ -31,6 +39,7 @@ class BuildAstrologerShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 2,
+      margin: const EdgeInsets.only(right: 16, bottom: 8),
       color: ColorUtil.colorWhite,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),

@@ -11,6 +11,8 @@ class AddressState extends Equatable {
   final List<District>? districts;
   final String? countriesError;
   final String? districtsError;
+  final Country? selectedCountry;
+  final District? selectedDistrict;
 
   const AddressState({
     required this.isLoadingCountries,
@@ -21,17 +23,24 @@ class AddressState extends Equatable {
     this.districts,
     this.countriesError,
     this.districtsError,
+    this.selectedCountry,
+    this.selectedDistrict,
   });
 
-  AddressState.initial()
-      : isLoadingCountries = false,
-        isLoadingDistricts = false,
-        isFailedCountries = false,
-        isFailedDistricts = false,
-        countries = [],
-        districts = [],
-        countriesError = null,
-        districtsError = null;
+  factory AddressState.initial() {
+    return const AddressState(
+      isLoadingCountries: false,
+      isLoadingDistricts: false,
+      isFailedCountries: false,
+      isFailedDistricts: false,
+      countries: [],
+      districts: [],
+      countriesError: null,
+      districtsError: null,
+      selectedCountry: null,
+      selectedDistrict: null,
+    );
+  }
 
   AddressState copyWith({
     bool? isLoadingCountries,
@@ -42,6 +51,8 @@ class AddressState extends Equatable {
     List<District>? districts,
     String? countriesError,
     String? districtsError,
+    Country? selectedCountry,
+    District? selectedDistrict,
   }) {
     return AddressState(
       isLoadingCountries: isLoadingCountries ?? this.isLoadingCountries,
@@ -52,6 +63,8 @@ class AddressState extends Equatable {
       districts: districts ?? this.districts,
       countriesError: countriesError ?? this.countriesError,
       districtsError: districtsError ?? this.districtsError,
+      selectedCountry: selectedCountry ?? this.selectedCountry,
+      selectedDistrict: selectedDistrict ?? this.selectedDistrict,
     );
   }
 
@@ -65,5 +78,7 @@ class AddressState extends Equatable {
         districts,
         countriesError,
         districtsError,
+        selectedCountry,
+        selectedDistrict,
       ];
 }

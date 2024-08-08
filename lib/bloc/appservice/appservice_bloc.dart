@@ -28,7 +28,7 @@ class AppServiceBloc extends Bloc<AppServiceEvent, AppServiceState> {
           return state.copyWith(
             isLoading: false,
             isFailed: false,
-            apiServices: response.data,
+            appServices: response.data,
             error: response.error,
           );
         } else {

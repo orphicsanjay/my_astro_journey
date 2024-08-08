@@ -10,9 +10,10 @@ import 'utils/color_util.dart';
 class AppInit {
   static Future<void> initialize() async {
     WidgetsFlutterBinding.ensureInitialized();
+    await initDependencyInjection();
+
     Bloc.observer = AppBlocObserver();
     // setupLocator();
-    await initDependencyInjection();
   }
 
   static final ThemeData customThemeData = ThemeData(

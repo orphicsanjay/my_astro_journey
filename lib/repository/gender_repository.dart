@@ -13,7 +13,7 @@ class GenderRepository {
 
     try {
       final response = await _dio.get(genderUrl);
-      genders = (response.data as List<dynamic>).map((dynamic json) {
+      genders = (response.data['data'] as List<dynamic>).map((dynamic json) {
         final map = json as Map<String, dynamic>;
         return Gender(map[0] as String, map[1] as String);
       }).toList();

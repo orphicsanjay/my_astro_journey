@@ -12,7 +12,8 @@ class AppServiceRepository {
     List<AppService>? appServices;
     try {
       final response = await _dio.get(appServiceUrl);
-      appServices = (response.data as List<dynamic>).map((dynamic json) {
+      appServices =
+          (response.data['data'] as List<dynamic>).map((dynamic json) {
         final map = json as Map<String, dynamic>;
         return AppService.fromJson(map);
       }).toList();

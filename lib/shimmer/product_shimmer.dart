@@ -9,16 +9,12 @@ class ProductsShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
       child: Row(
-        children: [
-          BuildProductShimmer(),
-          CustomHorizontalSpacer(),
-          BuildProductShimmer(),
-          CustomHorizontalSpacer(),
-          BuildProductShimmer(),
-          CustomHorizontalSpacer(),
-        ],
+        children: List.generate(3, (index) {
+          return const BuildProductShimmer();
+        }),
       ),
     );
   }
@@ -31,6 +27,7 @@ class BuildProductShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 2,
+      margin: const EdgeInsets.only(right: 16, bottom: 8),
       color: ColorUtil.colorWhite,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),

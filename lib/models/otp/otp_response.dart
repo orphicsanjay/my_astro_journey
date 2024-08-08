@@ -5,7 +5,6 @@ class OTPResponse {
 
   OTPResponse(this.message, this.accessToken, this.refreshToken);
 
-  // Convert a JSON map to an OTPResponse instance
   factory OTPResponse.fromJson(Map<String, dynamic> json) {
     return OTPResponse(
       json['message'] as String?,

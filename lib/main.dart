@@ -8,8 +8,8 @@ import 'package:provider/provider.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-void main() {
-  AppInit.initialize();
+void main() async {
+  await AppInit.initialize();
   runApp(
     MultiProvider(
       providers: appProviders,

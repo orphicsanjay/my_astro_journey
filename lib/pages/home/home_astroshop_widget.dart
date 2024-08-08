@@ -1,4 +1,5 @@
 import 'package:astrology/bloc/shop/shop_bloc.dart';
+import 'package:astrology/bloc/shop/shop_event.dart';
 import 'package:astrology/bloc/shop/shop_state.dart';
 import 'package:astrology/locator.dart';
 import 'package:astrology/models/product/products.dart';
@@ -6,6 +7,7 @@ import 'package:astrology/providers/products_provider.dart';
 import 'package:astrology/shimmer/product_shimmer.dart';
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
+import 'package:astrology/utils/snackbar_util.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:astrology/widgets/custom_empty_widget.dart';
 import 'package:astrology/widgets/custom_error_widget.dart';
@@ -25,11 +27,11 @@ class HomeAstroShopWidget extends StatefulWidget {
 }
 
 class _HomeAstroShopWidgetState extends State<HomeAstroShopWidget> {
-  // @override
-  // void initState() {
-  //   getIt<ProductsProvider>().fetchProductsList(null);
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    getIt<ShopBloc>().add(FetchProducts());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,59 +40,33 @@ class _HomeAstroShopWidgetState extends State<HomeAstroShopWidget> {
       children: [
         TitleWidget(title: "Astro Shop", onTap: () {}),
         const CustomVerticalSpacer(),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: BlocBuilder<ShopBloc, ShopState>(
-            builder: (context, state) {
-              if (state.isLoading) {
-                return const ProductsShimmer();
-              } else if (state.isFailed) {
-                return const CustomErrorWidget(
-                    errorMessage: "Error fetching products");
-              } else if (state.products == null || state.products!.isEmpty) {
-                return const CustomEmptyWidget(
-                    message: "No products available");
-              } else {
-                return Row(
-                  children: state.products!.map((product) {
-                    return AstroShopCard(product: product);
-                  }).toList(),
-                );
-              }
-            },
-          ),
+        BlocConsumer<ShopBloc, ShopState>(
+          bloc: getIt<ShopBloc>(),
+          builder: (context, ShopState state) {
+            if (state.isLoading) {
+              return const ProductsShimmer();
+            } else if (state.products != null) {
+              final List<Products> productsList = state.products ?? [];
+              return SizedBox(
+                height: MediaQuery.of(context).size.height * 0.26,
+                child: ListView.builder(
+                  itemCount: productsList.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return AstroShopCard(product: productsList[index]);
+                  },
+                ),
+              );
+            } else {
+              return CustomErrorWidget(errorMessage: state.error!);
+            }
+          },
+          listener: (context, ShopState state) {
+            if (state.error != null) {
+              SnackbarUtils.showSnackbar(context, "Something went wrong!");
+            }
+          },
         ),
-        // SingleChildScrollView(
-        //   scrollDirection: Axis.horizontal,
-        //   child: FutureBuilder<void>(
-        //     future: Provider.of<ProductsProvider>(context, listen: false)
-        //         .fetchProductsList(null),
-        //     builder: (context, snapshot) {
-        //       if (snapshot.connectionState == ConnectionState.waiting) {
-        //         return const ProductsShimmer();
-        //       } else if (snapshot.hasError) {
-        //         return const CustomErrorWidget(
-        //             errorMessage: "Error fetching products");
-        //       } else {
-        //         return Consumer<ProductsProvider>(
-        //           builder: (context, productsProvider, child) {
-        //             final productsList = productsProvider.productsList;
-        //             if (productsList == null || productsList.isEmpty) {
-        //               return const CustomEmptyWidget(
-        //                   message: "No products available");
-        //             } else {
-        //               return Row(
-        //                 children: productsList.map((product) {
-        //                   return AstroShopCard(product: product);
-        //                 }).toList(),
-        //               );
-        //             }
-        //           },
-        //         );
-        //       }
-        //     },
-        //   ),
-        // ),
       ],
     );
   }

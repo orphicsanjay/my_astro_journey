@@ -16,6 +16,7 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
         super(AddressState.initial()) {
     on<FetchCountries>(_onFetchCountries);
     on<FetchDistricts>(_onFetchDistricts);
+    on<UpdateSelectedCountry>(_onUpdateSelectedCountry);
   }
 
   void _onFetchCountries(
@@ -29,11 +30,11 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
       onData: (response) {
         if (response.apiResponse.isSuccessful) {
           return state.copyWith(
-            isLoadingCountries: false,
-            isFailedCountries: false,
-            countries: response.apiResponse.data,
-            countriesError: response.apiResponse.error,
-          );
+              isLoadingCountries: false,
+              isFailedCountries: false,
+              countries: response.apiResponse.data,
+              countriesError: response.apiResponse.error,
+              selectedCountry: response.selectedCountry);
         } else {
           return state.copyWith(
             isLoadingCountries: false,
@@ -84,5 +85,19 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
         );
       },
     );
+  }
+
+  void _onUpdateSelectedCountry(
+    UpdateSelectedCountry event,
+    Emitter<AddressState> emit,
+  ) {
+    emit(state.copyWith(selectedCountry: event.country));
+  }
+
+  void _onUpdateSelectedDistrict(
+    UpdateSelectedDistrict event,
+    Emitter<AddressState> emit,
+  ) {
+    emit(state.copyWith(selectedDistrict: event.district));
   }
 }

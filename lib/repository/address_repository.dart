@@ -16,16 +16,22 @@ class AddressRepository {
     Country? selectedCountry;
     try {
       final response = await _dio.get(countriesUrl);
-      countries = (response.data as List<dynamic>).map((dynamic json) {
-        final map = json as Map<String, dynamic>;
-        return Country.fromJson(map);
-      }).toList();
-      for (var country in countries) {
-        if (country.countryName == "NEPAL") {
-          selectedCountry = country;
-          break;
-        }
+      final data = response.data['data'];
+      if (data is List) {
+        // Convert data to a list of Country objects
+        countries = data.map<Country>((dynamic json) {
+          final map = json as Map<String, dynamic>;
+          return Country.fromJson(map);
+        }).toList();
+      } else {
+        // Handle case where 'data' is not a list
+        countries = [];
       }
+      selectedCountry = countries.isNotEmpty
+          ? countries.firstWhere(
+              (country) => country.countryName == "NEPAL",
+            )
+          : null;
       yield ApiResponseWithSelectedCountry(
         apiResponse: ApiResponseStatus(
           isSuccessful: true,

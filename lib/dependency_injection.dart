@@ -1,5 +1,6 @@
 import 'package:astrology/bloc/address/address_bloc.dart';
 import 'package:astrology/bloc/appservice/appservice_bloc.dart';
+import 'package:astrology/bloc/auth/auth_bloc.dart';
 import 'package:astrology/bloc/shop/shop_bloc.dart';
 import 'package:astrology/network/network_services.dart';
 import 'package:astrology/repository/address_repository.dart';
@@ -18,8 +19,9 @@ final GetIt getIt = GetIt.instance;
 Future<void> initDependencyInjection() async {
   await initDio();
   await initSharedPreferences();
-  await getIt.allReady();
   registerRepositories();
+
+  await getIt.allReady();
   registerBlocs();
 }
 
@@ -31,9 +33,6 @@ Future<void> initSharedPreferences() async {
   getIt.registerSingletonAsync<SharedPreferences>(
     () async => await buildSharedPreferences(),
   );
-
-  // getIt.registerLazySingleton<LocalDataSource>(
-  //     () => DataStorage(prefs: getIt<SharedPreferences>()));
 }
 
 void registerRepositories() {
@@ -70,6 +69,11 @@ void registerRepositories() {
 }
 
 void registerBlocs() {
+  getIt.registerLazySingleton<AuthBloc>(
+    () => AuthBloc(
+      authRepository: getIt(),
+    ),
+  );
   getIt.registerLazySingleton<AppServiceBloc>((() => AppServiceBloc(
         appServiceRepository: getIt(),
       )));

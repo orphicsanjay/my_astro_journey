@@ -6,6 +6,7 @@ import 'package:astrology/models/services/app_service.dart';
 import 'package:astrology/shimmer/product_shimmer.dart';
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
+import 'package:astrology/utils/snackbar_util.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:astrology/widgets/custom_empty_widget.dart';
 import 'package:astrology/widgets/custom_error_widget.dart';
@@ -37,60 +38,33 @@ class _HomeServicesWidgetState extends State<HomeServicesWidget> {
       children: [
         TitleWidget(title: "Services", onTap: () {}),
         const CustomVerticalSpacer(height: 8),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: BlocBuilder<AppServiceBloc, AppServiceState>(
-            builder: (context, state) {
-              if (state.isLoading) {
-                return const ProductsShimmer();
-              } else if (state.isFailed) {
-                return const CustomErrorWidget(
-                    errorMessage: "Error fetching products");
-              } else if (state.apiServices == null ||
-                  state.apiServices!.isEmpty) {
-                return const CustomEmptyWidget(
-                    message: "No services available");
-              } else {
-                return Row(
-                  children: state.apiServices!.map((appService) {
-                    return ServiceCard(appService: appService);
-                  }).toList(),
-                );
-              }
-            },
-          ),
+        BlocConsumer<AppServiceBloc, AppServiceState>(
+          bloc: getIt<AppServiceBloc>(),
+          builder: (context, AppServiceState state) {
+            if (state.isLoading) {
+              return const ProductsShimmer();
+            } else if (state.appServices != null) {
+              final List<AppService> appServicesList = state.appServices ?? [];
+              return SizedBox(
+                height: MediaQuery.of(context).size.height * 0.26,
+                child: ListView.builder(
+                  itemCount: appServicesList.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return ServiceCard(appService: appServicesList[index]);
+                  },
+                ),
+              );
+            } else {
+              return CustomErrorWidget(errorMessage: state.error!);
+            }
+          },
+          listener: (context, AppServiceState state) {
+            if (state.error != null) {
+              SnackbarUtils.showSnackbar(context, "Something went wrong!");
+            }
+          },
         ),
-        // SingleChildScrollView(
-        //   scrollDirection: Axis.horizontal,
-        //   child: FutureBuilder<void>(
-        //     // future: getIt<AppServicesProvider>().fetchAppServiceList(),
-        //     future: getIt<AppServiceBloc>().add(FetchAppServices()),
-        //     builder: (context, snapshot) {
-        //       if (snapshot.connectionState == ConnectionState.waiting) {
-        //         return const ProductsShimmer();
-        //       } else if (snapshot.hasError) {
-        //         return const CustomErrorWidget(
-        //             errorMessage: "Error fetching products");
-        //       } else {
-        //         return Consumer<AppServicesProvider>(
-        //           builder: (context, productsProvider, child) {
-        //             final appServiceList = productsProvider.appServiceList;
-        //             if (appServiceList == null || appServiceList.isEmpty) {
-        //               return const CustomEmptyWidget(
-        //                   message: "No services available");
-        //             } else {
-        //               return Row(
-        //                 children: appServiceList.map((appService) {
-        //                   return ServiceCard(appService: appService);
-        //                 }).toList(),
-        //               );
-        //             }
-        //           },
-        //         );
-        //       }
-        //     },
-        //   ),
-        // ),
       ],
     );
   }
