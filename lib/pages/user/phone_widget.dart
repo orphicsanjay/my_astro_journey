@@ -1,4 +1,4 @@
-import 'package:astrology/address/country.dart';
+import 'package:astrology/models/address/country.dart';
 import 'package:astrology/providers/country_provider.dart';
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/style_utl.dart';

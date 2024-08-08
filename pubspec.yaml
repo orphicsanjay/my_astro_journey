@@ -46,6 +46,9 @@ dependencies:
   nepali_date_picker: ^6.0.1
   shimmer: ^3.0.0
   get_it: ^7.7.0
+  flutter_bloc: ^8.1.6
+  dio: ^5.5.0+1
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:

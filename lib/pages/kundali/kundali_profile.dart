@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:astrology/address/country.dart';
-import 'package:astrology/address/district.dart';
+import 'package:astrology/models/address/country.dart';
+import 'package:astrology/models/address/district.dart';
 import 'package:astrology/models/user/gender.dart';
 import 'package:astrology/pages/auth/custom_button.dart';
 import 'package:astrology/pages/kundali/birth_city_widget.dart';

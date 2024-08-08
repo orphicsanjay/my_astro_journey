@@ -1,4 +1,4 @@
-import 'package:astrology/address/district.dart';
+import 'package:astrology/models/address/district.dart';
 import 'package:astrology/models/response/api_response.dart';
 import 'package:astrology/network/endpoints.dart';
 import 'package:astrology/network/http_service.dart';

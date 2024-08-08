@@ -1,11 +1,10 @@
-import 'dart:developer';
-
+import 'package:astrology/bloc/appservice/appservice_bloc.dart';
+import 'package:astrology/bloc/appservice/appservice_event.dart';
+import 'package:astrology/bloc/appservice/appservice_state.dart';
 import 'package:astrology/locator.dart';
 import 'package:astrology/models/services/app_service.dart';
-import 'package:astrology/providers/app_service_provider.dart';
 import 'package:astrology/shimmer/product_shimmer.dart';
 import 'package:astrology/utils/color_util.dart';
-import 'package:astrology/utils/custom_horizontal_spacer.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:astrology/widgets/custom_empty_widget.dart';
@@ -15,7 +14,7 @@ import 'package:astrology/widgets/small_circular_progress.dart';
 import 'package:astrology/widgets/title_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeServicesWidget extends StatefulWidget {
   const HomeServicesWidget({super.key});
@@ -25,11 +24,11 @@ class HomeServicesWidget extends StatefulWidget {
 }
 
 class _HomeServicesWidgetState extends State<HomeServicesWidget> {
-  // @override
-  // void initState() {
-  //   getIt<AppServicesProvider>().fetchAppServiceList();
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    getIt<AppServiceBloc>().add(FetchAppServices());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,34 +39,58 @@ class _HomeServicesWidgetState extends State<HomeServicesWidget> {
         const CustomVerticalSpacer(height: 8),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: FutureBuilder<void>(
-            future: getIt<AppServicesProvider>().fetchAppServiceList(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
+          child: BlocBuilder<AppServiceBloc, AppServiceState>(
+            builder: (context, state) {
+              if (state.isLoading) {
                 return const ProductsShimmer();
-              } else if (snapshot.hasError) {
+              } else if (state.isFailed) {
                 return const CustomErrorWidget(
                     errorMessage: "Error fetching products");
+              } else if (state.apiServices == null ||
+                  state.apiServices!.isEmpty) {
+                return const CustomEmptyWidget(
+                    message: "No services available");
               } else {
-                return Consumer<AppServicesProvider>(
-                  builder: (context, productsProvider, child) {
-                    final appServiceList = productsProvider.appServiceList;
-                    if (appServiceList == null || appServiceList.isEmpty) {
-                      return const CustomEmptyWidget(
-                          message: "No services available");
-                    } else {
-                      return Row(
-                        children: appServiceList.map((appService) {
-                          return ServiceCard(appService: appService);
-                        }).toList(),
-                      );
-                    }
-                  },
+                return Row(
+                  children: state.apiServices!.map((appService) {
+                    return ServiceCard(appService: appService);
+                  }).toList(),
                 );
               }
             },
           ),
         ),
+        // SingleChildScrollView(
+        //   scrollDirection: Axis.horizontal,
+        //   child: FutureBuilder<void>(
+        //     // future: getIt<AppServicesProvider>().fetchAppServiceList(),
+        //     future: getIt<AppServiceBloc>().add(FetchAppServices()),
+        //     builder: (context, snapshot) {
+        //       if (snapshot.connectionState == ConnectionState.waiting) {
+        //         return const ProductsShimmer();
+        //       } else if (snapshot.hasError) {
+        //         return const CustomErrorWidget(
+        //             errorMessage: "Error fetching products");
+        //       } else {
+        //         return Consumer<AppServicesProvider>(
+        //           builder: (context, productsProvider, child) {
+        //             final appServiceList = productsProvider.appServiceList;
+        //             if (appServiceList == null || appServiceList.isEmpty) {
+        //               return const CustomEmptyWidget(
+        //                   message: "No services available");
+        //             } else {
+        //               return Row(
+        //                 children: appServiceList.map((appService) {
+        //                   return ServiceCard(appService: appService);
+        //                 }).toList(),
+        //               );
+        //             }
+        //           },
+        //         );
+        //       }
+        //     },
+        //   ),
+        // ),
       ],
     );
   }

@@ -1,5 +1,5 @@
 import 'package:astrology/models/response/api_response.dart';
-import 'package:astrology/address/country.dart';
+import 'package:astrology/models/address/country.dart';
 import 'package:astrology/network/endpoints.dart';
 import 'package:astrology/network/http_service.dart';
 import 'package:flutter/foundation.dart';

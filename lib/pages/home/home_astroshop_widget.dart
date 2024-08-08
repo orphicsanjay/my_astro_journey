@@ -1,3 +1,5 @@
+import 'package:astrology/bloc/shop/shop_bloc.dart';
+import 'package:astrology/bloc/shop/shop_state.dart';
 import 'package:astrology/locator.dart';
 import 'package:astrology/models/product/products.dart';
 import 'package:astrology/providers/products_provider.dart';
@@ -12,6 +14,7 @@ import 'package:astrology/widgets/small_circular_progress.dart';
 import 'package:astrology/widgets/title_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 class HomeAstroShopWidget extends StatefulWidget {
@@ -37,35 +40,57 @@ class _HomeAstroShopWidgetState extends State<HomeAstroShopWidget> {
         const CustomVerticalSpacer(),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: FutureBuilder<void>(
-            future: Provider.of<ProductsProvider>(context, listen: false)
-                .fetchProductsList(null),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
+          child: BlocBuilder<ShopBloc, ShopState>(
+            builder: (context, state) {
+              if (state.isLoading) {
                 return const ProductsShimmer();
-              } else if (snapshot.hasError) {
+              } else if (state.isFailed) {
                 return const CustomErrorWidget(
                     errorMessage: "Error fetching products");
+              } else if (state.products == null || state.products!.isEmpty) {
+                return const CustomEmptyWidget(
+                    message: "No products available");
               } else {
-                return Consumer<ProductsProvider>(
-                  builder: (context, productsProvider, child) {
-                    final productsList = productsProvider.productsList;
-                    if (productsList == null || productsList.isEmpty) {
-                      return const CustomEmptyWidget(
-                          message: "No products available");
-                    } else {
-                      return Row(
-                        children: productsList.map((product) {
-                          return AstroShopCard(product: product);
-                        }).toList(),
-                      );
-                    }
-                  },
+                return Row(
+                  children: state.products!.map((product) {
+                    return AstroShopCard(product: product);
+                  }).toList(),
                 );
               }
             },
           ),
         ),
+        // SingleChildScrollView(
+        //   scrollDirection: Axis.horizontal,
+        //   child: FutureBuilder<void>(
+        //     future: Provider.of<ProductsProvider>(context, listen: false)
+        //         .fetchProductsList(null),
+        //     builder: (context, snapshot) {
+        //       if (snapshot.connectionState == ConnectionState.waiting) {
+        //         return const ProductsShimmer();
+        //       } else if (snapshot.hasError) {
+        //         return const CustomErrorWidget(
+        //             errorMessage: "Error fetching products");
+        //       } else {
+        //         return Consumer<ProductsProvider>(
+        //           builder: (context, productsProvider, child) {
+        //             final productsList = productsProvider.productsList;
+        //             if (productsList == null || productsList.isEmpty) {
+        //               return const CustomEmptyWidget(
+        //                   message: "No products available");
+        //             } else {
+        //               return Row(
+        //                 children: productsList.map((product) {
+        //                   return AstroShopCard(product: product);
+        //                 }).toList(),
+        //               );
+        //             }
+        //           },
+        //         );
+        //       }
+        //     },
+        //   ),
+        // ),
       ],
     );
   }

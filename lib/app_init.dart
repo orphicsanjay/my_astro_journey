@@ -1,13 +1,18 @@
+import 'package:astrology/bloc/app_bloc_observer.dart';
+import 'package:astrology/dependency_injection.dart';
 import 'package:astrology/locator.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'utils/color_util.dart';
 
 class AppInit {
   static Future<void> initialize() async {
     WidgetsFlutterBinding.ensureInitialized();
-    setupLocator();
+    Bloc.observer = AppBlocObserver();
+    // setupLocator();
+    await initDependencyInjection();
   }
 
   static final ThemeData customThemeData = ThemeData(

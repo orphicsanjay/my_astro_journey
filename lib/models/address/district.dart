@@ -1,4 +1,4 @@
-import 'package:astrology/address/country.dart';
+import 'package:astrology/models/address/country.dart';
 
 class District {
   int? id;

@@ -1,4 +1,4 @@
-import 'package:astrology/address/district.dart';
+import 'package:astrology/models/address/district.dart';
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
