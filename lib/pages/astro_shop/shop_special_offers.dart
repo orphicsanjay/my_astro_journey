@@ -16,7 +16,7 @@ class ShopSpecialOffers extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TitleWidget(title: "Special Offers", onTap: () {}),
-          const CustomVerticalSpacer(height: 4),
+          const CustomVerticalSpacer(height: 8),
           const SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(

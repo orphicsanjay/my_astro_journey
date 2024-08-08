@@ -1,4 +1,3 @@
-import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
 
 class NewsBannerImage extends StatelessWidget {

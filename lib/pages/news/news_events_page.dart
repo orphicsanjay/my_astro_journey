@@ -1,4 +1,3 @@
-import 'package:astrology/pages/banners/my_pager.dart';
 import 'package:astrology/pages/news/new_slider.dart';
 import 'package:astrology/pages/news/news_widgets.dart';
 import 'package:astrology/utils/custom_appbar.dart';

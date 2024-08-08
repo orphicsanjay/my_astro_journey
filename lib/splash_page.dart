@@ -15,7 +15,6 @@ import 'package:astrology/pages/user/complete_profile_page.dart';
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_appbar.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
-import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatelessWidget {

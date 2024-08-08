@@ -2,7 +2,6 @@ import 'package:astrology/pages/home/home_widget.dart';
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,7 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Widget> bodyWidgets = [
-    HomeWidget(),
+    const HomeWidget(),
     Container(),
     Container(),
     Container(),

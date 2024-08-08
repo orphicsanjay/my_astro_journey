@@ -4,9 +4,7 @@ import 'package:astrology/pages/astro_shop/shop_special_offers.dart';
 import 'package:astrology/pages/astrologer/astrologer_search_widget.dart';
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_appbar.dart';
-import 'package:astrology/utils/custom_horizontal_spacer.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
-import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
 
 class AstroShopPage extends StatefulWidget {

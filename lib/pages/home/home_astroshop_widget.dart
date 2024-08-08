@@ -1,3 +1,4 @@
+import 'package:astrology/locator.dart';
 import 'package:astrology/models/product/products.dart';
 import 'package:astrology/providers/products_provider.dart';
 import 'package:astrology/shimmer/product_shimmer.dart';
@@ -21,12 +22,11 @@ class HomeAstroShopWidget extends StatefulWidget {
 }
 
 class _HomeAstroShopWidgetState extends State<HomeAstroShopWidget> {
-  @override
-  void initState() {
-    Provider.of<ProductsProvider>(context, listen: false)
-        .fetchProductsList(null);
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   getIt<ProductsProvider>().fetchProductsList(null);
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class _HomeAstroShopWidgetState extends State<HomeAstroShopWidget> {
               }
             },
           ),
-        )
+        ),
       ],
     );
   }

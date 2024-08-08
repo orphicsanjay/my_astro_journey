@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:astrology/pages/home/home_banner_widget.dart';
 import 'package:astrology/pages/news/news_banner_image.dart';
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
