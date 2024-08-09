@@ -8,16 +8,17 @@ class GenderRepository {
 
   GenderRepository({required Dio dio}) : _dio = dio;
 
-  Stream<ApiResponseStatus<List<Gender>>> fetchCountries() async* {
+  Stream<ApiResponseStatus<List<Gender>>> fetchGenders() async* {
     List<Gender>? genders;
 
     try {
       final response = await _dio.get(genderUrl);
-      genders = (response.data['data'] as List<dynamic>).map((dynamic json) {
-        final map = json as Map<String, dynamic>;
-        return Gender(map[0] as String, map[1] as String);
+      final responseData = response.data as Map<String, dynamic>;
+      final data = responseData['gender_options'] as List<dynamic>;
+      genders = data.map((dynamic json) {
+        final list = json as List<dynamic>;
+        return Gender(list[0] as String, list[1] as String);
       }).toList();
-
       yield ApiResponseStatus(
         isSuccessful: true,
         data: genders,

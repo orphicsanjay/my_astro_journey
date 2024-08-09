@@ -18,13 +18,11 @@ class AddressRepository {
       final response = await _dio.get(countriesUrl);
       final data = response.data['data'];
       if (data is List) {
-        // Convert data to a list of Country objects
         countries = data.map<Country>((dynamic json) {
           final map = json as Map<String, dynamic>;
           return Country.fromJson(map);
         }).toList();
       } else {
-        // Handle case where 'data' is not a list
         countries = [];
       }
       selectedCountry = countries.isNotEmpty

@@ -11,6 +11,8 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
+      borderRadius: BorderRadius.circular(12.0),
+      splashColor: ColorUtil.colorAboutMeBackground,
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),

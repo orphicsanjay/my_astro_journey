@@ -1,12 +1,17 @@
+import 'package:astrology/models/astrologer/astrologer.dart';
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_horizontal_spacer.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';
+import 'package:astrology/widgets/default_image.dart';
 import 'package:astrology/widgets/payment_options.dart';
+import 'package:astrology/widgets/small_circular_progress.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class AastrologerIntroCard extends StatelessWidget {
-  const AastrologerIntroCard({super.key});
+  final Astrologer astrologer;
+  const AastrologerIntroCard({super.key, required this.astrologer});
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +32,25 @@ class AastrologerIntroCard extends StatelessWidget {
                     height: 170,
                     child: Stack(
                       children: [
+                        // ClipRRect(
+                        //   borderRadius: BorderRadius.circular(12),
+                        //   child: Image.asset(
+                        //     "assets/images/astro.jpg",
+                        //     height: 150,
+                        //     // width: 120,
+                        //     fit: BoxFit.cover,
+                        //   ),
+                        // ),
                         ClipRRect(
                           borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(
-                            "assets/images/astro.jpg",
+                          child: CachedNetworkImage(
+                            imageUrl: astrologer.profilePicture!,
                             height: 150,
-                            // width: 120,
                             fit: BoxFit.cover,
+                            placeholder: (context, url) =>
+                                const SmallCircularProgess(),
+                            errorWidget: (context, url, error) =>
+                                const DefaultImage(),
                           ),
                         ),
                         Positioned(
@@ -67,7 +84,7 @@ class AastrologerIntroCard extends StatelessWidget {
                   ),
                 ),
                 const CustomHorizontalSpacer(width: 12),
-                const Expanded(
+                Expanded(
                   flex: 2,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -77,7 +94,7 @@ class AastrologerIntroCard extends StatelessWidget {
                         children: [
                           Expanded(
                               child: Text(
-                            "Aditya Sharma",
+                            "${astrologer.fullname}",
                             style: StyleUtil.style14BlackBold,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -99,12 +116,17 @@ class AastrologerIntroCard extends StatelessWidget {
                           ),
                           CustomHorizontalSpacer(width: 4),
                           Expanded(
-                              child: Text(
-                            "Vasthu consultation, Vedic Astrology",
-                            style: StyleUtil.style14Grey,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          )),
+                            child: Wrap(
+                              children: astrologer.category!.map((category) {
+                                final index =
+                                    astrologer.category!.indexOf(category);
+                                final isLast =
+                                    index == astrologer.category!.length - 1;
+                                return Text(
+                                    '${category.name!}${isLast ? '' : ','}');
+                              }).toList(),
+                            ),
+                          ),
                         ],
                       ),
                       CustomVerticalSpacer(height: 4),
@@ -117,26 +139,31 @@ class AastrologerIntroCard extends StatelessWidget {
                           ),
                           CustomHorizontalSpacer(width: 4),
                           Expanded(
-                              child: Text(
-                            "Nepali, English, Hindi",
-                            style: StyleUtil.style14Grey,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          )),
+                            child: Wrap(
+                              children: astrologer.language!.map((language) {
+                                final index =
+                                    astrologer.language!.indexOf(language);
+                                final isLast =
+                                    index == astrologer.language!.length - 1;
+                                return Text(
+                                    '${language.name!}${isLast ? '' : ','}');
+                              }).toList(),
+                            ),
+                          ),
                         ],
                       ),
-                      CustomVerticalSpacer(height: 4),
+                      const CustomVerticalSpacer(height: 4),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.menu_book,
                             color: ColorUtil.colorGrey,
                           ),
-                          CustomHorizontalSpacer(width: 4),
+                          const CustomHorizontalSpacer(width: 4),
                           Expanded(
                             child: Text(
-                              "8 years",
+                              "${astrologer.yearsOfExperience}",
                               style: StyleUtil.style14Grey,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
@@ -144,7 +171,7 @@ class AastrologerIntroCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      CustomVerticalSpacer(height: 4),
+                      const CustomVerticalSpacer(height: 4),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -154,15 +181,15 @@ class AastrologerIntroCard extends StatelessWidget {
                               style: StyleUtil.style16DarkBlue,
                               children: <TextSpan>[
                                 TextSpan(
-                                  text: '30/min',
+                                  text: '${astrologer.audioCallingRate}/min',
                                   style: StyleUtil.style14DarkBlueBold,
                                 ),
                               ],
                             ),
-                            style: TextStyle(fontSize: 24),
+                            style: StyleUtil.style24Black,
                           ),
-                          CustomHorizontalSpacer(width: 32),
-                          Expanded(
+                          const CustomHorizontalSpacer(width: 32),
+                          const Expanded(
                             child: Text(
                               "Online",
                               style: StyleUtil.style14Green,
@@ -184,7 +211,7 @@ class AastrologerIntroCard extends StatelessWidget {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(24),
                     onTap: () {
-                      showPaymentOptions(context, "Chat");
+                      showPaymentOptions(context, "Chat", astrologer.chatRate!);
                     },
                     child: Card(
                       elevation: 2.0,
@@ -214,7 +241,8 @@ class AastrologerIntroCard extends StatelessWidget {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(24),
                     onTap: () {
-                      showPaymentOptions(context, "Call");
+                      showPaymentOptions(
+                          context, "Call", astrologer.audioCallingRate!);
                     },
                     child: Card(
                       elevation: 2.0,
@@ -247,7 +275,8 @@ class AastrologerIntroCard extends StatelessWidget {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(24),
                     onTap: () {
-                      showPaymentOptions(context, "Video call");
+                      showPaymentOptions(
+                          context, "Video call", astrologer.videoCallingRate!);
                     },
                     child: Card(
                       elevation: 2.0,

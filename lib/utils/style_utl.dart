@@ -259,6 +259,11 @@ class StyleUtil {
     color: ColorUtil.colorBlack,
     fontWeight: FontWeight.bold,
   );
+  static const TextStyle style24Black = TextStyle(
+    fontFamily: 'Helvetica',
+    fontSize: 24.0,
+    color: ColorUtil.colorBlack,
+  );
 
   static const TextStyle style16WhiteBold = TextStyle(
     fontFamily: 'Helvetica',

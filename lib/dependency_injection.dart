@@ -1,6 +1,8 @@
 import 'package:astrology/bloc/address/address_bloc.dart';
 import 'package:astrology/bloc/appservice/appservice_bloc.dart';
+import 'package:astrology/bloc/astrologer/astrologer_bloc.dart';
 import 'package:astrology/bloc/auth/auth_bloc.dart';
+import 'package:astrology/bloc/complete_profile/complete_profile_bloc.dart';
 import 'package:astrology/bloc/shop/shop_bloc.dart';
 import 'package:astrology/network/network_services.dart';
 import 'package:astrology/repository/address_repository.dart';
@@ -84,6 +86,17 @@ void registerBlocs() {
   getIt.registerLazySingleton<ShopBloc>(
     () => ShopBloc(
       shopRepository: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<CompleteProfileBloc>(
+    () => CompleteProfileBloc(
+      genderRepository: getIt(),
+    ),
+  );
+  getIt.registerLazySingleton<AstrologerBloc>(
+    () => AstrologerBloc(
+      astrologerRepository: getIt(),
     ),
   );
 }

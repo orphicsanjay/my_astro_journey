@@ -5,7 +5,8 @@ import 'package:astrology/widgets/dashed_all_border_container.dart';
 import 'package:flutter/material.dart';
 
 class AstrologerAboutMe extends StatelessWidget {
-  const AstrologerAboutMe({super.key});
+  final String astrologerBio;
+  const AstrologerAboutMe({super.key, required this.astrologerBio});
 
   @override
   Widget build(BuildContext context) {
@@ -15,26 +16,25 @@ class AstrologerAboutMe extends StatelessWidget {
       strokeWidth: 2.0,
       dashWidth: 12.0,
       dashSpace: 4.0,
-      // backgroundColor: ColorUtil.colorAboutMeBackground,
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 1),
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             color: ColorUtil.colorAboutMeBackground),
-        child: const Column(
+        child: Column(
           children: [
-            Text(
+            const Text(
               "About me",
               style: StyleUtil.style16Black,
             ),
-            CustomVerticalSpacer(height: 8),
+            const CustomVerticalSpacer(height: 8),
             Text(
-              "Lorem ipsum dolor sit amet consectetur. Massa cras in dictum tempus scelerisque elit. Lectus lectus morbi aliquam nam faucibus vulputate. Tristique dictumst nunc felis bibendum nunc facilisis in ullamcorper vivamus. Sed venenatis sapien mattis vulputate tempor. Scelerisque..",
+              astrologerBio,
               style: StyleUtil.style14Black,
             ),
-            CustomVerticalSpacer(height: 8),
-            Text(
+            const CustomVerticalSpacer(height: 8),
+            const Text(
               "See more",
               style: StyleUtil.style16BlackBold,
             ),

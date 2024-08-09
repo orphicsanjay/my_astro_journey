@@ -23,6 +23,7 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
     AddressEvent event,
     Emitter<AddressState> emit,
   ) async {
+    print("Fetching countries...");
     emit(state.copyWith(isLoadingCountries: true));
 
     await emit.forEach<ApiResponseWithSelectedCountry<List<Country>>>(

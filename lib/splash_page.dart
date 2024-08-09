@@ -86,11 +86,11 @@ class SplashPage extends StatelessWidget {
                 },
                 title: "Astrologers List Page"),
             const CustomVerticalSpacer(),
-            CustomButton(
-                onTap: () {
-                  handleOnTap(context, const AstrologerDetailPage());
-                },
-                title: "Astrologer Detail Page"),
+            // CustomButton(
+            //     onTap: () {
+            //       handleOnTap(context, const AstrologerDetailPage());
+            //     },
+            //     title: "Astrologer Detail Page"),
             const CustomVerticalSpacer(),
             CustomButton(
                 onTap: () {

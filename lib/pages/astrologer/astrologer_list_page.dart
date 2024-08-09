@@ -1,9 +1,18 @@
+import 'package:astrology/bloc/astrologer/astrologer_bloc.dart';
+import 'package:astrology/bloc/astrologer/astrologer_event.dart';
+import 'package:astrology/bloc/astrologer/astrologer_state.dart';
+import 'package:astrology/dependency_injection.dart';
+import 'package:astrology/models/astrologer/astrologer.dart';
 import 'package:astrology/pages/astrologer/astrologer_list_card.dart';
 import 'package:astrology/pages/astrologer/astrologer_search_widget.dart';
 import 'package:astrology/pages/banners/my_pager.dart';
+import 'package:astrology/shimmer/astrologer_shimmer.dart';
+
 import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_appbar.dart';
+import 'package:astrology/widgets/custom_error_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AstrologerListPage extends StatefulWidget {
   const AstrologerListPage({super.key});
@@ -25,9 +34,15 @@ class _AstrologerListPageState extends State<AstrologerListPage> {
 
   final PageController pageController = PageController();
   int currentPage = 0;
+
+  @override
+  void initState() {
+    getIt<AstrologerBloc>().add(FetchAstrologersList());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: CustomAppbar(
         title: "Astrologers",
@@ -38,7 +53,7 @@ class _AstrologerListPageState extends State<AstrologerListPage> {
             elevation: 5,
             child: CircleAvatar(
               backgroundColor: Colors.white,
-              radius: 16, // Adjust the radius as needed
+              radius: 16,
               child: InkWell(
                 onTap: () {
                   updateShowHideSearch(true);
@@ -46,49 +61,55 @@ class _AstrologerListPageState extends State<AstrologerListPage> {
                 child: const Icon(
                   Icons.search,
                   color: ColorUtil.colorOrange,
-                  size: 16, // Adjust the size as needed
+                  size: 16,
                 ),
               ),
             ),
           ),
         ],
       ),
-      body: SizedBox(
-        height: size.height,
-        width: size.width,
-        child: SingleChildScrollView(
-          physics: const ScrollPhysics(),
-          child: Column(
-            children: [
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(
-              //       horizontal: 16.0, vertical: 16.0),
-              //   child: AstrologerOptionsWidget(
-              //     astrologerList: astrologerProvider.astrologerList,
-              //     onTap: (value) {},
-              //   ),
-              // ),
-              // Container(
-              //   height: 1,
-              //   width: size.width,
-              //   color: ColorUtil.colorGrey,
-              // ),
-              showHideSearch
-                  ? AstrologerSearchWidget(
-                      hintText: "Search Astrologer",
-                      onChanged: handleSearchChanged,
-                      onTap: handleAstrologerSearch,
-                    )
-                  : const SizedBox(),
-              // MyPager(),
-              const MyPager(),
-              const AstrologerListCard(),
-              const AstrologerListCard(),
-              const AstrologerListCard(),
-              const AstrologerListCard(),
-            ],
+      body: CustomScrollView(
+        slivers: [
+          if (showHideSearch)
+            SliverToBoxAdapter(
+              child: AstrologerSearchWidget(
+                hintText: "Search Astrologer",
+                onChanged: handleSearchChanged,
+                onTap: handleAstrologerSearch,
+              ),
+            ),
+          const SliverToBoxAdapter(child: MyPager()),
+          BlocBuilder<AstrologerBloc, AstrologerState>(
+            bloc: getIt<AstrologerBloc>(),
+            builder: (context, state) {
+              if (state.isLoadingAstrologersList) {
+                return SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return const BuildAstrologerShimmer();
+                    },
+                    childCount: 3,
+                  ),
+                );
+              } else if (state.astrologers.isNotEmpty) {
+                final List<Astrologer> astrologersList = state.astrologers;
+                return SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      final astrologer = astrologersList[index];
+                      return AstrologerListCard(astrologer: astrologer);
+                    },
+                    childCount: astrologersList.length,
+                  ),
+                );
+              } else {
+                return SliverFillRemaining(
+                  child: CustomErrorWidget(errorMessage: state.listError ?? ""),
+                );
+              }
+            },
           ),
-        ),
+        ],
       ),
     );
   }

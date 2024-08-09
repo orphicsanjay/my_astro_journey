@@ -1,5 +1,9 @@
 import 'dart:io';
 
+import 'package:astrology/bloc/complete_profile/complete_profile_bloc.dart';
+import 'package:astrology/bloc/complete_profile/complete_profile_event.dart';
+import 'package:astrology/bloc/complete_profile/complete_profile_state.dart';
+import 'package:astrology/locator.dart';
 import 'package:astrology/models/address/country.dart';
 import 'package:astrology/models/user/gender.dart';
 import 'package:astrology/pages/auth/custom_button.dart';
@@ -13,6 +17,8 @@ import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/profile_form_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 class CompleteProfilePage extends StatefulWidget {
@@ -24,32 +30,34 @@ class CompleteProfilePage extends StatefulWidget {
 
 class _CompleteProfilePageState extends State<CompleteProfilePage> {
   File? image;
-  // String? selectedGender;
-  Gender? selectedGender;
-  String selectedName = "";
-  // String selectedDob = "";
-  // String selectedTimeOfBirth = "";
-  // String selectedBirthPlace = "";
-  // String selectedBirthCountry = "";
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+
+  final FocusNode focusNode = FocusNode();
+  // Gender? selectedGender;
+  // String selectedName = "";
   Country? selectedCountry;
   String selectedPhoneNumber = "";
-  String selectedEmail = "";
-  String selectedAddress = "";
+  // String selectedEmail = "";
+  // String selectedAddress = "";
 
   handleImageChange(File value) {
     image = value;
     setState(() {});
   }
 
-  void handleNameChange(String value) {
-    selectedName = value;
-    setState(() {});
-  }
+  // void handleNameChange(String value) {
+  //   selectedName = value;
+  //   setState(() {});
+  // }
 
   void handleGenderChange(Gender? value) {
-    setState(() {
-      selectedGender = value;
-    });
+    // setState(() {
+    //   selectedGender = value;
+    // });
+    getIt<CompleteProfileBloc>().add(UpdateGenders(value));
   }
 
   void handleCountryChange(Country value) {
@@ -62,15 +70,15 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
     setState(() {});
   }
 
-  void handleEmailChange(String value) {
-    selectedEmail = value;
-    setState(() {});
-  }
+  // void handleEmailChange(String value) {
+  //   selectedEmail = value;
+  //   setState(() {});
+  // }
 
-  void handleAddressChange(String value) {
-    selectedAddress = value;
-    setState(() {});
-  }
+  // void handleAddressChange(String value) {
+  //   selectedAddress = value;
+  //   setState(() {});
+  // }
 
   void handleSave() {
     Navigator.of(context).pushAndRemoveUntil(
@@ -83,154 +91,133 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<GenderProvider>(context, listen: false).fetchGenderList();
+    focusNode.addListener(() {
+      if (!focusNode.hasFocus) {
+        // Do something when focus is lost
+      }
     });
     super.initState();
+    getIt<CompleteProfileBloc>().add(FetchGenders());
   }
 
   @override
   Widget build(BuildContext context) {
+    print("rebuilding");
     final size = MediaQuery.of(context).size;
-    final genderProvider = Provider.of<GenderProvider>(context);
+    // final genderProvider = Provider.of<GenderProvider>(context);
     return Scaffold(
-      body: Container(
-        height: size.height,
-        width: size.width,
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          physics: const ScrollPhysics(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const CustomAppbar(
-                showBackButton: false,
-                title: "",
-              ),
-              const Text(
-                "Complete your profile",
-                textAlign: TextAlign.center,
-                style: StyleUtil.style20DarkBlueBold,
-              ),
-              ProfileImageWidget(
-                image: image,
-                onImagePicked: handleImageChange,
-              ),
-              const ProfileFormSpacer(),
-              CustomTextFormField(
-                labelText: "Name",
-                hintText: "Enter name",
-                validatorMessage: "Provide name",
-                keyboardType: TextInputType.text,
-                onChanged: handleNameChange,
-              ),
-              const ProfileFormSpacer(),
-              SizedBox(
-                width: size.width,
-                child: const Text(
-                  "Gender",
-                  textAlign: TextAlign.start,
-                  style: StyleUtil.style16DeepPurpleBold,
-                ),
-              ),
-              genderProvider.genderList.isEmpty
-                  ? const SizedBox()
-                  : Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: genderProvider.genderList.map((Gender gender) {
-                        return Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Radio<Gender>(
-                              value: gender,
-                              groupValue: selectedGender,
-                              onChanged: (Gender? value) {
-                                handleGenderChange(value);
-                              },
-                            ),
-                            Text(
-                              gender.value![0].toUpperCase() +
-                                  gender.value!.substring(1).toLowerCase(),
-                            ),
-                          ],
-                        );
-                      }).toList(),
+      body: BlocBuilder<CompleteProfileBloc, CompleteProfileState>(
+        bloc: getIt<CompleteProfileBloc>(),
+        builder: (context, state) {
+          return Container(
+            height: size.height,
+            width: size.width,
+            padding: const EdgeInsets.all(16.0),
+            child: SingleChildScrollView(
+              physics: const ScrollPhysics(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const CustomAppbar(
+                    showBackButton: false,
+                    title: "",
+                  ),
+                  const Text(
+                    "Complete your profile",
+                    textAlign: TextAlign.center,
+                    style: StyleUtil.style20DarkBlueBold,
+                  ),
+                  ProfileImageWidget(
+                    image: image,
+                    onImagePicked: handleImageChange,
+                  ),
+                  const ProfileFormSpacer(),
+                  CustomTextFormField(
+                    controller: nameController,
+
+                    labelText: "Name",
+                    hintText: "Enter name",
+                    validatorMessage: "Provide name",
+                    keyboardType: TextInputType.text,
+                    // onChanged: handleNameChange,
+                  ),
+                  const ProfileFormSpacer(),
+                  SizedBox(
+                    width: size.width,
+                    child: const Text(
+                      "Gender",
+                      textAlign: TextAlign.start,
+                      style: StyleUtil.style16DeepPurpleBold,
                     ),
-              const ProfileFormSpacer(),
-              CustomTextFormField(
-                labelText: "Email",
-                hintText: "Enter email",
-                validatorMessage: "Provide your email",
-                keyboardType: TextInputType.emailAddress,
-                onChanged: handlePhoneNumberChange,
+                  ),
+                  state.genders!.isEmpty
+                      ? const SizedBox()
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: state.genders!.map((Gender gender) {
+                            return Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Radio<Gender>(
+                                  value: gender,
+                                  groupValue: state.selectedGender,
+                                  onChanged: (Gender? value) {
+                                    if (state.selectedGender
+                                            .toString()
+                                            .toLowerCase() ==
+                                        value.toString().toLowerCase()) {
+                                      return;
+                                    }
+                                    handleGenderChange(value);
+                                  },
+                                ),
+                                Text(
+                                  gender.value![0].toUpperCase() +
+                                      gender.value!.substring(1).toLowerCase(),
+                                ),
+                              ],
+                            );
+                          }).toList(),
+                        ),
+                  const ProfileFormSpacer(),
+                  CustomTextFormField(
+                    controller: emailController,
+                    labelText: "Email",
+                    hintText: "Enter email",
+                    validatorMessage: "Provide your email",
+                    keyboardType: TextInputType.emailAddress,
+                    // onChanged: handlePhoneNumberChange,
+                  ),
+                  const ProfileFormSpacer(),
+                  PhoneWidget(
+                    controller: phoneController,
+                    // onChanged: handlePhoneNumberChange,
+                    // onCountryChanged: handleCountryChange,
+                  ),
+                  const ProfileFormSpacer(),
+                  CustomTextFormField(
+                    controller: addressController,
+                    labelText: "Address",
+                    hintText: "Enter address",
+                    validatorMessage: "Provide address",
+                    keyboardType: TextInputType.text,
+                    // onChanged: handleAddressChange,
+                  ),
+                  const CustomVerticalSpacer(height: 72),
+                  CustomButton(
+                    onTap: handleSave,
+                    title: "Save",
+                  ),
+                  const ProfileFormSpacer(),
+                ],
               ),
-              const ProfileFormSpacer(),
-              PhoneWidget(
-                  onChanged: handlePhoneNumberChange,
-                  onCountryChanged: handleCountryChange),
-              const ProfileFormSpacer(),
-              CustomTextFormField(
-                labelText: "Address",
-                hintText: "Enter address",
-                validatorMessage: "Provide address",
-                keyboardType: TextInputType.text,
-                onChanged: handleAddressChange,
-              ),
-              const CustomVerticalSpacer(height: 72),
-              CustomButton(
-                onTap: handleSave,
-                title: "Save",
-              ),
-              const ProfileFormSpacer(),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
+        // listener: (context, state) {},
       ),
     );
   }
 }
-
-
-  // void handleDobChange(String value) {
-  //   selectedDob = value;
-  //   setState(() {});
-  // }
-
-  // void handleTimeOfBirthChange(String value) {
-  //   selectedTimeOfBirth = value;
-  //   setState(() {});
-  // }
-
-  // void handleBirthPlaceChange(String value) {
-  //   selectedBirthPlace = value;
-  //   setState(() {});
-  // }
-
-  // void handleBirthCountryChange(String value) {
-  //   selectedBirthCountry = value;
-  //   setState(() {});
-  // }
-
-
-// DobWidget(onChanged: handleDobChange),
-              // const ProfileFormSpacer(),
-              // TimeWidget(onChanged: handleTimeOfBirthChange),
-              // const ProfileFormSpacer(),
-              // CustomTextFormField(
-              //   labelText: "Birth Country",
-              //   hintText: "Enter birth country",
-              //   validatorMessage: "Provide birth country",
-              //   keyboardType: TextInputType.text,
-              //   onChanged: handleBirthCountryChange,
-              // ),
-              // const ProfileFormSpacer(),
-              // CustomTextFormField(
-              //   labelText: "Birth Place",
-              //   hintText: "Enter birth place",
-              //   validatorMessage: "Provide birth place",
-              //   keyboardType: TextInputType.text,
-              //   onChanged: handleBirthPlaceChange,
-              // ),
-              // const ProfileFormSpacer(),

@@ -9,25 +9,20 @@ class AstrologerShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return const SingleChildScrollView(
-    //   child: Row(
-    //     children: [
-    //       BuildAstrologerShimmer(),
-    //       CustomHorizontalSpacer(),
-    //       BuildAstrologerShimmer(),
-    //       CustomHorizontalSpacer(),
-    //       BuildAstrologerShimmer(),
-    //       CustomHorizontalSpacer(),
-    //     ],
+    // return SingleChildScrollView(
+    //   scrollDirection: Axis.horizontal,
+    //   child: Column(
+    //     crossAxisAlignment: CrossAxisAlignment.start,
+    //     children: List.generate(3, (index) {
+    //       return const BuildAstrologerShimmer();
+    //     }),
     //   ),
     // );
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: List.generate(3, (index) {
-          return const BuildAstrologerShimmer();
-        }),
-      ),
+    return ListView.builder(
+      itemCount: 2, // Adjust the count as needed
+      itemBuilder: (context, index) {
+        return const BuildAstrologerShimmer();
+      },
     );
   }
 }
@@ -39,73 +34,143 @@ class BuildAstrologerShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 2,
-      margin: const EdgeInsets.only(right: 16, bottom: 8),
+      margin: const EdgeInsets.all(16),
       color: ColorUtil.colorWhite,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        width: MediaQuery.of(context).size.width - 32,
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         child: Column(
           children: [
-            Shimmer.fromColors(
-              baseColor: Colors.grey[300]!,
-              highlightColor: Colors.grey[100]!,
-              child: Container(
-                height: 120,
-                width: 120,
-                decoration: BoxDecoration(
-                  color: ColorUtil.colorBlack,
-                  borderRadius: BorderRadius.circular(80),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: Container(
+                      height: 150,
+                      width: 120,
+                      color: ColorUtil.colorBlack,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            Shimmer.fromColors(
-              baseColor: Colors.grey[300]!,
-              highlightColor: Colors.grey[100]!,
-              child: Container(
-                height: 16,
-                width: 100,
-                color: ColorUtil.colorBlack,
-              ),
-            ),
-            const CustomVerticalSpacer(height: 8),
-            Shimmer.fromColors(
-              baseColor: Colors.grey[300]!,
-              highlightColor: Colors.grey[100]!,
-              child: Container(
-                height: 8,
-                width: 70,
-                color: ColorUtil.colorBlack,
-              ),
-            ),
-            const CustomVerticalSpacer(height: 8),
-            Shimmer.fromColors(
-              baseColor: Colors.grey[300]!,
-              highlightColor: Colors.grey[100]!,
-              child: Container(
-                height: 8,
-                width: 40,
-                color: ColorUtil.colorBlack,
-              ),
+                const CustomHorizontalSpacer(width: 12),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: ColorUtil.colorBlack,
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        child: Container(
+                          height: 4,
+                          width: MediaQuery.of(context).size.width * 0.35,
+                          color: ColorUtil.colorBlack,
+                        ),
+                      ),
+                    ),
+                    const CustomVerticalSpacer(height: 8),
+                    Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: ColorUtil.colorBlack,
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        child: Container(
+                          height: 4,
+                          width: MediaQuery.of(context).size.width * 0.35,
+                          color: ColorUtil.colorBlack,
+                        ),
+                      ),
+                    ),
+                    const CustomVerticalSpacer(height: 8),
+                    Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: ColorUtil.colorBlack,
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        child: Container(
+                          height: 4,
+                          width: MediaQuery.of(context).size.width * 0.25,
+                          color: ColorUtil.colorBlack,
+                        ),
+                      ),
+                    ),
+                    const CustomVerticalSpacer(height: 8),
+                    Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: ColorUtil.colorBlack,
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        child: Container(
+                          height: 4,
+                          width: 50,
+                          color: ColorUtil.colorBlack,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
             const CustomVerticalSpacer(height: 16),
-            Shimmer.fromColors(
-              baseColor: Colors.grey[300]!,
-              highlightColor: Colors.grey[100]!,
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                decoration: BoxDecoration(
-                  color: ColorUtil.colorBlack,
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                child: Container(
-                  height: 16,
-                  width: 32,
-                  color: ColorUtil.colorBlack,
-                ),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: List.generate(3, (index) {
+                return const BuildBottomButton();
+              }),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class BuildBottomButton extends StatelessWidget {
+  const BuildBottomButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: Card(
+        elevation: 2.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+          width: 100,
+          height: 40,
+          decoration: BoxDecoration(
+              color: ColorUtil.colorBlack,
+              borderRadius: BorderRadius.circular(24.0)),
         ),
       ),
     );

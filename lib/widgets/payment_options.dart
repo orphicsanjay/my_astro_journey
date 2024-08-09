@@ -5,7 +5,7 @@ import 'package:astrology/utils/color_util.dart';
 import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';
 
-void showPaymentOptions(BuildContext context, String action) {
+void showPaymentOptions(BuildContext context, String action, double price) {
   showModalBottomSheet(
     context: context,
     builder: (BuildContext context) {
@@ -30,8 +30,8 @@ void showPaymentOptions(BuildContext context, String action) {
               style: StyleUtil.style16BlackBold,
             ),
             const CustomVerticalSpacer(height: 16),
-            const Text(
-              'Rs. 500',
+            Text(
+              'Rs. $price',
               style: StyleUtil.style14Black,
             ),
             const CustomVerticalSpacer(height: 16),

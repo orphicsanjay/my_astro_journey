@@ -17,6 +17,7 @@ import 'package:astrology/utils/custom_vertical_spacer.dart';
 import 'package:astrology/utils/profile_form_spacer.dart';
 import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class KundaliProfile extends StatefulWidget {
@@ -28,6 +29,7 @@ class KundaliProfile extends StatefulWidget {
 
 class _KundaliProfileState extends State<KundaliProfile> {
   File? image;
+  TextEditingController nameController = TextEditingController();
   Gender? selectedGender;
   String selectedName = "";
   Country? selectedCountry;
@@ -44,10 +46,10 @@ class _KundaliProfileState extends State<KundaliProfile> {
     setState(() {});
   }
 
-  void handleNameChange(String value) {
-    selectedName = value;
-    setState(() {});
-  }
+  // void handleNameChange(String value) {
+  //   selectedName = value;
+  //   setState(() {});
+  // }
 
   void handleGenderChange(Gender? value) {
     setState(() {
@@ -133,11 +135,12 @@ class _KundaliProfileState extends State<KundaliProfile> {
               ),
               const ProfileFormSpacer(),
               CustomTextFormField(
+                controller: nameController,
                 labelText: "Name",
                 hintText: "Enter name",
                 validatorMessage: "Provide name",
                 keyboardType: TextInputType.text,
-                onChanged: handleNameChange,
+                // onChanged: handleNameChange,
               ),
               const ProfileFormSpacer(),
               SizedBox(

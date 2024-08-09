@@ -3,15 +3,17 @@ import 'package:astrology/utils/style_utl.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
+  final TextEditingController controller;
   final String labelText;
   final String hintText;
   final String validatorMessage;
   final TextInputType keyboardType;
-  final ValueChanged<String> onChanged;
+  // final ValueChanged<String> onChanged;
 
   const CustomTextFormField(
       {super.key,
-      required this.onChanged,
+      required this.controller,
+      // required this.onChanged,
       required this.labelText,
       required this.hintText,
       required this.validatorMessage,
@@ -20,6 +22,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      // controller: controller,
       keyboardType: keyboardType,
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -27,7 +30,7 @@ class CustomTextFormField extends StatelessWidget {
         }
         return null;
       },
-      onChanged: onChanged,
+      // onChanged: onChanged,
       cursorColor: ColorUtil.colorDarkBlue,
       decoration: InputDecoration(
         labelText: labelText,

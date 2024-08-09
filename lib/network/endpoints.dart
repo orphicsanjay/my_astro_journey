@@ -13,3 +13,4 @@ const String productCategoriesListUrl =
     "${baseUrl}products/apis/categories/list";
 const String productsListsUrl = "${baseUrl}products/apis/list/";
 const String productsDetailUrl = "${baseUrl}products/apis/details/";
+const String asatrologersUrl = "${baseUrl}accounts/apis/jyotishjyotish/";
